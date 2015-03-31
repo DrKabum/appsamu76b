@@ -1,0 +1,15 @@
+{% extends "SamuGestionVMBundle::gvmlayout.html.twig" %}
+
+{% block title %}
+	Choix de l'historique à consulter - {{ parent() }}
+{% endblock %}
+
+{% block gvm_actionbody %}
+
+<h2>Veuillez choisir un historique à consulter :</h2>
+
+<ul>
+{% for vehicule in vehicules %}
+	<li><a href="{{ path('SamuGestionVMBundle:view', {'type' : 'vehicule', 'id' : vehicule.id }) }}">{{ vehicule.name }}</a></li>
+{% endblock %}
+</ul>
