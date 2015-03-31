@@ -15,17 +15,22 @@ class ProblemeVMType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title',          'text')
-            ->add('author',         'text')
-            ->add('content',        'textarea')
+            ->add('title',          'text', array(
+                'label' => 'Titre'))
+            ->add('author',         'text', array(
+                'label' => 'Auteur'))
+            ->add('content',        'textarea', array(
+                'label' => 'Description du problème'))
             ->add('dateDebut',      'date', array(
                 'input'  => 'datetime',
                 'widget' => 'single_text',
-                'format' => 'dd/MM/yyyy'))
+                'format' => 'dd/MM/yyyy',
+                'label'  => 'Date de survenue du problème'))
             ->add('vehicule',       'entity', array(
                 'class'    => 'SamuGestionVMBundle:Vehicule',
                 'property' => 'name',
-                'multiple' => false))
+                'multiple' => false,
+                'label'    => 'Vehicule'))
             ->add('Envoyer',        'submit')
             ;
     }
