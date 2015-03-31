@@ -60,6 +60,7 @@ class ProblemeVMController extends Controller
 			if($formulaire->handleRequest($request)->isValid())
 			{
 				$em = $this->getDoctrine($request)->getManager();
+				$probleme->setActive(1);
 				$em->persist($probleme);
 				$em->flush();
 

@@ -59,9 +59,9 @@ class ProblemeVM
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateModif", type="datetime")
+     * @ORM\Column(name="dateModif", type="datetime", nullable=true)
      */
-    private $dateModif = 0;
+    private $dateModif;
 
     /**
      * @var boolean
