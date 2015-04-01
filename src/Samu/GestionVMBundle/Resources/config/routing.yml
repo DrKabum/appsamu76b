@@ -59,10 +59,11 @@ samu_gestion_vm_entitiesEdit:
     #    cible: #A Definir
 
 samu_gestion_vm_entitiesDelete:
-    path:     /delete-{cible}
+    path:     /delete-{type}/{id}
     defaults: { _controller: SamuGestionVMBundle:EntitiesVM:delete }
-    #requirements:
-    #    cible: #A Definir
+    requirements:
+        type: vehicule|materiel
+        id:   \d+
 
 samu_gestion_vm_entitiesView:
     path:     /view/{type}/{id}
