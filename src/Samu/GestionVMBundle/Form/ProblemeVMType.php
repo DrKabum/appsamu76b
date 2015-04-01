@@ -17,8 +17,6 @@ class ProblemeVMType extends AbstractType
         $builder
             ->add('title',          'text', array(
                 'label' => 'Titre'))
-            ->add('author',         'text', array(
-                'label' => 'Auteur'))
             ->add('content',        'textarea', array(
                 'label' => 'Description du problème'))
             ->add('dateDebut',      'date', array(

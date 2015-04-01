@@ -55,12 +55,13 @@ class ProblemeVMController extends Controller
 		if($typePb === "pbvehicule") 
 		{
 			$probleme = new ProblemeVM();
-			$formulaire = $this->createForm(new ProblemeVMType(), $probleme);
+			$formulaire = $this->createForm(new ProblemeVType(), $probleme);
 
 			if($formulaire->handleRequest($request)->isValid())
 			{
 				$em = $this->getDoctrine($request)->getManager();
 				$probleme->setActive(1);
+				$probleme->setAuthor($this->container->get('security.context')->getToken()->getUser());
 				$em->persist($probleme);
 				$em->flush();
 
