@@ -11,6 +11,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class EntitiesVMController extends Controller
 {
+	/**
+	 * @Security("has_role('ROLE_USER')")
+	 */
 	public function indexAction()
 	{
 		// Recupère les entités du parc et les envoie à la vue
@@ -25,6 +28,9 @@ class EntitiesVMController extends Controller
 		));
 	}
 
+	/**
+	 * @Security("has_role('ROLE_STAFF')")
+	 */
 	public function addAction($type, Request $request)
 	{
 		$entity = new Vehicule();
@@ -66,11 +72,17 @@ class EntitiesVMController extends Controller
 		return $this->redirect($this->generateUrl('samu_gestion_vm_entitiesIndex'));
 	}
 
+	/**
+	 * @Security("has_role('ROLE_STAFF')")
+	 */
 	public function editAction()
 	{
 
 	}
 
+	/**
+	 * @Security("has_role('ROLE_USER')")
+	 */
 	public function viewAction()
 	{
 
