@@ -41,9 +41,19 @@ class ProblemeVMController extends Controller
 		));
 	}
 
-	public function viewAction()
+	public function viewAction($id)
 	{
+		$probleme = $this->getDoctrine()
+						 ->getManager()
+						 ->getRepository('SamuGestionVMBundle:ProblemeVM')
+						 ->findOneById($id);
 
+		if(!probleme){
+			throw $this->createNotFoundException("La page demandée n'existe pas.");
+		}
+
+		return $this->render('SamuGestionVMBundle:ProblemeVM:view.html.twig', array(
+			'probleme' => $probleme));
 	}
 
 	/**
@@ -55,7 +65,7 @@ class ProblemeVMController extends Controller
 		if($typePb === "pbvehicule") 
 		{
 			$probleme = new ProblemeVM();
-			$formulaire = $this->createForm(new ProblemeVType(), $probleme);
+			$formulaire = $this->createForm(new ProblemeVMType(), $probleme);
 
 			if($formulaire->handleRequest($request)->isValid())
 			{
