@@ -1,0 +1,10 @@
+<div id="menu" class"col-md3">
+	<h3>Gestion des problèmes :</h3>
+	<ul class="nav nav-pills nav-stacked">
+		<li><a href="{{ path('samu_gestion_vm_index') }}">Accueil</a></li>
+		<li><span>Signaler un nouveau problème</span></li>
+		<li><a href="{{ path('samu_gestion_vm_problemeReport', { 'typepb': 'pbvehicule' }) }}">Véhicule</a>
+		    <a href="{{ path('samu_gestion_vm_problemeReport', { 'typepb': 'pbmateriel' }) }}">Matériel</a></li>
+		<li><a href="{{ path('samu_gestion_vm_entitiesIndex') }}"></a>Voir les historiques</li>
+	</ul>			
+</div>
