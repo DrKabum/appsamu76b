@@ -29,9 +29,8 @@ class ProblemeVM
     private $title;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="author", type="string", length=255)
+     * 
+     * @ORM\OneToOne(targetEntity="Samu\UserBundle\Entity\User")
      */
     private $author;
 
@@ -59,9 +58,9 @@ class ProblemeVM
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateModif", type="datetime")
+     * @ORM\Column(name="dateModif", type="datetime", nullable=true)
      */
-    private $dateModif = 0;
+    private $dateModif;
 
     /**
      * @var boolean

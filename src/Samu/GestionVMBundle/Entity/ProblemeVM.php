@@ -29,9 +29,8 @@ class ProblemeVM
     private $title;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="author", type="string", length=255)
+     * 
+     * @ORM\OneToOne(targetEntity="Samu\UserBundle\Entity\User")
      */
     private $author;
 
@@ -141,7 +140,7 @@ class ProblemeVM
      * @param string $author
      * @return ProblemeVM
      */
-    public function setAuthor($author)
+    public function setAuthor(\Samu\UserBundle\Entity\User $author = null)
     {
         $this->author = $author;
 
