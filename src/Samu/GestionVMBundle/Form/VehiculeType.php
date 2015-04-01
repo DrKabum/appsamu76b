@@ -15,15 +15,25 @@ class VehiculeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name',            'text')
-            ->add('immatriculation', 'text')
-            ->add('modele',          'text')
-            ->add('annee',           'date', array(
-                'widget' => 'choice',
-                'years'  => range(date('Y') - 10, date('Y'))
+            ->add('name',            'text', array(
+                'label'    => 'Indicatif',
             ))
-            ->add('ordreDepart',     'number')
+            ->add('immatriculation', 'text', array(
+                'label'    => 'Immatriculation',
+            ))
+            ->add('modele',          'text', array(
+                'label'    => 'Modèle',
+            ))
+            ->add('annee',           'date', array(
+                'label'    => 'Année d\'acquisition',
+                'widget'   => 'choice',
+                'years'    => range(date('Y') - 10, date('Y'))
+            ))
+            ->add('ordreDepart',     'number', array(
+                'label'    => 'Ordre de départ'
+            ))
             ->add('typeVehicule',    'choice', array(
+                'label'    => 'Type de véhicule',
                 'choices'  => array('u' => 'UMH', 'v' => 'VML', 'm' => 'Moto', 'a' => 'Autre'),
                 'required' => true))
             ->add('operationnel',    'checkbox', array(
