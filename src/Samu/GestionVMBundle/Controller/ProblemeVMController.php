@@ -41,6 +41,9 @@ class ProblemeVMController extends Controller
 		));
 	}
 
+	/**
+	 * @Security("has_role('ROLE_USER')")
+	 */
 	public function viewAction($id)
 	{
 		$probleme = $this->getDoctrine()
@@ -86,21 +89,33 @@ class ProblemeVMController extends Controller
 		}
 	}
 
+	/**
+	 * @Security("has_role('ROLE_USER')")
+	 */
 	public function editAction()
 	{
 
 	}
 
+	/**
+	 * @Security("has_role('ROLE_STAFF')")
+	 */
 	public function deleteAction()
 	{
 
 	}
 
+	/**
+	 * @Security("has_role('ROLE_USER')")
+	 */
 	public function reportAction()
 	{
 
 	}
 
+	/**
+	 * @Security("has_role('ROLE_STAFF')")
+	 */
 	public function validateAction()
 	{
 
