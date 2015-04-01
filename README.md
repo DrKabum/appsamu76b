@@ -30,8 +30,12 @@ parameters:
 
 - Installez composer pour finir l'installation avec "php composer.phar update"
 - N'oubliez pas de mettre à jour le schéma BDD ou le créer avec     
+
 <code>
 php app/console doctrine:schema:update --dump-sql
+</code>
+
+<code>
 php app/console doctrine:schema:update --force
 </code>
 - Voila !
