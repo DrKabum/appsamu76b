@@ -6,10 +6,12 @@
 
 {% block gvm_actionbody %}
 
-<h2>Veuillez choisir un historique à consulter :</h2>
+	<h2>Veuillez choisir un historique à consulter :</h2>
 
-<ul>
-{% for vehicule in vehicules %}
-	<li><a href="{{ path('SamuGestionVMBundle:view', {'type' : 'vehicule', 'id' : vehicule.id }) }}">{{ vehicule.name }}</a></li>
+	<ul>
+	{% for vehicule in vehicules %}
+		<li><a href="{{ path('samu_gestion_vm_entitiesView', {'type' : 'vehicule', 'id' : vehicule.id }) }}">{{ vehicule.name }}</a></li>
+	{% endfor %}
+	</ul>
+
 {% endblock %}
-</ul>
