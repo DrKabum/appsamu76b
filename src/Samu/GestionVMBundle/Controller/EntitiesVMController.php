@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Samu\GestionVMBundle\Entity\Vehicule;
 use Samu\GestionVMBundle\Form\VehiculeType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class EntitiesVMController extends Controller
 {
@@ -45,9 +46,24 @@ class EntitiesVMController extends Controller
 		));
 	}
 
-	public function deleteAction()
+	/**
+	 * @Security("has_role('ROLE_STAFF')")
+	 */
+	public function deleteAction($type, $id)
 	{
+		$typePath = 'SamuGestionVMBundle:' . ucfirst($type);
+		$em = $this->getDoctrine()->getManager();
+		$cible = $em->getRepository($typePath)->findOneById($id);
 
+		if(!$cible)
+		{
+			throw $this->createNotFoundException("L'entité demandée n'existe pas.");
+		}
+
+		$em->remove($cible);
+		$em->flush();
+
+		return $this->redirect($this->generateUrl('samu_gestion_vm_entitiesIndex'));
 	}
 
 	public function editAction()

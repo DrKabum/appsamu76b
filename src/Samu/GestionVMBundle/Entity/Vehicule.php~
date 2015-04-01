@@ -49,6 +49,13 @@ class Vehicule extends GVMEntities
      */
     private $typeVehicule;
 
+    /**
+     * @var array
+     *
+     * @ORM\OneToMany(targetEntity="Samu\GestionVMBundle\Entity\ProblemeCom", mappedBy="vehicule")
+     */
+    private $problemes;
+
 
     /**
      * Get id

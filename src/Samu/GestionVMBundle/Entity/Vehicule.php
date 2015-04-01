@@ -49,6 +49,13 @@ class Vehicule extends GVMEntities
      */
     private $typeVehicule;
 
+    /**
+     * @var array
+     *
+     * @ORM\OneToMany(targetEntity="Samu\GestionVMBundle\Entity\ProblemeVM", mappedBy="vehicule", cascade={"remove"})
+     */
+    private $problemes;
+
 
     /**
      * Get id
@@ -150,5 +157,45 @@ class Vehicule extends GVMEntities
     public function getTypeVehicule()
     {
         return $this->typeVehicule;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->problemes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add problemes
+     *
+     * @param \Samu\GestionVMBundle\Entity\ProblemeCom $problemes
+     * @return Vehicule
+     */
+    public function addProbleme(\Samu\GestionVMBundle\Entity\ProblemeCom $probleme)
+    {
+        $this->problemes[] = $probleme;
+
+        return $this;
+    }
+
+    /**
+     * Remove problemes
+     *
+     * @param \Samu\GestionVMBundle\Entity\ProblemeCom $problemes
+     */
+    public function removeProbleme(\Samu\GestionVMBundle\Entity\ProblemeCom $probleme)
+    {
+        $this->problemes->removeElement($probleme);
+    }
+
+    /**
+     * Get problemes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProblemes()
+    {
+        return $this->problemes;
     }
 }

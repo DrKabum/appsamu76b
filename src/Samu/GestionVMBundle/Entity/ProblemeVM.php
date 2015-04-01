@@ -79,7 +79,7 @@ class ProblemeVM
     /**
      * @var string
      * 
-     * @ORM\ManyToOne(targetEntity="Samu\GestionVMBundle\Entity\Vehicule")
+     * @ORM\ManyToOne(targetEntity="Samu\GestionVMBundle\Entity\Vehicule", inversedBy="problemes")
      */
     private $vehicule;
 
