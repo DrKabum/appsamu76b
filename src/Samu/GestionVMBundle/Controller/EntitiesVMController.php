@@ -55,7 +55,7 @@ class EntitiesVMController extends Controller
 	/**
 	 * @Security("has_role('ROLE_STAFF')")
 	 */
-	public function deleteAction($type, $id)
+	public function deleteAction($type, $id, Request $request)
 	{
 		$typePath = 'SamuGestionVMBundle:' . ucfirst($type);
 		$em = $this->getDoctrine()->getManager();
@@ -68,6 +68,8 @@ class EntitiesVMController extends Controller
 
 		$em->remove($cible);
 		$em->flush();
+
+		$request->getSession()->getFlashBag()->add('notice', 'L\élément sélectionné a correctement été supprimé.');
 
 		return $this->redirect($this->generateUrl('samu_gestion_vm_entitiesIndex'));
 	}
