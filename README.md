@@ -14,6 +14,7 @@ git clone https://github.com/drkabum/appsamu76b
 - Cela va créer un sous dossier appsamu76b/ avec le contenu de ce dépot.
 - A partir du dossier de l'installation de base de Symfony, copier les dossiers bin/, vendor/ et le fichier app/config/parameter.yml dans le dossier où vous avez cloné le répository.
 - renseignez le fichier parameter.yml selon vos paramètres locaux de base de donnée.
+- Installez composer pour finir l'installation avec "php composer.phar update"
 - Travailler sur MAMP sur certains postes oblige à faire la manipulation suivante, dans le fichier app/config/parameters.yml, ajoutez la ligne suivante:
 
 <code> 
@@ -28,5 +29,13 @@ parameters:
     database_unix_socket: /Applications/MAMP/tmp/mysql/mysql.sock
 </code>
 
-- Installez composer pour finir l'installation avec "php composer.phar update"
+- N'oubliez pas de mettre à jour le schéma BDD ou le créer avec     
+
+<code>
+php app/console doctrine:schema:update --dump-sql
+</code>
+
+<code>
+php app/console doctrine:schema:update --force
+</code>
 - Voila !
