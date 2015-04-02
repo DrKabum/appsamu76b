@@ -30,7 +30,7 @@ class ProblemeVM
 
     /**
      * 
-     * @ORM\OneToOne(targetEntity="Samu\UserBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="Samu\UserBundle\Entity\User")
      */
     private $author;
 

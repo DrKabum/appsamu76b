@@ -11,5 +11,8 @@ int : page
 {% endblock %}
 
 {% block gvm_actionbody %}
+	{% for flashMessage in app.session.get('notice') %}
+		{{ flashMessage }}
+	{% endfor %}
 
 {% endblock %}

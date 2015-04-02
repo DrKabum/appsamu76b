@@ -1,0 +1,14 @@
+{# @Variables :
+	- form
+	- probleme 
+#}
+
+{% extends "SamuGestionVMBundle::gvmlayout.html.twig" %}
+
+{% block title %}
+	Modifier un problème - {{ parent() }}
+{% endblock %}
+
+{% block gvm_actionbody %}
+	{{ form(form) }}
+{% endblock %}

@@ -51,7 +51,7 @@ class ProblemeVMController extends Controller
 						 ->getRepository('SamuGestionVMBundle:ProblemeVM')
 						 ->findOneById($id);
 
-		if(!probleme){
+		if(!$probleme){
 			throw $this->createNotFoundException("La page demandée n'existe pas.");
 		}
 
@@ -92,9 +92,24 @@ class ProblemeVMController extends Controller
 	/**
 	 * @Security("has_role('ROLE_USER')")
 	 */
-	public function editAction()
+	public function editAction(ProblemeVM $probleme, Request $request)
 	{
+		$em = $this->getDoctrine()->getManager();
 
+		$formulaire = $this->createForm(new ProblemeVMType(), $probleme);
+
+		if($formulaire->handleRequest($request)->isValid())
+		{
+			$em->flush();
+
+			$request->getSession()->getFlashBag()->add('notice', 'Modifications réussie.');
+
+			return $this->redirect($this->generateUrl('samu_gestion_vm_problemeView', array('id' => $probleme->getId())));
+		}
+
+		return $this->render('SamuGestionVMBundle:ProblemeVM:edit.html.twig', array(
+			'form'     => $formulaire->createView(),
+			'probleme' => $probleme));		
 	}
 
 	/**
