@@ -1,0 +1,15 @@
+{# @Variables :
+	- Vehicule/Materiel : entity
+	- string : type
+#}
+
+{% extends "SamuGestionVMBundle::gvmlayout.html.twig" %}
+
+{% block title %}
+	Détail d'un {{ type }} - {{ parent() }}
+{% endblock %}
+
+{% block gvm_actionbody %}
+	<p>Affichage de l'entité... : {{ entity.name }}</p>
+{% endblock %}
+

@@ -106,9 +106,18 @@ class EntitiesVMController extends Controller
 	/**
 	 * @Security("has_role('ROLE_USER')")
 	 */
-	public function viewAction()
+	public function viewAction($type, $id)
 	{
+		$em = $this->getDoctrine()->getManager();
+		$entity = $em->getRepository($this->findTypeRepositoryPath($type))->findOneById($id);
 
+		if(null === 'entity') {
+			return $this->createNotFoundException('L\'entitée demandée n\'existe pas');
+		}
+
+		return $this->render('SamuGestionVMBundle:EntitiesVM:view.html.twig', array(
+			'entity' => $entity,
+			'type'   => $type));
 	}
 
 	public function findTypeRepositoryPath($type) 

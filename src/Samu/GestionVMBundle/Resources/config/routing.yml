@@ -68,7 +68,7 @@ samu_gestion_vm_entitiesDelete:
 
 samu_gestion_vm_entitiesView:
     path:     /view/{type}/{id}
-    defaults: { _controller: SamuGestionVMBundle:Entities:view }
+    defaults: { _controller: SamuGestionVMBundle:EntitiesVM:view }
     requirements:
         type: vehicule|materiel
         id:   \d+

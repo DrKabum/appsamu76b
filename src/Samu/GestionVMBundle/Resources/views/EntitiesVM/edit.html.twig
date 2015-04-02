@@ -1,0 +1,22 @@
+{# @Variables:
+	- form
+	- entity
+#}
+
+{% extends 'SamuGestionVMBundle::gvmlayout.html.twig' %}
+
+{% block title %}
+	Modifier une entité - {{ parent() }}
+{% endblock %}
+
+{% block gvm_actionbody %}
+	<h2>Entrez les modifications à apporter :</h2>
+
+	<div>
+		{% for flashMessage in app.session.flashbag.get('notice') %}
+			{{ flashMessage }}
+		{% endfor %}
+	</div>
+	
+	<div>{{ form(form) }}</div>
+{% endblock %}
