@@ -6,7 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Samu\GestionVMBundle\Entity\Vehicule;
+use Samu\GestionVMBundle\Entity\Materiel;
 use Samu\GestionVMBundle\Form\VehiculeType;
+use Samu\GestionVMBundle\Form\MaterielType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class EntitiesVMController extends Controller
@@ -33,8 +35,15 @@ class EntitiesVMController extends Controller
 	 */
 	public function addAction($type, Request $request)
 	{
-		$entity = new Vehicule();
-		$formulaire = $this->createForm(new VehiculeType(), $entity);
+		if($type ==='vehicule') {
+			$entity = new Vehicule();
+			$formulaire = $this->createForm(new VehiculeType(), $entity);
+		} elseif($type ==='materiel') {
+			$entity = new Materiel();
+			$formulaire = $this->createForm(new MaterielType(), $entity);
+		} else {
+			throw $this->createNotFoundException('Demande d\'ajout incorrecte');
+		}
 
 		if($formulaire->handleRequest($request)->isValid())
 		{
@@ -44,7 +53,7 @@ class EntitiesVMController extends Controller
 
 			$request->getSession()->getFlashBag()->add('notice', 'Nouveau véhicule créé.');
 
-			return $this->redirect($this->generateUrl('samu_gestion_vm_entitiesAdd', array('type' => 'vehicule')));
+			return $this->redirect($this->generateUrl('samu_gestion_vm_entitiesAdd', array('type' => $type)));
 		}
 
 		return $this->render('SamuGestionVMBundle:EntitiesVM:add.html.twig', array(

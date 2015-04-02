@@ -17,15 +17,15 @@ class MaterielType extends AbstractType
         $builder
             ->add('name' , 'text', array(
                 'label' => 'Nom ou référence'))
-            ->add('categorie', 'entity', array(
-                'class'    => 'SamuGestionVMBundle:MaterielCategoy',
+            ->add('categories', 'entity', array(
+                'class'    => 'SamuGestionVMBundle:MaterielCategory',
                 'property' => 'name',
                 'multiple' => 'true',
                 'label'    => 'Catégorie'))
             ->add('annee',           'date', array(
                 'label'    => 'Année d\'acquisition',
                 'widget'   => 'choice',
-                'years'    => range(date('Y') - 10, date('Y'))
+                'years'    => range(date('Y') - 10, date('Y'))))
             ->add('operationnel',    'checkbox', array(
                 'label'    => 'Véhicule armé/opérationnel',
                 'required' => false ))

@@ -40,25 +40,43 @@ class Materiel extends GVMEntities
     }
 
     /**
-     * Set categorie
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add categories
      *
-     * @param string $categorie
+     * @param \Samu\GestionVMBundle\Entity\MaterielCategory $categories
      * @return Materiel
      */
-    public function setCategorie($categorie)
+    public function addCategory(\Samu\GestionVMBundle\Entity\MaterielCategory $categorie)
     {
-        $this->categorie = $categorie;
+        $this->categories[] = $categorie;
 
         return $this;
     }
 
     /**
-     * Get categorie
+     * Remove categories
      *
-     * @return string 
+     * @param \Samu\GestionVMBundle\Entity\MaterielCategory $categories
      */
-    public function getCategorie()
+    public function removeCategory(\Samu\GestionVMBundle\Entity\MaterielCategory $categorie)
     {
-        return $this->categorie;
+        $this->categories->removeElement($categorie);
+    }
+
+    /**
+     * Get categories
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCategories()
+    {
+        return $this->categories;
     }
 }
