@@ -24,9 +24,10 @@ class Materiel extends GVMEntities
     /**
      * @var string
      *
-     * @ORM\Column(name="categorie", type="string", length=255)
+     * @ORM\ManyToMany(targetEntity="Samu\GestionVMBundle\Entity\MaterielCategory", inversedBy="materiels")
+     * @ORM\JoinColumn(nullable=true)
      */
-    private $categorie;
+    private $categories;
 
     /**
      * Get id

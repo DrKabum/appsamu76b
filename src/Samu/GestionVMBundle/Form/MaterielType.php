@@ -17,7 +17,11 @@ class MaterielType extends AbstractType
         $builder
             ->add('name' , 'text', array(
                 'label' => 'Nom ou référence'))
-            ->add('categorie', )
+            ->add('categorie', 'entity', array(
+                'class'    => 'SamuGestionVMBundle:MaterielCategoy',
+                'property' => 'name',
+                'multiple' => 'true',
+                'label'    => 'Catégorie'))
             ->add('annee',           'date', array(
                 'label'    => 'Année d\'acquisition',
                 'widget'   => 'choice',
