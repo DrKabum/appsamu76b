@@ -35,20 +35,12 @@ class EntitiesVMController extends Controller
 	 */
 	public function addAction($type, Request $request)
 	{
-		if($type ==='vehicule') {
-			$entity = new Vehicule();
-			$formulaire = $this->createForm(new VehiculeType(), $entity);
-		} elseif($type ==='materiel') {
-			$entity = new Materiel();
-			$formulaire = $this->createForm(new MaterielType(), $entity);
-		} else {
-			throw $this->createNotFoundException('Demande d\'ajout incorrecte');
-		}
+		$f = $this->createFormWithType($type);
 
-		if($formulaire->handleRequest($request)->isValid())
+		if($f['form']->handleRequest($request)->isValid())
 		{
 			$em = $this->getDoctrine($request)->getManager();
-			$em->persist($entity);
+			$em->persist($f['entity']);
 			$em->flush();
 
 			$request->getSession()->getFlashBag()->add('notice', 'Nouveau véhicule créé.');
@@ -57,18 +49,17 @@ class EntitiesVMController extends Controller
 		}
 
 		return $this->render('SamuGestionVMBundle:EntitiesVM:add.html.twig', array(
-			'form' => $formulaire->createView()
+			'form' => $f['form']->createView()
 		));
 	}
 
 	/**
 	 * @Security("has_role('ROLE_STAFF')")
 	 */
-	public function deleteAction($type, $id, Request $request)
+	public function deleteAction($type, $id)
 	{
-		$typePath = 'SamuGestionVMBundle:' . ucfirst($type);
 		$em = $this->getDoctrine()->getManager();
-		$cible = $em->getRepository($typePath)->findOneById($id);
+		$cible = $em->getRepository($this->findTypeRepositoryPath($type))->findOneById($id);
 
 		if(!$cible)
 		{
@@ -86,9 +77,30 @@ class EntitiesVMController extends Controller
 	/**
 	 * @Security("has_role('ROLE_STAFF')")
 	 */
-	public function editAction()
+	public function editAction($type, $id, Request $request)
 	{
+		$em = $this->getDoctrine()->getManager();
+		$cible = $em->getRepository($this->findTypeRepositoryPath($type))->findOneById($id);
 
+		if(!$cible)
+		{
+			throw $this->createNotFoundException("L'entité demandée n'existe pas.");
+		}
+
+		$f = $this->createFormWithType($type, $cible);
+
+		if($f['form']->handleRequest($request)->isValid())
+		{
+			$em->flush();
+
+			$request->getSession()->getFlashBag()->add('notice', 'Entité modifiée');
+
+			return $this->redirect($this->generateUrl('samu_gestion_vm_entitiesView', array('type' => $type, 'id' => $id)));
+		}
+
+		return $this->render('SamuGestionVMBundle:EntitiesVM:edit.html.twig', array(
+			'form'   => $f['form']->createView(),
+			'entity' => $cible));
 	}
 
 	/**
@@ -97,5 +109,27 @@ class EntitiesVMController extends Controller
 	public function viewAction()
 	{
 
+	}
+
+	public function findTypeRepositoryPath($type) 
+	{
+		return 'SamuGestionVMBundle:' . ucfirst($type);
+	}
+
+	public function createFormWithType($type, $entity = null)
+	{
+		if($type ==='vehicule') {
+			if(null === $entity) { $entity = new Vehicule();}
+			$formulaire = $this->createForm(new VehiculeType(), $entity);
+		} elseif($type ==='materiel') {
+			if(null === $entity) { $entity = new Materiel();}
+			$formulaire = $this->createForm(new MaterielType(), $entity);
+		} else {
+			throw $this->createNotFoundException('Demande d\'ajout incorrecte');
+		}
+
+		return array(
+			'entity' => $entity,
+			'form'   => $formulaire);
 	}
 }

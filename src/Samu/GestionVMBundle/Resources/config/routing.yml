@@ -53,10 +53,11 @@ samu_gestion_vm_entitiesAdd:
         type: vehicule|materiel
 
 samu_gestion_vm_entitiesEdit:
-    path:     /edit-{cible}
+    path:     /edit-{type}/{id}
     defaults: { _controller: SamuGestionVMBundle:EntitiesVM:edit }
-    #requirements:
-    #    cible: #A Definir
+    requirements:
+        type: vehicule|materiel
+        id:    \d+
 
 samu_gestion_vm_entitiesDelete:
     path:     /delete-{type}/{id}
