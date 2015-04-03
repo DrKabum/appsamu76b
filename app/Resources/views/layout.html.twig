@@ -2,10 +2,8 @@
 <html>
 <head>
 	<meta charset="utf-8">
-
-	{% stylesheets 'bundles/samuuser/css/*' filter='cssrewrite' %}
-		<link rel="stylesheet" href="{{ asset('bundles/samuuser/css/style.css') }}" type="text/css" media="all" />
-	{% endstylesheets %}
+	{% block stylesheets %}
+	{% endblock %}
 
 	<title>{% block title %}Plateforme d'applications SAMU76B{% endblock %}</title>
 
