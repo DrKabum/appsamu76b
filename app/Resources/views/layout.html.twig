@@ -3,8 +3,9 @@
 <head>
 	<meta charset="utf-8">
 
-	{% block stylesheets %} {# Block à adapter pour coller un css par appli dans son layout #}
-	{% endblock %}
+	{% stylesheets 'bundles/samuuser/css/*' filter='cssrewrite' %}
+		<link rel="stylesheet" href="{{ asset('bundles/samuuser/css/style.css') }}" type="text/css" media="all" />
+	{% endstylesheets %}
 
 	<title>{% block title %}Plateforme d'applications SAMU76B{% endblock %}</title>
 

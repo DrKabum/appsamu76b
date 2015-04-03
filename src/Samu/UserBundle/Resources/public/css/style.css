@@ -1,0 +1,10 @@
+body {
+	color : #21a221;
+}
+
+label
+{
+	display: block;
+	width: 200px;
+	float: left;
+}
