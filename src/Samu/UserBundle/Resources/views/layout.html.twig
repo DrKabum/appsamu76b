@@ -3,7 +3,7 @@
 {% extends "::layout.html.twig" %}
 
 {% block body %}
-	<div>
+	   <div>
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
                 <a href="{{ path('fos_user_security_logout') }}">
@@ -25,11 +25,9 @@
 
   {# On définit ce block, dans lequel vont venir s'insérer les autres vues du bundle #}
 
-  {% block content %}
 
     {% block fos_user_content %}
     {% endblock fos_user_content %}
 
-  {% endblock %}
 
 {% endblock %}
