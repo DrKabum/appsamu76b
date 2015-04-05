@@ -63,29 +63,21 @@ class ProblemeVMController extends Controller
 	 * @Security("has_role('ROLE_STAFF')")
 	 */
 	public function addAction($typePb, Request $request)
-	{
-		
-		if($typePb === "pbvehicule") 
+	{					
+		$formulaire = createFormWithType($typePb);
+
+		if($formulaire['form']->handleRequest($request)->isValid())
 		{
-			$probleme = new ProblemeVM();
-			$formulaire = $this->createForm(new ProblemeVMType(), $probleme);
+			submitProblem($request, $formulaire['entity'], true);
 
-			if($formulaire->handleRequest($request)->isValid())
-			{
-				$em = $this->getDoctrine($request)->getManager();
-				$probleme->setActive(1);
-				$probleme->setAuthor($this->container->get('security.context')->getToken()->getUser());
-				$em->persist($probleme);
-				$em->flush();
+			$request->getSession()->getFlashBag()->add('notice', 'Problème signalé, le staff Matériel le traitera dès que possible');
 
-				$request->getSession()->getFlashBag()->add('notice', 'Problème signalé, le staff Matériel le traitera dès que possible');
+			return $this->redirect($this->generateUrl('samu_gestion_vm_index', array('page' => 1)));
+		}
 
-				return $this->redirect($this->generateUrl('samu_gestion_vm_index', array('page' => 1)));
-			}
-
-			return $this->render('SamuGestionVMBundle:ProblemeVM:add.html.twig', array(
-				'form' => $formulaire->createView()
-				));
+		return $this->render('SamuGestionVMBundle:ProblemeVM:add.html.twig', array(
+			'form' => $formulaire['form']->createView()
+			));
 		}
 	}
 
@@ -140,5 +132,31 @@ class ProblemeVMController extends Controller
 	public function validateAction()
 	{
 
+	}
+
+	public function submitProblem(Request $request, ProblemeVM $probleme, $staffmode = false)
+	{
+		$em = $this->getDoctrine($request)->getManager();
+		($staffmode) ? $probleme->setActive(1) : $probleme->setActive(0);
+		$probleme->setAuthor($this->container->get('security.context')->getToken()->getUser());
+		$em->persist($probleme);
+		$em->flush();
+	}
+
+	public function createFormWithType($type, $entity = null)
+	{
+		if($type ==='vehicule') {
+			if(null === $entity) { $entity = new ProblemeVM();}
+			$formulaire = $this->createForm(new ProblemeVType(), $entity);
+		} elseif($type ==='materiel') {
+			if(null === $entity) { $entity = new ProblemeVM();}
+			$formulaire = $this->createForm(new ProblemeMType(), $entity);
+		} else {
+			throw $this->createNotFoundException('Demande d\'ajout incorrecte');
+		}
+
+		return array(
+			'entity' => $entity,
+			'form'   => $formulaire);
 	}
 }
