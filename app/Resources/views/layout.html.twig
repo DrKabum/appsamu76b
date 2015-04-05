@@ -6,7 +6,9 @@
 	{% endblock %}
 
 	<title>{% block title %}Plateforme d'applications SAMU76B{% endblock %}</title>
-
+	{% stylesheets '@SamuUserBundle/Resources/public/css/style.css' %}
+  		<link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+	{% endstylesheets %}
 </head>
 <body>
 
@@ -14,4 +16,8 @@
 	{% endblock %}
 
 </body>
+<div class="footer">
+	{% block footer %}
+	{% endblock %}
+</footer>
 </html>
