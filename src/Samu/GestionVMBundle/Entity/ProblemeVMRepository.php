@@ -16,10 +16,10 @@ class ProblemeVMRepository extends EntityRepository
 	public function getProblemesEnCours($page, $nbPerPage)
 	{
 		$query = $this->createQueryBuilder('p')
+		  ->where('p.active = 1')
 		  ->leftJoin('p.commentaires', 'c')
 		  ->addSelect('c')
 		  ->orderBy('p.dateDebut', 'DESC')
-		  ->where('p.active = ?1')
 		  ->getQuery()
 		;
 

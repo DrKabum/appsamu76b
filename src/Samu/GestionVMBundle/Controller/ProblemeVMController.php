@@ -5,7 +5,8 @@ namespace Samu\GestionVMBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Samu\GestionVMBundle\Entity\ProblemeVM;
-use Samu\GestionVMBundle\Form\ProblemeVMType;
+use Samu\GestionVMBundle\Form\ProblemeVType;
+use Samu\GestionVMBundle\Form\ProblemeMType;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
@@ -58,11 +59,11 @@ class ProblemeVMController extends Controller
 	 */
 	public function addAction($typePb, Request $request)
 	{					
-		$formulaire = createFormWithType($typePb);
+		$formulaire = $this->createFormWithType($typePb);
 
 		if($formulaire['form']->handleRequest($request)->isValid())
 		{
-			submitProblem($request, $formulaire['entity'], true);
+			$this->submitProblem($request, $formulaire['entity'], true);
 
 			$request->getSession()->getFlashBag()->add('notice', 'Problème ajouté à la liste des problèmes en cours.');
 
@@ -72,7 +73,6 @@ class ProblemeVMController extends Controller
 		return $this->render('SamuGestionVMBundle:ProblemeVM:add.html.twig', array(
 			'form' => $formulaire['form']->createView()
 			));
-		}
 	}
 
 	/**
@@ -103,13 +103,13 @@ class ProblemeVMController extends Controller
 	 */
 	public function deleteAction(ProblemeVM $probleme)
 	{
-		$em = $this->getDoctrine()->getManager()
+		$em = $this->getDoctrine()->getManager();
 		$em->remove($probleme);
 		$em->flush();
 
 		$this->get('session')->getFlashBag()->add('notice', 'Le probleme a été définitivement supprimé.');
 
-		return $this->render(generateUrl('samu_gestion_vm_index'));
+		return $this->redirect($this->generateUrl('samu_gestion_vm_index'));
 	}
 
 	/**
@@ -117,14 +117,14 @@ class ProblemeVMController extends Controller
 	 */
 	public function reportAction($typePb, Request $request)
 	{
-		$formulaire = createFormWithType($typePb);
+		$formulaire = $this->createFormWithType($typePb);
 
 		if($formulaire['form']->handleRequest($request)->isValid())
 		{
-			submitProblem($request, $formulaire['entity']);
+			$this->submitProblem($request, $formulaire['entity']);
 			$request->getSession()->getFlashBag()->add('notice', 'Le problème a été soumis au staff. Il est d\'ores et déjà visible dans la section des problèmes non validés.');
 
-			return $this->render(generateUrl('samu_gestion_vm_index'));
+			return $this->redirect($this->generateUrl('samu_gestion_vm_index'));
 		}
 
 		return $this->render('SamuGestionVMBundle:ProblemeVM:add.html.twig', array(
@@ -144,14 +144,15 @@ class ProblemeVMController extends Controller
 
 		$this->get('session')->getFlashBag()->add('notice', 'Ce problème est maintenant pris en compte par le staff');
 
-		return $this->render(generateUrl('samu_gestion_vm_problemeView', array('id' => $probleme->getId())));
+		return $this->redirect($this->generateUrl('samu_gestion_vm_problemeView', array('id' => $probleme->getId())));
 
 	}
 
 	public function submitProblem(Request $request, ProblemeVM $probleme, $staffmode = false)
 	{
 		$em = $this->getDoctrine($request)->getManager();
-		($staffmode) ? $probleme->setActive(1) : $probleme->setActive(0);
+		$probleme->setActive(1);
+		($staffmode) ? $probleme->setStaffValidated(1) : $probleme->setStaffValidated(0);
 		$probleme->setAuthor($this->container->get('security.context')->getToken()->getUser());
 		$em->persist($probleme);
 		$em->flush();
@@ -159,10 +160,10 @@ class ProblemeVMController extends Controller
 
 	public function createFormWithType($type, $entity = null)
 	{
-		if($type ==='vehicule') {
+		if($type ==='pbvehicule') {
 			if(null === $entity) { $entity = new ProblemeVM();}
 			$formulaire = $this->createForm(new ProblemeVType(), $entity);
-		} elseif($type ==='materiel') {
+		} elseif($type ==='pbmateriel') {
 			if(null === $entity) { $entity = new ProblemeVM();}
 			$formulaire = $this->createForm(new ProblemeMType(), $entity);
 		} else {

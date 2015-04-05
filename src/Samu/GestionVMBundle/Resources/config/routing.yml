@@ -29,10 +29,10 @@ samu_gestion_vm_problemeDelete:
         id: \d+
 
 samu_gestion_vm_problemeReport:
-    path:     /report-{typepb}
+    path:     /report-{typePb}
     defaults: { _controller: SamuGestionVMBundle:ProblemeVM:report }
     requirements:
-        typepb: pbvehicule|pbmateriel
+        typePb: pbvehicule|pbmateriel
 
 samu_gestion_vm_problemeValidate:
     path:     /validate/{id}
