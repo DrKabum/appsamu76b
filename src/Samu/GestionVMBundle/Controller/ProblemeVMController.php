@@ -141,8 +141,16 @@ class ProblemeVMController extends Controller
 	/**
 	 * @Security("has_role('ROLE_STAFF')")
 	 */
-	public function validateAction($typePb, Request $request)
+	public function validateAction(ProblemeVM $probleme)
 	{
+		$em = $this->getDoctrine()->getManager();
+		$probleme->setStaffValidated(1);
+
+		$em->flush();
+
+		$this->get('session')->getFlashBag()->add('notice', 'Ce problème est maintenant pris en compte par le staff');
+
+		return $this->render(generateUrl('samu_gestion_vm_problemeView', array('id' => $probleme->getId())));
 
 	}
 
