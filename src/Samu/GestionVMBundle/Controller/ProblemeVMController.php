@@ -44,17 +44,8 @@ class ProblemeVMController extends Controller
 	/**
 	 * @Security("has_role('ROLE_USER')")
 	 */
-	public function viewAction($id)
+	public function viewAction(ProblemeVM $probleme)
 	{
-		$probleme = $this->getDoctrine()
-						 ->getManager()
-						 ->getRepository('SamuGestionVMBundle:ProblemeVM')
-						 ->findOneById($id);
-
-		if(!$probleme){
-			throw $this->createNotFoundException("La page demandée n'existe pas.");
-		}
-
 		return $this->render('SamuGestionVMBundle:ProblemeVM:view.html.twig', array(
 			'probleme' => $probleme));
 	}
