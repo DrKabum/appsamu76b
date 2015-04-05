@@ -78,14 +78,15 @@ class ProblemeVMController extends Controller
 	/**
 	 * @Security("has_role('ROLE_USER')")
 	 */
-	public function editAction(ProblemeVM $probleme, Request $request)
+	public function editAction($typePb, ProblemeVM $probleme, Request $request)
 	{
 		$em = $this->getDoctrine()->getManager();
 
-		$formulaire = $this->createForm(new ProblemeVMType(), $probleme);
+		$formulaire = $this->createFormWithType($typePb, $probleme);
 
-		if($formulaire->handleRequest($request)->isValid())
+		if($formulaire['form']->handleRequest($request)->isValid())
 		{
+			$probleme->setDateModif(new \Datetime());
 			$em->flush();
 
 			$request->getSession()->getFlashBag()->add('notice', 'Modifications réussie.');
@@ -94,7 +95,7 @@ class ProblemeVMController extends Controller
 		}
 
 		return $this->render('SamuGestionVMBundle:ProblemeVM:edit.html.twig', array(
-			'form'     => $formulaire->createView(),
+			'form'     => $formulaire['form']->createView(),
 			'probleme' => $probleme));		
 	}
 

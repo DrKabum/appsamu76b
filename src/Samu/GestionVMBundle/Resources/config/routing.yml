@@ -17,10 +17,11 @@ samu_gestion_vm_problemeAdd:
         typePb: pbvehicule|pbmateriel
 
 samu_gestion_vm_problemeEdit:
-    path:     /edit/{id}
+    path:     /edit-{typePb}/{id}
     defaults: { _controller: SamuGestionVMBundle:ProblemeVM:edit }
     requirements:
-        id:   \d+
+        id:     \d+
+        typePb: pbvehicule|pbmateriel
 
 samu_gestion_vm_problemeDelete:
     path:     /delete/{id}
