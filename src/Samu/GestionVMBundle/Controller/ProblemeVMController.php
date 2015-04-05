@@ -25,7 +25,7 @@ class ProblemeVMController extends Controller
 		$listPb = $this->getDoctrine()
 		  ->getManager()
 		  ->getRepository('SamuGestionVMBundle:ProblemeVM')
-		  ->getProblemes($page, $nbPerPage)
+		  ->getProblemesEnCours($page, $nbPerPage)
 		;		
 
 		$nbPages = ceil(count($listPb)/$nbPerPage);

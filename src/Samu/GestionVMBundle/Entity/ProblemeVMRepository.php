@@ -13,12 +13,13 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
  */
 class ProblemeVMRepository extends EntityRepository
 {
-	public function getProblemes($page, $nbPerPage)
+	public function getProblemesEnCours($page, $nbPerPage)
 	{
 		$query = $this->createQueryBuilder('p')
 		  ->leftJoin('p.commentaires', 'c')
 		  ->addSelect('c')
 		  ->orderBy('p.dateDebut', 'DESC')
+		  ->where('p.active = ?1')
 		  ->getQuery()
 		;
 
