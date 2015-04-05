@@ -115,9 +115,15 @@ class ProblemeVMController extends Controller
 	/**
 	 * @Security("has_role('ROLE_STAFF')")
 	 */
-	public function deleteAction()
+	public function deleteAction(ProblemeVM $probleme)
 	{
+		$em = $this->getDoctrine()->getManager()
+		$em->remove($probleme);
+		$em->flush();
 
+		$this->get('session')->getFlashBag()->add('notice', 'Le probleme a été définitivement supprimé.');
+
+		return $this->render(generateUrl('samu_gestion_vm_index'));
 	}
 
 	/**
