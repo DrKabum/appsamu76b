@@ -70,7 +70,7 @@ class ProblemeVMController extends Controller
 		{
 			submitProblem($request, $formulaire['entity'], true);
 
-			$request->getSession()->getFlashBag()->add('notice', 'Problème signalé, le staff Matériel le traitera dès que possible');
+			$request->getSession()->getFlashBag()->add('notice', 'Problème ajouté à la liste des problèmes en cours.');
 
 			return $this->redirect($this->generateUrl('samu_gestion_vm_index', array('page' => 1)));
 		}
@@ -121,15 +121,27 @@ class ProblemeVMController extends Controller
 	/**
 	 * @Security("has_role('ROLE_USER')")
 	 */
-	public function reportAction()
+	public function reportAction($typePb, Request $request)
 	{
+		$formulaire = createFormWithType($typePb);
 
+		if($formulaire['form']->handleRequest($request)->isValid())
+		{
+			submitProblem($request, $formulaire['entity']);
+			$request->getSession()->getFlashBag()->add('notice', 'Le problème a été soumis au staff. Il est d\'ores et déjà visible dans la section des problèmes non validés.');
+
+			return $this->render(generateUrl('samu_gestion_vm_index'));
+		}
+
+		return $this->render('SamuGestionVMBundle:ProblemeVM:add.html.twig', array(
+			'form' => $formulaire['form']->createView()
+			));
 	}
 
 	/**
 	 * @Security("has_role('ROLE_STAFF')")
 	 */
-	public function validateAction()
+	public function validateAction($typePb, Request $request)
 	{
 
 	}
