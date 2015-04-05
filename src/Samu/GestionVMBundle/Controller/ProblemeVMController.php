@@ -30,7 +30,10 @@ class ProblemeVMController extends Controller
 
 		$nbPages = ceil(count($listPb)/$nbPerPage);
 
-		if($page>$nbPages) {
+		if($nbPages === 0) {
+			$this->get('session')->getFlashBag()->add('notice', 'Aucun problème en cours.');
+		}
+		elseif($page>$nbPages) {
 			throw $this->createNotFoundException("La page demandée n'existe pas.");
 		}
 
