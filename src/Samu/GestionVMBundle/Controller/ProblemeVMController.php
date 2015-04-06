@@ -151,7 +151,7 @@ class ProblemeVMController extends Controller
 
 	public function classerAction(ProblemeVM $probleme)
 	{
-		$em = $this->getDoctrine->getManager();
+		$em = $this->getDoctrine()->getManager();
 
 		$probleme->setActive(0);
 		$em->flush();
