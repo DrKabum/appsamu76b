@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Samu\GestionVMBundle\Entity\Vehicule;
 use Samu\GestionVMBundle\Entity\Materiel;
+use Samu\GestionVMBundle\Entity\MaterielCategory;
 use Samu\GestionVMBundle\Form\VehiculeType;
 use Samu\GestionVMBundle\Form\MaterielType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -118,6 +119,21 @@ class EntitiesVMController extends Controller
 		return $this->render('SamuGestionVMBundle:EntitiesVM:view.html.twig', array(
 			'entity' => $entity,
 			'type'   => $type));
+	}
+
+	public function addMatCatAction(Request $request)
+	{
+
+	}
+
+	public function deleteMatCatAction(MaterielCategory $matcat)
+	{
+
+	}
+
+	public function editMatCatAction(MaterielCategory $matcat)
+	{
+
 	}
 
 	public function findTypeRepositoryPath($type) 

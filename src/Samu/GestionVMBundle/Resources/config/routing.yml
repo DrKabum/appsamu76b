@@ -79,3 +79,19 @@ samu_gestion_vm_entitiesView:
     requirements:
         type: vehicule|materiel
         id:   \d+
+
+samu_gestion_vm_entitiesAddMatCat:
+    path:    /add/categorie
+    defaults: { _controller: SamuGestionVMBundle:EntitiesVM:addMatCat }
+
+samu_gestion_vm_entitiesDeleteMatCat:
+    path:    /delete/categorie-{id}
+    defaults: { _controller: SamuGestionVMBundle:EntitiesVM:deleteMatCat }
+    requirements:
+        id: \d+
+
+samu_gestion_vm_entitiesEditMatCat:
+    path:    /edit/categorie-{id}
+    defaults: { _controller: SamuGestionVMBundle:EntitiesVM:editMatCat }
+    requirements:
+        id: \d+
