@@ -41,6 +41,12 @@ samu_gestion_vm_problemeValidate:
     requirements:
         id: \d+
 
+samu_gestion_vm_problemeClasser:
+    path:     /classer/{id}
+    defaults: { _controller: SamuGestionVMBundle:ProblemeVM:classer }
+    requirements:
+        id: \d+
+
 samu_gestion_vm_entitiesIndex:
     path:     /historiques
     defaults: { _controller: SamuGestionVMBundle:EntitiesVM:index }

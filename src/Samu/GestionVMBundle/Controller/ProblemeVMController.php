@@ -149,6 +149,16 @@ class ProblemeVMController extends Controller
 
 	}
 
+	public function classerAction(ProblemeVM $probleme)
+	{
+		$em = $this->getDoctrine->getManager();
+
+		$probleme->setActive(0);
+		$em->flush;
+
+		return $this->redirect($this->generateUrl('samu_gestion_vm_problemeView', array('id' => $probleme->getId())));
+	}
+
 	public function submitProblem(Request $request, ProblemeVM $probleme, $staffmode = false)
 	{
 		$em = $this->getDoctrine($request)->getManager();
