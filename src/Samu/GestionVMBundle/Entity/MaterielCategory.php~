@@ -24,7 +24,7 @@ class MaterielCategory
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255, unique=true)
      */
     private $name;
 
@@ -91,5 +91,35 @@ class MaterielCategory
     public function getMateriels()
     {
         return $this->materiels;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->materiels = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add materiels
+     *
+     * @param \Samu\GestionVMBundle\Entity\Materiel $materiels
+     * @return MaterielCategory
+     */
+    public function addMateriel(\Samu\GestionVMBundle\Entity\Materiel $materiel)
+    {
+        $this->materiels[] = $materiel;
+
+        return $this;
+    }
+
+    /**
+     * Remove materiels
+     *
+     * @param \Samu\GestionVMBundle\Entity\Materiel $materiels
+     */
+    public function removeMateriel(\Samu\GestionVMBundle\Entity\Materiel $materiel)
+    {
+        $this->materiels->removeElement($materiel);
     }
 }

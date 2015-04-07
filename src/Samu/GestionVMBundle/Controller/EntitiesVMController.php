@@ -10,6 +10,7 @@ use Samu\GestionVMBundle\Entity\Materiel;
 use Samu\GestionVMBundle\Entity\MaterielCategory;
 use Samu\GestionVMBundle\Form\VehiculeType;
 use Samu\GestionVMBundle\Form\MaterielType;
+use Samu\GestionVMBundle\Form\MaterielCategoryType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class EntitiesVMController extends Controller
@@ -123,7 +124,21 @@ class EntitiesVMController extends Controller
 
 	public function addMatCatAction(Request $request)
 	{
+		$matcat = new MaterielCategory();
+		$formulaire = $this->createForm(new MaterielCategoryType(), $matcat);
 
+		if($formulaire->handleRequest($request)->isValid())
+		{
+			$em = $this->getDoctrine()->getManager();
+			$em->persist($matcat);
+			$em->flush();
+			$request->getSession()->getFlashBag()->add('notice', 'Catégorie ajoutée');
+
+			return $this->redirect($this->generateUrl('samu_gestion_vm_entitiesMatCatViewIndex', array('id' => $matcat->getId())));
+		}
+
+		return $this->render('SamuGestionVMBundle:EntitiesVM:addMatCat.html.twig', array(
+			'form' => $formulaire->createView()));
 	}
 
 	public function deleteMatCatAction(MaterielCategory $matcat)
@@ -134,6 +149,15 @@ class EntitiesVMController extends Controller
 	public function editMatCatAction(MaterielCategory $matcat)
 	{
 
+	}
+
+	public function indexMatCatAction()
+	{
+		$em = $this->getDoctrine()->getManager();
+		$categories = $em->getRepository('SamuGestionVMBundle:MaterielCategory')->findAll();
+
+		return $this->render('SamuGestionVMBundle:EntitiesVM:indexMatCat.html.twig', array(
+			'categories' => $categories));
 	}
 
 	public function findTypeRepositoryPath($type) 

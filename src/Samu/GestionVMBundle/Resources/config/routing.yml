@@ -95,3 +95,9 @@ samu_gestion_vm_entitiesEditMatCat:
     defaults: { _controller: SamuGestionVMBundle:EntitiesVM:editMatCat }
     requirements:
         id: \d+
+
+samu_gestion_vm_entitiesMatCatViewIndex:
+    path:     /categorie/index
+    defaults: { _controller: SamuGestionVMBundle:EntitiesVM:indexMatCat }
+    requirements:
+        id:  \d+

@@ -15,7 +15,8 @@ class MaterielCategoryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', 'text', array('label' => 'Catégorie'));
+            ->add('name', 'text', array('label' => 'Catégorie'))
+            ->add('Envoyer', 'submit')
         ;
     }
     

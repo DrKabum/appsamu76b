@@ -1,0 +1,16 @@
+{# @Variables :
+	- array : categories #}
+
+{% extends "SamuGestionVMBundle::gvmlayout.html.twig" %}
+
+{% block title %}
+	Ajouter un nouveau véhicule - {{ parent() }}
+{% endblock %}
+
+{% block gvm_actionbody %}
+	
+	{% for category in categories %}
+		{{ category.name }} <br />
+	{% endfor %}
+
+{% endblock %}
