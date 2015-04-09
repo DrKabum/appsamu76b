@@ -1,8 +1,8 @@
 {% extends "::layout.html.twig" %}
 
 {% block stylesheets %}
-	{#Insérer un <link rel="stylesheet" href="le css de l'appli GVM"> en attendant, j'utilise le Bootstrap Twitter :#}
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	{{ parent() }}
+	<link rel="stylesheet" href="{ asset('bundles/samugestionvm/css/main.css')}" type="text/css" media="all"/>
 {% endblock %}
 
 {% block title %}

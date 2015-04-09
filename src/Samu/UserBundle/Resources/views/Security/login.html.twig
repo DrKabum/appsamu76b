@@ -1,5 +1,10 @@
-{# src/Samu/UserBundle/Resources/views/Securitylayout.html.twig #}
+{# src/Samu/UserBundle/Resources/views/Security/layout.html.twig #}
 {% extends "SamuUserBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet"  href="{{ asset('bundles/samuuser/css/style.css') }}" type="text/css" media="all">
+{% endblock %}
 
 {% trans_default_domain 'FOSUserBundle' %}
 

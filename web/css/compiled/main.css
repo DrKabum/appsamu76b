@@ -1,0 +1,40 @@
+body {
+	background: #00FF00;
+}
+
+
+body {
+	width: 1024px;
+	background-color: #00000f;
+	color : #21a221;
+}
+
+.footer {
+	width: auto;
+	height: 1024px;
+	position: fixed;
+	bottom: 0px;	
+	background-color: #162C40;
+}
+
+/*------------------------------------
+				Forms
+------------------------------------*/
+
+.login_form {
+	width: 248px;
+	height:248px;
+	border: 2px solid #C8C9C9;
+	background: #162C40;
+	color: #C8C9C9;
+	
+	margin: 0 auto;
+	
+}
+
+.login_form, label, input{
+	display: block;
+	margin: 0 auto;
+	width: 200px;
+	float: left;
+}
