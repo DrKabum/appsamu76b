@@ -9,30 +9,38 @@
 	Gestion Véhicules et Matériel - {{ parent() }}
 {% endblock %}
 
-{% block body %}
-	<div class="container">
-		<div id="header" class="jumbotron">
-			<h1>Gestion Véhicules et Matériel - 76B</h1>
-			<p>Projet en cours de développement.</p>	
+	{% block body %}
+		<div id="block_page">
+
+				<header>
+					<h1>Gestion Véhicules et Matériel - 76B</h1>
+					<p>Projet en cours de développement.</p>	
+				</header>
+
+				<nav>
+					{% include 'SamuGestionVMBundle::menu.html.twig' %} {# inclusion des menus #}
+				</nav>
+
+				<section>
+					{% block gvm_actionbody %}
+						{# Bloc à hériter par les actions des controllers #}
+					{% endblock %}			
+				</section>
+
+				<footer>
+					<div>
+            			{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                			{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                				<a href="{{ path('fos_user_security_logout') }}">
+                    				{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+               					 </a>
+        				{% endif %}
+    				</div>
+					<hr>
+					<p>Ici le footer...</p>
+				</footer>
+
 		</div>
-
-		<div class="row">
-			{% include 'SamuGestionVMBundle::menu.html.twig' %} {# inclusion des menus #}
-			
-			<div id="content" class="col-md-9">
-				{% block gvm_actionbody %}
-					{# Bloc à hériter par les actions des controllers #}
-				{% endblock %}			
-			</div>	
-		</div>
-
-		<hr>
-
-		<footer>
-			<p>Ici le footer...</p>
-		</footer>
-	</div>
-
 	{% block javascripts %}
 		{# @BootStrap Twitter #}
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
