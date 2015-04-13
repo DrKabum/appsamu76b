@@ -1,4 +1,4 @@
-samu_gestion_vm_index:
+samu_gestion_vm_index: #Home
     path:     /{page}
     defaults: { _controller: SamuGestionVMBundle:ProblemeVM:index, page: 1 }
     requirements:
@@ -10,7 +10,7 @@ samu_gestion_vm_problemeView:
     requirements:
         id:   \d+
 
-samu_gestion_vm_problemeAdd:
+samu_gestion_vm_problemeAdd: #Menu
     path:     /add-{typePb}
     defaults: { _controller: SamuGestionVMBundle:ProblemeVM:add }
     requirements:
@@ -47,6 +47,7 @@ samu_gestion_vm_problemeClasser:
     requirements:
         id: \d+
 
+#----------Entities---------#
 samu_gestion_vm_entitiesIndex:
     path:     /historiques
     defaults: { _controller: SamuGestionVMBundle:EntitiesVM:index }

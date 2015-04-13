@@ -12,14 +12,19 @@
 {% block gvm_actionbody %}
 	<div>
 		<li>{{ entity.name }}</li>
-		<li>{{ entity.annee}}</li>
-		{% if entity.operationnel %}
-		<li>En service</li>
-			{% elseif %}
-		<li>Hors service</li>
-		{% endif %}
-		{% include 'SamuGestionVMBundle:EntitiesVM:vehicules_index.html.twig' %}
+		<li>{{ entity.annee|date("m/d/Y") }}</li>
 
+		{% if entity.operationnel %}
+			<li>En service</li>
+		{% else %}
+			<li>Hors service</li>
+		{% endif %}
+
+		{% if type == 'vehicule'%}
+			{% include 'SamuGestionVMBundle:EntitiesVM:vehicules_index.html.twig' %}
+		{% else %}
+			{% include 'SamuGestionVMBundle:EntitiesVM:materiels_index.html.twig' %}
+		{% endif %}
 	</div>
 {% endblock %}
 

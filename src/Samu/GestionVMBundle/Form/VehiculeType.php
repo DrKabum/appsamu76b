@@ -34,7 +34,7 @@ class VehiculeType extends AbstractType
             ))
             ->add('typeVehicule',    'choice', array(
                 'label'    => 'Type de véhicule',
-                'choices'  => array('u' => 'UMH', 'v' => 'VML', 'm' => 'Moto', 'a' => 'Autre'),
+                'choices'  => array('UMH' => 'UMH', 'VML' => 'VML', 'Moto' => 'Moto', 'Autre' => 'Autre'),
                 'required' => true))
             ->add('operationnel',    'checkbox', array(
                 'label'    => 'Véhicule armé/opérationnel',
