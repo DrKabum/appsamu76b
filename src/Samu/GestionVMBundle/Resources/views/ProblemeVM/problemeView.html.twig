@@ -1,0 +1,16 @@
+<li>#{{ probleme.id }}</li>
+<li>{{ probleme.vehicule.name }}</li>
+<li>Ajouté le {{ probleme.dateDebut|date('d/m/Y') }} par {{ probleme.author }}</li>
+<li>{{ probleme.title }}</li>
+<li>{{probleme.content}}</li>
+{% if probleme.dateModif %}
+	<li>Modifié le {{ probleme.datemodif|date('d/m/Y') }} par {{ probleme.author }}</li>
+{% endif %}
+{% if probleme.active %}
+	<li>Cloturé le {{ probleme.dateFin|date('d/m/Y')}}</li>
+{% endif %}
+{% for com in probleme.commentaires %}
+	<li>le {{ com.date|date('d/m/Y') }} par {{ com.author }}</li>
+	<li>{{ com.content }}</li>
+{% endfor %}
+	</br>

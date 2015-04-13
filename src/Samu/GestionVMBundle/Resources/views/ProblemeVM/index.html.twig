@@ -16,28 +16,20 @@ int : page
 	{% endfor %}
 
 	<h1>Tableau de bord</h1>
-	<div>
-		{% for probleme in listProblemes %}
-			<li>#{{ probleme.id }}</li>
-			<li>{{ probleme.vehicule.name }}</li>
-			<li>Ajouté le {{ probleme.dateDebut|date('d/m/Y') }} par {{ probleme.author }}</li>
-			<li>{{ probleme.title }}</li>
-			<li>{{probleme.content}}</li>
-			{% if probleme.dateModif %}
-				<li>Modifié le {{ probleme.datemodif|date('d/m/Y') }} par {{ probleme.author }}</li>
-			{% endif %}
-			{% if probleme.active %}
-				<li>Cloturé le {{ probleme.dateFin|date('d/m/Y')}}</li>
-			{% endif %}
-			{% for com in probleme.commentaires %}
-				<li>le {{ com.date|date('d/m/Y') }} par {{ com.author }}</li>
-				<li>{{ com.content }}</li>
-			{% endfor %}
 
-				</br>
-	 	{% endfor %}
+	<div>
+		<h2>Problèmes véhicules</h2>
+			{% for probleme in listProblemes if probleme.vehicule %}
+				{% include 'SamuGestionVMBundle:ProblemeVM:problemeView.html.twig' %}
+			 {% endfor %}
 	</div>
 
+	<div>
+		<h2>Problèmes Matériels</h2>
+			{% for probleme in listProblemes if probleme.materiel %}
+				{% include 'SamuGestionVMBundle:ProblemeVM:problemeView.html.twig' %}
+			{% endfor %}
+	</div>	
 	{#Pagination #}
 	<p> Pages :
 		{% for i in 1..nbPages %}

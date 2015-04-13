@@ -1,4 +1,3 @@
-
 <?php 
 
 namespace Samu\GestionVMBundle\Controller;
