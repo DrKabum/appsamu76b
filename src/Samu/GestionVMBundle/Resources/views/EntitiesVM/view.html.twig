@@ -10,6 +10,16 @@
 {% endblock %}
 
 {% block gvm_actionbody %}
-	<p>Affichage de l'entité... : {{ entity.name }}</p>
+	<div>
+		<li>{{ entity.name }}</li>
+		<li>{{ entity.annee}}</li>
+		{% if entity.operationnel %}
+		<li>En service</li>
+			{% elseif %}
+		<li>Hors service</li>
+		{% endif %}
+		{% include 'SamuGestionVMBundle:EntitiesVM:vehicules_index.html.twig' %}
+
+	</div>
 {% endblock %}
 
