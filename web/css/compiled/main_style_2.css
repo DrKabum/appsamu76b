@@ -1,20 +1,4 @@
-body {
-	width: 1024px;
-	background: #FFFACF;
-	color: black;
-}
 
-.footer {
-	width: auto;
-	height: 1024px;
-	position: fixed;
-	bottom: 0px;	
-	background-color: #162C40;
-}
-
-/*------------------------------------
-				Forms
-------------------------------------*/
 
 .login_form {
 	width: 248px;
