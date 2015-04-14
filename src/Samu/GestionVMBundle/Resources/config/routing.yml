@@ -49,10 +49,8 @@ samu_gestion_vm_problemeClasser:
 
 #----------Entities---------#
 samu_gestion_vm_entitiesIndex:
-    path:     /historiques
+    path:     /gerer-parc
     defaults: { _controller: SamuGestionVMBundle:EntitiesVM:index }
-        #requirements:
-            #cible: # A Definir...
 
 samu_gestion_vm_entitiesAdd:
     path:     /add-{type}
