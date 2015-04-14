@@ -145,14 +145,28 @@ class EntitiesVMController extends Controller
 	{
 		$em = $this->getDoctrine()->getManager();
 		$em->remove($matcat);
+		$em->flush();
 		$request->getSession()->getFlashBag()->add('notice', 'Catégorie supprimée');
 
 		return $this->redirect($this->generateUrl('samu_gestion_vm_entitiesMatCatViewIndex'));
 	}
 
-	public function editMatCatAction(MaterielCategory $matcat)
+	public function editMatCatAction(MaterielCategory $matcat, Request $request)
 	{
+		$formulaire = createForm(new MaterielCategoryType(), $matcat);
 
+		if($formulaire->handleRequest($request)->isValid())
+		{
+			$em = $this->getDoctrine()->getManager();
+			$em->flush();
+
+			$request->getSession()->getFlashBag()->add('notice', 'Catégorie modifiée');
+
+			return $this->redirect($this->generateUrl('samu_gestion_vm_entitiesIndex'));
+		}
+
+		return $this->render('SamuGestionVMBundle:EntitiesVM:addMatCat.html.twig', array(
+			'form' => $formulaire->createView()));
 	}
 
 	public function indexMatCatAction()
