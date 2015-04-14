@@ -22,9 +22,11 @@
 				</nav>
 
 				<section>
-					{% block gvm_actionbody %}
-						{# Bloc à hériter par les actions des controllers #}
-					{% endblock %}			
+					<aside>
+						{% block gvm_actionbody %}
+							{# Bloc à hériter par les actions des controllers #}
+						{% endblock %}	
+					</aside>		
 				</section>
 
 				<footer>
@@ -42,8 +44,5 @@
 
 		</div>
 	{% block javascripts %}
-		{# @BootStrap Twitter #}
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	{% endblock %}
 {% endblock %}
