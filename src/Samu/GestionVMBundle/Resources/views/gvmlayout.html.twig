@@ -10,21 +10,28 @@
 {% endblock %}
 
 	{% block body %}
-		<div id="block_page">
+		
 				<header>
 					<h1>Gestion Véhicules et Matériel - 76B</h1>
 					<p>Projet en cours de développement.</p>	
 				</header>
+
 				<nav>
 					{% include 'SamuGestionVMBundle::menu.html.twig' %} {# inclusion des menus #}
 				</nav>
-				<section>
-					<aside>
-						{% block gvm_actionbody %}
+				<div id="block_page">
+					<section>
+						<article>
 							{# Bloc à hériter par les actions des controllers #}
-						{% endblock %}	
-					</aside>		
-				</section>
+							{% block gvm_actionbody %}
+							
+								{% block form_row %}
+								{% endblock form_row %}	
+							{% endblock %}	
+							
+						</article>		
+					</section>
+				</div>
 				<footer>
 					<div>
             			{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
@@ -38,7 +45,7 @@
 					<p>Ici le footer...</p>
 				</footer>
 
-		</div>
+		
 	{% block javascripts %}
 	{% endblock %}
 {% endblock %}

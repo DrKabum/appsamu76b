@@ -12,7 +12,9 @@
 			{{ flashMessage }}
 		{% endfor %}
 	</div>
-	
-	<div>{{ form(form) }}</div>
-
+	{% block form_row %}
+		<div class="form_row">
+			{{ form(form) }}
+		</div>
+	{% endblock form_row %}
 {% endblock %}
