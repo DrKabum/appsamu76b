@@ -33,9 +33,8 @@ header {
 }
 
 nav {
-	width: 340px;
-	float: left;
-	padding: 10px;	
+	width: 100%;
+	display: block;
 }
 
 footer  {

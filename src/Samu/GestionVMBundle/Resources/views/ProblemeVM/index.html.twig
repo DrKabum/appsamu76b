@@ -9,12 +9,10 @@ int : page
 {% block title %}
 	Tableau de bord - {{ parent() }}
 {% endblock %}
-
 {% block gvm_actionbody %}
 	{% for flashMessage in app.session.get('notice') %}
 		{{ flashMessage }}
 	{% endfor %}
-
 	<h1>Tableau de bord</h1>
 
 	<div>
@@ -36,6 +34,5 @@ int : page
 			<a href="{{ path('samu_gestion_vm_index', {'page' : i } ) }}">{{i}}</a>
 		{% endfor %}
 	</p>
-
-
 {% endblock %}
+
