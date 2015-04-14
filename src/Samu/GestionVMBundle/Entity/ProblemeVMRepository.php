@@ -17,6 +17,7 @@ class ProblemeVMRepository extends EntityRepository
 	{
 		$query = $this->createQueryBuilder('p')
 		  ->where('p.active = 1')
+		  ->andWhere('p.staffValidated = 1')
 		  ->leftJoin('p.commentaires', 'c')
 		  ->addSelect('c')
 		  ->orderBy('p.dateDebut', 'DESC')
