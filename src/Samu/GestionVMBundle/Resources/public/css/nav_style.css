@@ -21,7 +21,7 @@
         background : #000; /* couleur de fond */        
         color : #fff; /* couleur du texte */
         text-decoration : none; /* on supprime le style par défaut des liens (la plupart du temps = souligné) */
-        width : 144px; /* largeur */
+        width : 200px; /* largeur */
 }
 
 #nav li /* Elements des listes */      

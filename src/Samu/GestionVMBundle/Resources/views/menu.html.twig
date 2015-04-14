@@ -12,7 +12,7 @@
 	<ul class="nav_add">
 		<li>
 			<a href="#">Ajouter un nouveau problème</a>
-			<ul>
+			<ul class="nav_add_jquery">
 				<li><a href="{{ path('samu_gestion_vm_problemeAdd', { 'typePb': 'pbvehicule' }) }}">Véhicule</a></li>
 				<li><a href="{{ path('samu_gestion_vm_problemeAdd', { 'typePb': 'pbmateriel' }) }}">Matériel</a></li>
 			</ul>
@@ -21,7 +21,7 @@
 	<ul class="nav_report" >
 		<li>
 			<a href="#">Signaler un problème</a>
-			<ul>
+			<ul class ="nav_report_jquery">
 				<li><a href="{{ path('samu_gestion_vm_problemeReport', { 'typePb': 'pbvehicule' }) }}">Véhicule</a></li>
 		    	<li><a href="{{ path('samu_gestion_vm_problemeReport', { 'typePb': 'pbmateriel' }) }}">Matériel</a></li>
 		    </ul>
@@ -30,7 +30,7 @@
 	<ul class="nav_parc">
 		<li>
 			<a href="#">Gérer le parc</a>
-			<ul>
+			<ul class="nav_parc_jquery">
 				<li><a href="{{ path('samu_gestion_vm_entitiesIndex', {'type' : 'vehicule'}) }}">Véhicule</a></li>
 				<li><a href="{{ path('samu_gestion_vm_entitiesIndex', {'type' : 'materiel'}) }}">Matériel</a></li>
 			</ul>
