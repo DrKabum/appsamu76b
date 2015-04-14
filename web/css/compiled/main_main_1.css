@@ -21,7 +21,6 @@ body{
 	display: inline-block;
 	width: 100%;
 	max-width: 1024px;
-	height: 100%;
 	background: #D9D7D3;
 }
 
@@ -42,18 +41,21 @@ nav {
 footer  {
 	width: 100%;
 	max-width: 1024px;
-	position:fixed;
-	bottom:0;
 	background: #7F6334;
 	color: #D9D7D3;
+	padding-bottom: 20px;
 }
 
 
 section {
-	width: 80%;
-	margin-left: 350px;
+	width: 600px;
+	margin-left: 360px;
+	border: 1px solid;
+	border-radius: 10px;
+	margin-bottom: 10px;
 }
 
 aside {
-	display: inline-block;
+	display: block;
+	margin-left: 5px;
 }

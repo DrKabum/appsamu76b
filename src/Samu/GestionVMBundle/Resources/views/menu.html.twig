@@ -1,16 +1,39 @@
-<div id="menu" class"col-md3">
-	<h3>Gestion des problèmes :</h3>
-	<ul class="nav nav-pills nav-stacked">
-		<li><a href="{{ path('samu_gestion_vm_index') }}">Accueil</a></li>
-		<li><span>Signaler un nouveau problème</span></li>
-			<a href="{{ path('samu_gestion_vm_problemeAdd', { 'typePb': 'pbvehicule' }) }}">Véhicule</a>
-			<a href="{{ path('samu_gestion_vm_problemeAdd', { 'typePb': 'pbmateriel' }) }}">Matériel</a></li>
-		<li><span>Rapporter un problème</span></li>	
-			<a href="{{ path('samu_gestion_vm_problemeReport', { 'typePb': 'pbvehicule' }) }}">Véhicule</a>
-		    <a href="{{ path('samu_gestion_vm_problemeReport', { 'typePb': 'pbmateriel' }) }}">Matériel</a>
-		<li><span>Gérer le parc</span></li>
-			<a href="{{ path('samu_gestion_vm_entitiesIndex', {'type' : 'vehicule'})}}">Véhicule</a>
-			<a href="{{ path('samu_gestion_vm_entitiesIndex', {'type' : 'materiel'})}}">Matériel</a>
-		<li><a href=""></a>Voir les historiques</li>
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('bundles/samugestionvm/css/nav_style.css') }}" type="text/css" media="all"/>
+{% endblock %}
+
+<div id="nav">
+	<ul class="nav_home">
+		<li>
+			<a href="{{ path('samu_gestion_vm_index') }}">Accueil</a>
+		</li>
+	</ul>
+	<ul class="nav_add">
+		<li>
+			<a href="#">Ajouter un nouveau problème</a>
+			<ul>
+				<li><a href="{{ path('samu_gestion_vm_problemeAdd', { 'typePb': 'pbvehicule' }) }}">Véhicule</a></li>
+				<li><a href="{{ path('samu_gestion_vm_problemeAdd', { 'typePb': 'pbmateriel' }) }}">Matériel</a></li>
+			</ul>
+		</li>
+	</ul>
+	<ul class="nav_report" >
+		<li>
+			<a href="#">Signaler un problème</a>
+			<ul>
+				<li><a href="{{ path('samu_gestion_vm_problemeReport', { 'typePb': 'pbvehicule' }) }}">Véhicule</a></li>
+		    	<li><a href="{{ path('samu_gestion_vm_problemeReport', { 'typePb': 'pbmateriel' }) }}">Matériel</a></li>
+		    </ul>
+		</li>	
+	</ul>
+	<ul class="nav_parc">
+		<li>
+			<a href="#">Gérer le parc</a>
+			<ul>
+				<li><a href="{{ path('samu_gestion_vm_entitiesIndex', {'type' : 'vehicule'}) }}">Véhicule</a></li>
+				<li><a href="{{ path('samu_gestion_vm_entitiesIndex', {'type' : 'materiel'}) }}">Matériel</a></li>
+			</ul>
+		</li>
 	</ul>			
 </div>
