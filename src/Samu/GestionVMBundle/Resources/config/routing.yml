@@ -106,18 +106,18 @@ samu_gestion_vm_entitiesMatCatViewIndex:
 #--------Commentaires-------#
 samu_gestion_vm_addCom:
     path:     /comment/add/{id}
-    defaults: { _controller: SamuGestionVMBundle:Commentaire:add }
+    defaults: { _controller: SamuGestionVMBundle:ProblemeCom:add }
     requirements:
         id:   \d+
 
 samu_gestion_vm_deleteCom:
     path:     /comment/deleter/{id}
-    defaults: { _controller: SamuGestionVMBundle:Commentaire:delete }
+    defaults: { _controller: SamuGestionVMBundle:ProblemeCom:delete }
     requirements:
         id:   \d+
 
 samu_gestion_vm_editCom:
     path:     /comment/edit/{id}
-    defaults: { _controller: SamuGestionVMBundle:Commentaire:edit }
+    defaults: { _controller: SamuGestionVMBundle:ProblemeCom:edit }
     requirements:
         id:   \d+
