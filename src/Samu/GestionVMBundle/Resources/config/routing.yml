@@ -102,3 +102,22 @@ samu_gestion_vm_entitiesMatCatViewIndex:
     defaults: { _controller: SamuGestionVMBundle:EntitiesVM:indexMatCat }
     requirements:
         id:  \d+
+
+#--------Commentaires-------#
+samu_gestion_vm_addCom:
+    path:     /comment/add/{id}
+    defaults: { _controller: SamuGestionVMBundle:Commentaire:add }
+    requirements:
+        id:   \d+
+
+samu_gestion_vm_deleteCom:
+    path:     /comment/deleter/{id}
+    defaults: { _controller: SamuGestionVMBundle:Commentaire:delete }
+    requirements:
+        id:   \d+
+
+samu_gestion_vm_editCom:
+    path:     /comment/edit/{id}
+    defaults: { _controller: SamuGestionVMBundle:Commentaire:edit }
+    requirements:
+        id:   \d+
