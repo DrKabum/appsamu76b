@@ -18,17 +18,17 @@ class EntitiesVMController extends Controller
 	/**
 	 * @Security("has_role('ROLE_USER')")
 	 */
-	public function indexAction()
+	public function indexAction($type)
 	{
 		// Recupère les entités du parc et les envoie à la vue
 		$em = $this->getDoctrine()->getManager();
 
-		$vehicules = $em->getRepository('SamuGestionVMBundle:Vehicule')->findAll();
-		$materiels = $em->getRepository('SamuGestionVMBundle:Materiel')->findAll();
+		$entity = $em->getRepository($this->findTypeRepositoryPath)->findAll();
+		$template = 'SamuGestionVMBundle:EntitiesVM:' . $type . '_index.html.twig';
 
-		return $this->render('SamuGestionVMBundle:EntitiesVM:index.html.twig', array(
-			'vehicules' => $vehicules,
-			'materiels' => $materiels
+		return $this->render($template, array(
+			'entity' => $entity,
+			'type'   => $type
 		));
 	}
 
