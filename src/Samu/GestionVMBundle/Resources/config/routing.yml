@@ -49,8 +49,10 @@ samu_gestion_vm_problemeClasser:
 
 #----------Entities---------#
 samu_gestion_vm_entitiesIndex:
-    path:     /gerer-parc
+    path:     /gerer-parc-{type}
     defaults: { _controller: SamuGestionVMBundle:EntitiesVM:index }
+    requirements:
+        type: vehicule|materiel
 
 samu_gestion_vm_entitiesAdd:
     path:     /add-{type}
