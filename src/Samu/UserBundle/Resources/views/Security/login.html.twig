@@ -11,7 +11,7 @@
 			{% if error %}
 			    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 			{% endif %}
-				<div class="login_form">
+				<div id="login_form">
 					<form action="{{ path("fos_user_security_check") }}" method="post">
 				    	<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 				    
@@ -32,7 +32,9 @@
 
 						<input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
 					</form>
-					
+					<div id="login_footer">
+						<a href="http://samu76b.ch-havre.fr">Retourner vers le site du "SAMU Le Havre"</a>
+					</div>
 				</div>
 			
 	{% endblock fos_user_content %}
