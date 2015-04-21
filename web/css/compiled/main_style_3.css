@@ -1,19 +1,46 @@
-
-
-.login_form {
-	width: 248px;
-	height:248px;
-	border: 2px solid #C8C9C9;
-	background: #162C40;
-	color: #C8C9C9;
-	
-	margin: 0 auto;
-	
+body {
+	height: auto;
 }
 
-.login_form, label, input{
-	display: block;
+#login_form {
+	width: 321px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 30px;
 	margin: 0 auto;
-	width: 200px;
+	margin-top: 25%;
+	border-radius: 15px;
+	background: #D9D9D9;
+	color: #667F7D;
+
+}
+
+
+#login_form label {
+	display: block;
 	float: left;
+	width: 180px;
+}
+
+#login_form form {
+	width: 150;
+	margin: 0 auto;
+}
+#login_form #_submit {
+	margin-left: 50%;
+	margin-right: 50%;
+}
+/*-------------- Footer login_form ------------*/
+#login_header {
+	position: absolute;
+	top: 10px;
+
+
+}
+#login_header a {
+	text-decoration: none;
+	font-size: 0.75em;
+}
+#login_header a:hover {
+	color: #D9D9D9;
 }

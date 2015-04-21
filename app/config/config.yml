@@ -78,3 +78,22 @@ fos_user:
     db_driver:     orm
     firewall_name: main
     user_class:    Samu\UserBundle\Entity\User
+    registration:
+        confirmation: 
+            enabled: true
+    service:
+        mailer: fos_user.mailer.twig_swift
+    from_email: 
+        address: administration@samu76b.org
+        sender_name: Administrateurs du site SAMU 76B
+    registration:
+        confirmation:
+            from_email:
+                address:        enregisrement@samu76b.org
+                sender_name:    Administrateurs du site SAMU 76B
+    resetting:
+        email:
+            from_email:
+                address:        administration@samu76b.org
+                sender_name:    Changement de mot de passe - Site SAMU 76B
+            template: SamuUserBundle:User:resetting.email.html.twig                       
