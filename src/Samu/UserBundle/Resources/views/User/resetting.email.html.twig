@@ -1,0 +1,22 @@
+{# src/Samu/UserBundle/Resources/views/User/resetting.email.html.twig #}
+{% block subject %}Site SAMU 76B - Modification de votre mot de passe.{% endblock %}
+
+{% block body_text %}
+{% autoescape false %}
+Bonjour {{ user.username }} !
+
+vous pouvez modifer votre mot de passe en cliquant sur le lien suviant :
+<p>{{ confirmationUrl }}</p>
+
+L'équipe web du Samu Le Havre.
+{% endautoescape %}
+{% endblock %}
+
+{% block body_html %}
+{#
+    You can of course render the html directly here.
+    Including a template as done here allows keeping things DRY by using
+    the template inheritance in it
+#}
+{% include 'SamuUserBundle:User:resetting.email.html.twig' %}
+{% endblock %}
