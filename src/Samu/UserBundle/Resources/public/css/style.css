@@ -26,7 +26,7 @@ body {
 	width: 150;
 	margin: 0 auto;
 }
-#login_form #_submit {
+#login_form input #_submit {
 	margin-left: 50%;
 	margin-right: 50%;
 }
