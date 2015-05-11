@@ -1,2 +1,11 @@
-<a href="GestionVM/">Gestion Véhicule et matériel</a>
-<a href="#">Les autres applis, gestion du compte, tout ça</a>
+{% extends "SamuPortalBundle::portallayout.html.twig" %}
+
+{% block title %}
+	Portail - {{ parent() }}
+{% endblock %}
+
+{% block portail_actionbody %}
+	<a href="GestionVM/">Gestion Véhicule et matériel</a>
+	<a href="#">Les autres applis, gestion du compte, tout ça</a>
+{% endblock %}
+
