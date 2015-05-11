@@ -69,3 +69,7 @@ html>body #nav li ul ul
 {
         border-left     : 1px solid transparent ; /* on met une bordure transparente sur la gauche de chaque élément */
 }
+#nav a:hover{
+        color: #000;
+        background: #fff;
+}
