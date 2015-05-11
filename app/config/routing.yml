@@ -1,3 +1,7 @@
+samu_portal:
+    resource: "@SamuPortalBundle/Resources/config/routing.yml"
+    prefix:   /
+
 samu_gestion_vm:
     resource: "@SamuGestionVMBundle/Resources/config/routing.yml"
     prefix:   /GestionVM

@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new Samu\GestionVMBundle\SamuGestionVMBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Samu\UserBundle\SamuUserBundle(),
+            new Samu\PortalBundle\SamuPortalBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
