@@ -1,3 +1,3 @@
 samu_portail_index:
     path:     /
-    defaults: { _controller: SamuPortailBundle:Portal:index }
+    defaults: { _controller: SamuPortalBundle:Portal:index }
