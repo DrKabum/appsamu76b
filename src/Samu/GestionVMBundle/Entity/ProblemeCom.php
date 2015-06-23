@@ -180,4 +180,9 @@ class ProblemeCom
     {
         return $this->probleme;
     }
+
+    public function getProblemeId()
+    {
+        return $this->probleme->getId();
+    }
 }

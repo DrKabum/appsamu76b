@@ -111,7 +111,7 @@ samu_gestion_vm_addCom:
         id:   \d+
 
 samu_gestion_vm_deleteCom:
-    path:     /comment/deleter/{id}
+    path:     /comment/delete/{id}
     defaults: { _controller: SamuGestionVMBundle:ProblemeCom:delete }
     requirements:
         id:   \d+
