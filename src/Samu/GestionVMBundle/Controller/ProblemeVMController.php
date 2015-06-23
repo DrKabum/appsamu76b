@@ -50,7 +50,7 @@ class ProblemeVMController extends Controller
 	 */
 	public function viewAction(ProblemeVM $probleme)
 	{
-		$this->get('session')->set($probleme->getId());
+		$this->get('session')->set($probleme->getId(), 1);
 		return $this->render('SamuGestionVMBundle:ProblemeVM:view.html.twig', array(
 			'probleme' => $probleme));
 	}
