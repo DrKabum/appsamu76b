@@ -95,6 +95,12 @@ class ProblemeVM
      */
     private $commentaires;
 
+    public function __construct()
+    {
+        $this->setDateDebut(new \Datetime);
+        $this->setDateFin(new \Datetime);
+    }
+
     /**
      * Get id
      *
