@@ -50,6 +50,7 @@ class ProblemeVMController extends Controller
 	 */
 	public function viewAction(ProblemeVM $probleme)
 	{
+		$this->get('session')->set($probleme->getId());
 		return $this->render('SamuGestionVMBundle:ProblemeVM:view.html.twig', array(
 			'probleme' => $probleme));
 	}
@@ -184,5 +185,19 @@ class ProblemeVMController extends Controller
 		return array(
 			'entity' => $entity,
 			'form'   => $formulaire);
+	}
+
+	public function isProblemNewAction(ProblemeVM $probleme)
+	{
+		$session = $this->get('session');
+		$lastLogin = $this->getUser()->getLastLogin();
+		$sessionLog = $session->get($probleme->getId());
+
+		($lastLogin < $probleme->getDateDebut() OR $lastLogin < $probleme->getDateModif() OR $sessionLog) ? $isNew = true : $isNew = false;
+
+
+		return $this->render('SamuGestionVMBundle:ProblemeVM:news-indicator.html.twig', array(
+			'isNew' 	=> $isNew,
+			'probleme' 	=> $probleme->getId()));
 	}
 }

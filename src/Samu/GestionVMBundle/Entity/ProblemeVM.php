@@ -107,8 +107,7 @@ class ProblemeVM
 
     public function __construct()
     {
-        $this->dateDebut = new \Datetime();
-        $this->dateFin = new \Datetime();
+
     }
 
     /**
@@ -270,13 +269,6 @@ class ProblemeVM
     public function getActive()
     {
         return $this->active;
-    }
-
-    public function getDuree()
-    {
-        return /*$this->$dateFin = new \Datetime($this->$dateFin)
-                    ->diff($this->$dateDebut)
-                    ->format('%a jours')*/;
     }
 
     /**

@@ -9,42 +9,42 @@
 	Gestion Véhicules et Matériel - {{ parent() }}
 {% endblock %}
 
-	{% block body %}
-		
-				<header>
-					<h1>Gestion Véhicules et Matériel - 76B</h1>
-					<p>Projet en cours de développement.</p>	
-				</header>
+{% block body %}
+	
+			<header>
+				<h1>Gestion Véhicules et Matériel - 76B</h1>
+				<p>Projet en cours de développement.</p>	
+			</header>
 
-				<nav>
-					{% include 'SamuGestionVMBundle::menu.html.twig' %} {# inclusion des menus #}
-				</nav>
-				<div id="block_page">
-					<section>
-						<article>
-							{# Bloc à hériter par les actions des controllers #}
-							{% block gvm_actionbody %}
-							
-								{% block form_row %}
-								{% endblock form_row %}	
-							{% endblock %}	
-						</article>		
-					</section>
+			<nav>
+				{% include 'SamuGestionVMBundle::menu.html.twig' %} {# inclusion des menus #}
+			</nav>
+			<div id="block_page">
+				<section>
+					<article>
+						{# Bloc à hériter par les actions des controllers #}
+						{% block gvm_actionbody %}
+						
+							{% block form_row %}
+							{% endblock form_row %}	
+						{% endblock %}	
+					</article>		
+				</section>
+			</div>
+
+{% endblock %}
+
+{% block footer %}
+			<footer>
+				<div>
+        			{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            			{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+            				<a href="{{ path('fos_user_security_logout') }}">
+                				{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+           					 </a>
+    				{% endif %}
 				</div>
-				<footer>
-					<div>
-            			{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                			{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-                				<a href="{{ path('fos_user_security_logout') }}">
-                    				{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-               					 </a>
-        				{% endif %}
-    				</div>
-					<hr>
-					<p>Ici le footer...</p>
-				</footer>
-
-		
-	{% block javascripts %}
-	{% endblock %}
+				<hr>
+				<p>Ici le footer...</p>
+			</footer>
 {% endblock %}

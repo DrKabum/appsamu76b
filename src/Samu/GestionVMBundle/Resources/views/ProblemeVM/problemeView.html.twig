@@ -1,4 +1,4 @@
-<li>#{{ probleme.id }}</li>
+<li>#{{ probleme.id }}</li> {{ render(controller('SamuGestionVMBundle:ProblemeVM:isProblemNew', {'id' : probleme.id })) }} l'image est celle du probleme numéro {{ probleme.id }}
 <li>{{ probleme.vehicule.name }}</li>
 <li>Ajouté le {{ probleme.dateDebut|date('d/m/Y') }} par {{ probleme.author }}</li>
 <li>{{ probleme.title }}</li>
