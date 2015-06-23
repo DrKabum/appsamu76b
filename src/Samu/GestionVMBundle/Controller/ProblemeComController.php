@@ -106,8 +106,6 @@ class ProblemeComController extends Controller
 			else 
 		{
 			return new Response($actionFR);
-		}
-
-		
+		}		
 	}
 }
