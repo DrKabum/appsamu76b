@@ -111,11 +111,6 @@ class ProblemeVM
         return $this->id;
     }
 
-    public function __construct()
-    {
-
-    }
-
     /**
      * Set title
      *
