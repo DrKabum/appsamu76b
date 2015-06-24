@@ -189,13 +189,22 @@ class ProblemeVMController extends Controller
 
 	public function isProblemNewAction(ProblemeVM $probleme)
 	{
-		$session = $this->get('session');
-		$lastLogin = $this->getUser()->getLastLoginSaved();
+		$session    = $this->get('session');
+		$lastLogin  = $this->getUser()->getLastLoginSaved();
 		$sessionLog = $session->has($probleme->getId());
-
-		($lastLogin < $probleme->getDateDebut() OR $lastLogin < $probleme->getDateModif()) ? $isNew = true : $isNew = false;
-		($sessionLog) ? $isNew = false : $isNew = true;
-
+		
+		if($lastLogin > $probleme->getDateDebut() /*OR $lastLogin > $probleme->getDateModif() VERIFIER QUE LA DATE DE MODIF N'EST PAS NULLE AVANT*/)
+		{
+			$isNew = false;
+		} 
+			else if($sessionLog) 
+		{
+			$isNew = false;
+		}
+			else
+		{
+			$isNew = true;
+		}
 
 		return $this->render('SamuGestionVMBundle:ProblemeVM:news-indicator.html.twig', array(
 			'isNew' 	=> $isNew));
