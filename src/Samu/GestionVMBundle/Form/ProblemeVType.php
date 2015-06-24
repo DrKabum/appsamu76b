@@ -16,14 +16,13 @@ class ProblemeVType extends AbstractType
     {
         $builder
             ->add('title',          'text', array(
-                'label' => 'Titre'))
+                'label'    => 'Titre'))
             ->add('content',        'textarea', array(
-                'label' => 'Description du problème'))
-            ->add('dateDebut',      'date', array(
-                'input'  => 'datetime',
-                'widget' => 'single_text',
-                'format' => 'dd/MM/yyyy',
-                'label'  => 'Date de survenue du problème'))
+                'label'    => 'Description du problème'))
+            ->add('dateDebut',      'datetime', array(
+                'input'    => 'datetime',
+                'widget'  => 'choice',
+                'label'    => 'Date de survenue du problème'))
             ->add('vehicule',       'entity', array(
                 'class'    => 'SamuGestionVMBundle:Vehicule',
                 'property' => 'name',

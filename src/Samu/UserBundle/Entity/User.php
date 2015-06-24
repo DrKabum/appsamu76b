@@ -16,4 +16,42 @@ class User extends BaseUser
    * @ORM\GeneratedValue(strategy="AUTO")
    */
   protected $id;
+
+  /**
+   * @ORM\Column(name="lastloginsaved", type="datetime")
+   */
+  protected $lastLoginSaved;
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set lastLoginSaved
+     *
+     * @param \DateTime $lastLoginSaved
+     * @return User
+     */
+    public function setLastLoginSaved($lastLoginSaved)
+    {
+        $this->lastLoginSaved = $lastLoginSaved;
+
+        return $this;
+    }
+
+    /**
+     * Get lastLoginSaved
+     *
+     * @return \DateTime 
+     */
+    public function getLastLoginSaved()
+    {
+        return $this->lastLoginSaved;
+    }
 }
