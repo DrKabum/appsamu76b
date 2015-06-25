@@ -4,7 +4,7 @@ array : listPbMateriel
 bool : validation
 #}
 
-<li>#<a href="{{ path('samu_gestion_vm_problemeView', {'id' : probleme.id }) }}">{{ probleme.id }}</a></li> {{ render(controller('SamuGestionVMBundle:ProblemeVM:isProblemNew', {'id' : probleme.id })) }} {% if validation and is_granted('ROLE_STAFF') and probleme.staffValidated < 1 %} - <a href="{{ path('samu_gestion_vm_problemeValidate', {'id' : probleme.id }) }}">Valider</a></li>{% endif %}
+<li>#<a href="{{ path('samu_gestion_vm_problemeView', {'id' : probleme.id }) }}">{{ probleme.id }}</a></li> {{ render(controller('SamuGestionVMBundle:ProblemeVM:isProblemNew', {'id' : probleme.id })) }} {% if validation and is_granted('ROLE_STAFF') and probleme.staffValidated == 0 %} - <a href="{{ path('samu_gestion_vm_problemeValidate', {'id' : probleme.id }) }}">Valider</a></li>{% endif %}
 <li>{{ probleme.vehicule.name }}</li>
 <li>Ajouté le {{ probleme.dateDebut|date('d/m/Y') }} par {{ probleme.author }}</li>
 <li>{{ probleme.title }}
