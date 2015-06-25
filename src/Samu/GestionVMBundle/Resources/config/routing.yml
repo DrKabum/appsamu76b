@@ -47,6 +47,10 @@ samu_gestion_vm_problemeClasser:
     requirements:
         id: \d+
 
+samu_gestion_vm_indexNonValide:
+    path:     /non-valide/
+    defaults: { _controller: SamuGestionVMBundle:ProblemeVM:indexNonValide }
+
 #----------Entities---------#
 samu_gestion_vm_entitiesIndex:
     path:     /gerer-parc-{type}

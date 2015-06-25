@@ -37,7 +37,8 @@ class ProblemeVMController extends Controller
 
 		return $this->render('SamuGestionVMBundle:ProblemeVM:index.html.twig', array(
 			'listPbVehicules' => $listPbVehicules,
-			'listPbMateriel'  => $listPbMateriel
+			'listPbMateriel'  => $listPbMateriel,
+			'validation'      => 0
 		));
 	}
 
@@ -48,7 +49,9 @@ class ProblemeVMController extends Controller
 	{
 		$this->get('session')->set($probleme->getId(), 1);
 		return $this->render('SamuGestionVMBundle:ProblemeVM:view.html.twig', array(
-			'probleme' => $probleme));
+			'probleme'   => $probleme,
+			'validation' => 1
+		));
 	}
 
 	/**
@@ -204,5 +207,33 @@ class ProblemeVMController extends Controller
 
 		return $this->render('SamuGestionVMBundle:ProblemeVM:news-indicator.html.twig', array(
 			'isNew' 	=> $isNew));
+	}
+
+	public function indexNonValideAction()
+	{
+		$listPbVehicules = $this
+			->getDoctrine()
+			->getManager()
+			->getRepository('SamuGestionVMBundle:ProblemeVM')
+			->getProblemesVNonValide();
+
+		$listPbMateriel = $this
+			->getDoctrine()
+			->getManager()
+			->getRepository('SamuGestionVMBundle:ProblemeVM')
+			->getProblemesMNonValide();
+
+		$testPb = count($listPbVehicules) + count($listPbMateriel);
+
+		if(!$testPb)
+		{
+			$this->get('session')->getFlashBag()->add('notice', 'Il n\'y a pas de problème à valider actuellement.');
+		}
+
+		return $this->render('SamuGestionVMBundle:ProblemeVM:index.html.twig', array(
+			'listPbVehicules' => $listPbVehicules,
+			'listPbMateriel'  => $listPbMateriel,
+			'validation'      => 1
+		));
 	}
 }

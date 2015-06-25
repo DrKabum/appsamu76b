@@ -1,6 +1,7 @@
 {# @Variables : 
 array : listPbVehicules
 array : listPbMateriel
+bool : validation
 #}
 
 {% extends "SamuGestionVMBundle::gvmlayout.html.twig" %}
@@ -16,6 +17,7 @@ array : listPbMateriel
 
 	<div>
 		<h2>Problèmes véhicules</h2>
+		Nombre de problèmes : {{ listPbVehicules|length }}
 			{% for probleme in listPbVehicules %}
 				{% include 'SamuGestionVMBundle:ProblemeVM:problemeView.html.twig' %}
 			 {% endfor %}
@@ -23,6 +25,7 @@ array : listPbMateriel
 
 	<div>
 		<h2>Problèmes Matériels</h2>
+		Nombre de problèmes : {{ listPbMateriel|length }}
 			{% for probleme in listPbMateriel %}
 				{% include 'SamuGestionVMBundle:ProblemeVM:problemeView.html.twig' %}
 			{% endfor %}

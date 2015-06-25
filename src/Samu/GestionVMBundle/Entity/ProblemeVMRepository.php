@@ -17,6 +17,7 @@ class ProblemeVMRepository extends EntityRepository
 	{
 		$qb = $this->createQueryBuilder('p');
 		$query = $qb
+		  ->select('p')
 		  ->where('p.active = 1')
 		  ->andWhere('p.staffValidated = 1')
 		  ->andWhere($qb->expr()->isNotNull('p.vehicule'))
@@ -33,6 +34,7 @@ class ProblemeVMRepository extends EntityRepository
 	{
 		$qb = $this->createQueryBuilder('p');
 		$query = $qb
+		  ->select('p')
 		  ->where('p.active = 1')
 		  ->andWhere('p.staffValidated = 1')
 		  ->andWhere($qb->expr()->isNotNull('p.materiel'))
@@ -40,6 +42,38 @@ class ProblemeVMRepository extends EntityRepository
 		  ->addSelect('c')
 		  ->orderBy('p.dateDebut', 'DESC')
 		  ->getQuery()
+		;
+
+		return $query->getResult();
+	}
+
+	public function getProblemesVNonValide()
+	{
+		$qb = $this->createQueryBuilder('p');
+		$query = $qb
+			->select('p')
+			->where('p.staffValidated = 0')
+			->andWhere($qb->expr()->isNotNull('p.vehicule'))
+		    ->leftJoin('p.commentaires', 'c')
+		    ->addSelect('c')
+		    ->orderBy('p.dateDebut', 'DESC')
+		    ->getQuery()
+		;
+
+		return $query->getResult();
+	}
+
+	public function getProblemesMNonValide()
+	{
+		$qb = $this->createQueryBuilder('p');
+		$query = $qb
+			->select('p')
+			->where('p.staffValidated = 0')
+			->andWhere($qb->expr()->isNotNull('p.materiel'))
+		    ->leftJoin('p.commentaires', 'c')
+		    ->addSelect('c')
+		    ->orderBy('p.dateDebut', 'DESC')
+		    ->getQuery()
 		;
 
 		return $query->getResult();

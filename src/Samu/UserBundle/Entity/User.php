@@ -22,6 +22,11 @@ class User extends BaseUser
    */
   protected $lastLoginSaved;
 
+    public function __construct()
+    {
+      $this->lastLoginSaved = new \Datetime();
+    }
+
     /**
      * Get id
      *
