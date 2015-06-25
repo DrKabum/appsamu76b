@@ -35,5 +35,12 @@
 				<li><a href="{{ path('samu_gestion_vm_entitiesIndex', {'type' : 'materiel'}) }}">Matériel</a></li>
 			</ul>
 		</li>
-	</ul>			
+	</ul>
+{% if is_granted('ROLE_STAFF') %}
+	<ul class="nav_validation">
+		<li>
+			{{ render(controller('SamuGestionVMBundle:ProblemeVM:countNonValide')) }} <a href="{{ path('samu_gestion_vm_indexNonValide') }}">Voir les problèmes à valider</a>
+		</li>
+	</ul>
+{% endif %}	
 </div>

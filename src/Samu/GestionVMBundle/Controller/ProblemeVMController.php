@@ -236,4 +236,13 @@ class ProblemeVMController extends Controller
 			'validation'      => 1
 		));
 	}
+
+	public function countNonValideAction()
+	{
+		$count = $this->getDoctrine()->getManager()->getRepository('SamuGestionVMBundle:ProblemeVM')->countAllProblemeNonValide();
+
+		return $this->render('SamuGestionVMBundle:ProblemeVM:new-validation.html.twig', array(
+			'newValidation' => $count
+		));
+	}
 }

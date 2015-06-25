@@ -78,4 +78,11 @@ class ProblemeVMRepository extends EntityRepository
 
 		return $query->getResult();
 	}
+	public function countAllProblemeNonValide()
+	{
+		$vehicule = count($this->getProblemesMNonValide());
+		$materiel = count($this->getProblemesVNonValide());
+
+		return $vehicule + $materiel;
+	}
 }
