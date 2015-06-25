@@ -1,7 +1,6 @@
 {# @Variables : 
-array : listProblemes
-int : nbPages
-int : page 
+array : listPbVehicules
+array : listPbMateriel
 #}
 
 {% extends "SamuGestionVMBundle::gvmlayout.html.twig" %}
@@ -17,22 +16,16 @@ int : page
 
 	<div>
 		<h2>Problèmes véhicules</h2>
-			{% for probleme in listProblemes if probleme.vehicule %}
+			{% for probleme in listPbVehicules %}
 				{% include 'SamuGestionVMBundle:ProblemeVM:problemeView.html.twig' %}
 			 {% endfor %}
 	</div>
 
 	<div>
 		<h2>Problèmes Matériels</h2>
-			{% for probleme in listProblemes if probleme.materiel %}
+			{% for probleme in listPbMateriel %}
 				{% include 'SamuGestionVMBundle:ProblemeVM:problemeView.html.twig' %}
 			{% endfor %}
 	</div>	
-	{#Pagination #}
-	<p> Pages :
-		{% for i in 1..nbPages %}
-			<a href="{{ path('samu_gestion_vm_index', {'page' : i } ) }}">{{i}}</a>
-		{% endfor %}
-	</p>
 {% endblock %}
 

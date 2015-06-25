@@ -13,22 +13,35 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
  */
 class ProblemeVMRepository extends EntityRepository
 {
-	public function getProblemesEnCours($page, $nbPerPage)
+	public function getProblemesVEnCours()
 	{
-		$query = $this->createQueryBuilder('p')
+		$qb = $this->createQueryBuilder('p');
+		$query = $qb
 		  ->where('p.active = 1')
 		  ->andWhere('p.staffValidated = 1')
+		  ->andWhere($qb->expr()->isNotNull('p.vehicule'))
 		  ->leftJoin('p.commentaires', 'c')
 		  ->addSelect('c')
 		  ->orderBy('p.dateDebut', 'DESC')
 		  ->getQuery()
 		;
 
-		$query
-		  ->setFirstResult(($page-1) * $nbPerPage)
-		  ->setMaxResults($nbPerPage)
+		return $query->getResult();
+	}
+
+	public function getProblemesMEnCours()
+	{
+		$qb = $this->createQueryBuilder('p');
+		$query = $qb
+		  ->where('p.active = 1')
+		  ->andWhere('p.staffValidated = 1')
+		  ->andWhere($qb->expr()->isNotNull('p.materiel'))
+		  ->leftJoin('p.commentaires', 'c')
+		  ->addSelect('c')
+		  ->orderBy('p.dateDebut', 'DESC')
+		  ->getQuery()
 		;
 
-		return new Paginator($query, true);
+		return $query->getResult();
 	}
 }

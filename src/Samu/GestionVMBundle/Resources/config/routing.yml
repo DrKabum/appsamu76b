@@ -1,5 +1,5 @@
 samu_gestion_vm_index: #Home
-    path:     /{page}
+    path:     /
     defaults: { _controller: SamuGestionVMBundle:ProblemeVM:index, page: 1 }
     requirements:
         page: \d*

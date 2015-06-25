@@ -15,33 +15,29 @@ class ProblemeVMController extends Controller
 	/**
 	 * @Security("has_role('ROLE_USER')")
 	 */
-	public function indexAction($page)
+	public function indexAction()
 	{
-		if($page < 1) {
-			throw $this->createNotFoundException("La page demandée n'existe pas.");
-		}
-
-		$nbPerPage = 5; // (A mettre dans un fichier config plutôt)
-
-		$listPb = $this->getDoctrine()
+		$listPbVehicules = $this->getDoctrine()
 		  ->getManager()
 		  ->getRepository('SamuGestionVMBundle:ProblemeVM')
-		  ->getProblemesEnCours($page, $nbPerPage)
-		;		
+		  ->getProblemesVEnCours()
+		;
 
-		$nbPages = ceil(count($listPb)/$nbPerPage);
+		$listPbMateriel = $this->getDoctrine()
+		  ->getManager()
+		  ->getRepository('SamuGestionVMBundle:ProblemeVM')
+		  ->getProblemesMEnCours()
+		;
 
-		if($nbPages === 0) {
+		$testPb = count($listPbVehicules) + count($listPbMateriel);
+
+		if(!$testPb) {
 			$this->get('session')->getFlashBag()->add('notice', 'Aucun problème en cours.');
-		}
-		elseif($page>$nbPages) {
-			throw $this->createNotFoundException("La page demandée n'existe pas.");
 		}
 
 		return $this->render('SamuGestionVMBundle:ProblemeVM:index.html.twig', array(
-			'listProblemes' => $listPb,
-			'nbPages'       => $nbPages,
-			'page'          => $page
+			'listPbVehicules' => $listPbVehicules,
+			'listPbMateriel'  => $listPbMateriel
 		));
 	}
 
