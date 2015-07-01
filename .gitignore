@@ -9,3 +9,6 @@
 /composer.phar
 /vendor/
 /web/bundles/
+/app/.DS_Store
+/.DS_Store
+
