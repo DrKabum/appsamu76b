@@ -27,8 +27,9 @@ class MaterielType extends AbstractType
                 'widget'   => 'choice',
                 'years'    => range(date('Y') - 10, date('Y'))))
             ->add('operationnel',    'checkbox', array(
-                'label'    => 'Véhicule armé/opérationnel',
+                'label'    => 'Matériel opérationnel',
                 'required' => false ))
+            ->add('Envoyer', 'submit')
         ;
     }
     

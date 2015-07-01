@@ -45,7 +45,7 @@ class EntitiesVMController extends Controller
 			$em->persist($f['entity']);
 			$em->flush();
 
-			$request->getSession()->getFlashBag()->add('notice', 'Nouveau véhicule créé.');
+			$request->getSession()->getFlashBag()->add('notice', 'Nouveau véhicule/matériel créé.');
 
 			return $this->redirect($this->generateUrl('samu_gestion_vm_entitiesAdd', array('type' => $type)));
 		}

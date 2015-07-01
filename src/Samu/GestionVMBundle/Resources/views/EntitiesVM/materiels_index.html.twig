@@ -1,0 +1,31 @@
+{# src/Samu/GestionVM/Resources/views/EntitiesVM/materiels_index.html.twig #}
+{# @var :
+	EntitiesVM : entities 
+	string :     type #}
+
+{% extends 'SamuGestionVMBundle::gvmlayout.html.twig' %}
+
+
+{% block gvm_actionbody %}
+<div id="materiels">
+	<h2>Liste du matériel</h2>
+	<p>Ci-dessous, vous trouverez la liste du matériel actuellement suivis</p>
+	<div>
+		{% for matos in entities %}
+			<tr>
+				<td>
+					<a href="{{ path('samu_gestion_vm_entitiesView', {'type' : 'materiel', 'id' : matos.id}) }}">{{ matos.name }}</a>
+				</td>
+				<td>
+					<a href="{{ path('samu_gestion_vm_entitiesEdit', {'type' : 'materiel', 'id' : matos.id}) }}">Modifier les informations</a>
+				</td>
+				<td>
+					<a href="{{ path('samu_gestion_vm_entitiesDelete', {'type' : 'materiel', 'id' : matos.id}) }}">Supprimer</a>
+				</td>
+			</tr>
+		{% endfor %}		
+	</div>
+	<a href="{{ path('samu_gestion_vm_entitiesAdd', {'type' : 'materiel'}) }}">Ajouter un nouveau matériel</a>
+	<a href="{{ path('samu_gestion_vm_entitiesAddMatCat') }}">Ajouter une nouvelle catégorie de matériel</a>
+</div>
+{% endblock %}
