@@ -1,8 +1,30 @@
-<<<<<<< HEAD
 {# src/Samu/GestionVM/Resources/views/EntitiesVM/vehicules_index.html.twig #}
-<li> Type : {{ entity.typeVehicule }} </li>
-<li> Modèle : {{ entity.modele }} </li>
-<li> Immatriculation : {{ entity.immatriculation }} </li>
-<li> ordre de départ : {{ entity.ordreDepart }} </li>
-=======
->>>>>>> b4376fa8354a81c838075f63dd5b8f51432da49e
+{# @var :
+	EntitiesVM : entities 
+	string :     type #}
+
+{% extends 'SamuGestionVMBundle::gvmlayout.html.twig' %}
+
+
+{% block gvm_actionbody %}
+<div id="vehicules">
+	<h2>Liste des véhicules</h2>
+	<p>Ci-dessous, vous trouverez la liste des véhicules actuellement suivis</p>
+	<div ="liste-vehicule">
+		{% for car in entities %}
+			<tr>
+				<td>
+					<a href="{{ path('samu_gestion_vm_entitiesView', {'type' : 'vehicule', 'id' : car.id}) }}">{{ car.name }}</a>
+				</td>
+				<td>
+					<a href="{{ path('samu_gestion_vm_entitiesEdit', {'type' : 'vehicule', 'id' : car.id}) }}">Modifier les informations</a>
+				</td>
+				<td>
+					<a href="{{ path('samu_gestion_vm_entitiesDelete', {'type' : 'vehicule', 'id' : car.id}) }}">Supprimer</a>
+				</td>
+			</tr>
+		{% endfor %}		
+	</div>
+	<a href="{{ path('samu_gestion_vm_entitiesAdd', {'type' : 'vehicule'}) }}">Ajouter un nouveau véhicule</a>
+</div>
+{% endblock %}

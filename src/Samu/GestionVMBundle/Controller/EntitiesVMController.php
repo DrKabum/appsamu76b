@@ -23,11 +23,11 @@ class EntitiesVMController extends Controller
 		// Recupère les entités du parc et les envoie à la vue
 		$em = $this->getDoctrine()->getManager();
 
-		$entity = $em->getRepository($this->findTypeRepositoryPath)->findAll();
-		$template = 'SamuGestionVMBundle:EntitiesVM:' . $type . '_index.html.twig';
+		$entities = $em->getRepository($this->findTypeRepositoryPath($type))->findAll();
+		$template = 'SamuGestionVMBundle:EntitiesVM:' . $type . 's_index.html.twig';
 
 		return $this->render($template, array(
-			'entity' => $entity,
+			'entities' => $entities,
 			'type'   => $type
 		));
 	}
