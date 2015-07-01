@@ -82,14 +82,14 @@ class EntitiesVMController extends Controller
 	public function editAction($type, $id, Request $request)
 	{
 		$em = $this->getDoctrine()->getManager();
-		$cible = $em->getRepository($this->findTypeRepositoryPath($type))->findOneById($id);
+		$entity = $em->getRepository($this->findTypeRepositoryPath($type))->findOneById($id);
 
-		if(!$cible)
+		if(!$entity)
 		{
 			throw $this->createNotFoundException("L'entité demandée n'existe pas.");
 		}
 
-		$f = $this->createFormWithType($type, $cible);
+		$f = $this->createFormWithType($type, $entity);
 
 		if($f['form']->handleRequest($request)->isValid())
 		{
@@ -102,7 +102,7 @@ class EntitiesVMController extends Controller
 
 		return $this->render('SamuGestionVMBundle:EntitiesVM:edit.html.twig', array(
 			'form'   => $f['form']->createView(),
-			'entity' => $cible));
+			'entity' => $entity));
 	}
 
 	/**
@@ -153,7 +153,7 @@ class EntitiesVMController extends Controller
 
 	public function editMatCatAction(MaterielCategory $matcat, Request $request)
 	{
-		$formulaire = createForm(new MaterielCategoryType(), $matcat);
+		$formulaire = $this->createForm(new MaterielCategoryType(), $matcat);
 
 		if($formulaire->handleRequest($request)->isValid())
 		{
@@ -162,7 +162,9 @@ class EntitiesVMController extends Controller
 
 			$request->getSession()->getFlashBag()->add('notice', 'Catégorie modifiée');
 
-			return $this->redirect($this->generateUrl('samu_gestion_vm_entitiesIndex'));
+			return $this->redirect($this->generateUrl('samu_gestion_vm_entitiesIndex', array(
+				'type' => 'materiel'
+			)));
 		}
 
 		return $this->render('SamuGestionVMBundle:EntitiesVM:addMatCat.html.twig', array(

@@ -14,6 +14,9 @@
 		{% for matos in entities %}
 			<tr>
 				<td>
+					{% for cat in matos.categories %}<a href="{{ path('samu_gestion_vm_entitiesEditMatCat', {'id' : cat.id}) }}">{{ cat.name }}</a>{% endfor %}
+				</td>
+				<td>
 					<a href="{{ path('samu_gestion_vm_entitiesView', {'type' : 'materiel', 'id' : matos.id}) }}">{{ matos.name }}</a>
 				</td>
 				<td>

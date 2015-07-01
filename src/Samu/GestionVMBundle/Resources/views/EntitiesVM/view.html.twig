@@ -21,11 +21,7 @@
 			<li>Hors service</li>
 		{% endif %}
 
-		{% if type == 'vehicule'%}
-			{% include 'SamuGestionVMBundle:EntitiesVM:vehicules_index.html.twig' %}
-		{% else %}
-			{% include 'SamuGestionVMBundle:EntitiesVM:materiels_index.html.twig' %}
-		{% endif %}
+		<a href="{{ path('samu_gestion_vm_entitiesEdit', {'type' : type, 'id' : entity.id}) }}">Modifier</a>
 	</div>
 {% endblock %}
 
