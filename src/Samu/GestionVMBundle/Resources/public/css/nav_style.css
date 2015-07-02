@@ -44,6 +44,10 @@
  #nav li ul {
         position:absolute;
  }
+
+#nav_validation {
+        float: right;
+}
 #nav_validation ul li {
         padding-top: 0px;
         padding-bottom: 0px;
