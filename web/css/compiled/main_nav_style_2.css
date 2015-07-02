@@ -1,75 +1,52 @@
-#nav, #nav ul /* Liste */     
-{
-        padding : 0; /* pas de marge intérieure */
-        margin : 0; /* ni extérieure */
-        list-style : none; /* on supprime le style par défaut de la liste */
-        line-height : 30px; /* on définit une hauteur pour chaque élément */
-        text-align : center; /* on centre le texte qui se trouve dans la liste */
+#nav {
+        background-color: rgb(194, 255, 240);
+        height: 38px;
+}
+#nav ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        text-align:center;
+}
+#nav li {
+        float: left;
+        margin: auto;
+        float: left;
+        margin: auto;
+        padding: 10px 10px 10px 10px;
+        background-color: rgb(194, 255, 240);
+        border-right: solid rgb(216, 216, 216) 1px;
 }
 
-#nav /* Ensemble du menu */
-{
-        font-weight : bold; /* on met le texte en gras */
-        font-family : Arial; /* on utilise Arial, c'est plus beau ^^ */
-        font-size : 12px; /* hauteur du texte : 12 pixels */
+#menu li a {
+        display: block;
+        width: 100px;
+        color: white;
+        text-decoration: none;
+        padding: 5px;
+} 
+#nav ul li ul {
+        display: none;
+}
+#nav a:link {
+        text-decoration: none;
+}
+#nav li a:hover {
+        color: #ffd700;
 }
 
-#nav a /* Contenu des listes */
-{
-        display : block; /* on change le type d'élément, les liens deviennent des balises de type block */
-        padding : 0; /* aucune marge intérieure */
-        background : #000; /* couleur de fond */        
-        color : #fff; /* couleur du texte */
-        text-decoration : none; /* on supprime le style par défaut des liens (la plupart du temps = souligné) */
-        width : 200px; /* largeur */
-}
+#nav ul li:hover ul {
+        display:block;
+ }
+#nav li:hover ul li {
+        float:none;
+ }
+ #nav li ul {
+        position:absolute;
+ }
+ #nav_validation ul li {
+        padding-top: 0px;
+        padding-bottom: 0px;
+        height: 38px;
 
-#nav li /* Elements des listes */      
-{ 
-        float : left; 
-        /* pour IE qui ne reconnaît pas "transparent" */
-        border-right : 1px solid #fff; /* on met une bordure blanche à droite de chaque élément */
-}
-
-/* IE ne reconnaissant pas le sélecteur ">" */
-html>body #nav li
-{
-        border-right: 1px solid transparent ; /* on met une bordure transparente à droite de chaque élément */
-}
-
-#nav li ul /* Sous-listes */
-{ 
-        position: absolute; /* Position absolue */
-        width: 144px; /* Largeur des sous-listes */
-        left: -999em; /* Hop, on envoie loin du champ de vision */
-}
-
-
-#nav li ul li /* Éléments de sous-listes */
-{
-        /* pour IE qui ne reconnaît pas "transparent" (comme précédemment) */
-        border-top : 1px solid #fff; /* on met une bordure blanche en haut de chaque élément d'une sous liste */
-}
-
-/* IE ne reconnaissant pas le sélecteur ">" */
-html>body #nav li ul li                
-{
-        border-top : 1px solid transparent; /* on met une bordure transparente en haut de chaque élément */
-}
-
-#nav li ul ul 
-{
-        margin    : -22px 0 0 144px ; /* On décale les sous-sous-listes pour qu'elles ne soient pas au dessus des sous-listes */ 
-        /* pour IE qui ne reconnaît pas "transparent" (comme précédemment) */
-        border-left     : 1px solid #fff ; /* Petite bordure à gauche pour ne pas coller ... */      
-}
-
-/* IE ne reconnaissant pas le sélecteur ">" ... je me répète ;-) */
-html>body #nav li ul ul                
-{
-        border-left     : 1px solid transparent ; /* on met une bordure transparente sur la gauche de chaque élément */
-}
-#nav a:hover{
-        color: #000;
-        background: #fff;
-}
+ }

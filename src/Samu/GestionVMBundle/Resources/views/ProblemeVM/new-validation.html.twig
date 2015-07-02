@@ -1,5 +1,29 @@
-{% if newValidation %}
-	<img src="{{ asset('bundles/samugestionvm/images/new-pb.png') }}" alt="Problèmes en attente"> {{ decompte }} problème(s) à valider
-{% else %}
-	<img src="{{ asset('bundles/samugestionvm/images/no-new-pb.png') }}" alt="Pas de problème en attente"> Pas de problème en attente
-{% endif %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('bundles/samugestionvm/css/nav_style.css') }}" type="text/css" media="all"/>
+{% endblock %}
+	{% if newValidation %}
+		<ul>
+			<li>
+				<a><img src="{{ asset('bundles/samugestionvm/images/new-pb.png') }}" alt="Problèmes en attente"></a>
+				<ul>
+					<li>
+						<span>{{ decompte }} problème(s) à valider</span>
+						<a href="{{ path('samu_gestion_vm_indexNonValide') }}">Accéder</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	{% else %}
+		<ul>
+			<li>
+				<a><img src="{{ asset('bundles/samugestionvm/images/no-new-pb.png') }}" alt="Pas de problème en attente"></a>
+				<ul>
+					<li>
+						<span>Pas de problème en attente</span>
+
+					</li>
+				</ul>
+			</li>
+		</ul>	
+			
+	{% endif %}

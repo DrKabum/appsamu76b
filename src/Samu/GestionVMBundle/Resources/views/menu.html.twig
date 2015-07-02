@@ -33,10 +33,8 @@
 		</li>
 	</ul>
 {% if is_granted('ROLE_STAFF') %}
-	<ul class="nav_validation">
-		<li>
-			{{ render(controller('SamuGestionVMBundle:ProblemeVM:countNonValide')) }} <a href="{{ path('samu_gestion_vm_indexNonValide') }}">Accéder</a>
-		</li>
-	</ul>
+	<div id="nav_validation">
+		{{ render(controller('SamuGestionVMBundle:ProblemeVM:countNonValide')) }} 
+	</div>
 {% endif %}	
 </div>

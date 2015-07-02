@@ -1,7 +1,6 @@
 #nav {
-        height: 40px;
-        background-color: black;
-        
+        background-color: rgb(194, 255, 240);
+        height: 38px;
 }
 #nav ul {
         margin: 0;
@@ -45,3 +44,13 @@
  #nav li ul {
         position:absolute;
  }
+#nav_validation ul li {
+        padding-top: 0px;
+        padding-bottom: 0px;
+        height: 38px;
+ }
+
+#nav_validation ul li img {
+        position: relative;
+        top:3px;
+}
