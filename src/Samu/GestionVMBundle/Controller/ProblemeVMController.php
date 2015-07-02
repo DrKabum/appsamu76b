@@ -38,7 +38,7 @@ class ProblemeVMController extends Controller
 		return $this->render('SamuGestionVMBundle:ProblemeVM:index.html.twig', array(
 			'listPbVehicules' => $listPbVehicules,
 			'listPbMateriel'  => $listPbMateriel,
-			'validation'      => 0
+			'validation'      => 0 //nous ne sommes pas entrain de valider des problèmes (info nécessaire au template)
 		));
 	}
 
