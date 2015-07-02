@@ -53,8 +53,12 @@ samu_gestion_vm_indexNonValide:
 
 #----------Entities---------#
 samu_gestion_vm_entitiesIndex:
-    path:     /gerer-parc-{type}
+    path:     /gerer-parc
     defaults: { _controller: SamuGestionVMBundle:EntitiesVM:index }
+
+samu_gestion_vm_entitiesIndexParType:
+    path:     /gerer-parc-{type}
+    defaults: { _controller: SamuGestionVMBundle:EntitiesVM:indexParType }
     requirements:
         type: vehicule|materiel
 

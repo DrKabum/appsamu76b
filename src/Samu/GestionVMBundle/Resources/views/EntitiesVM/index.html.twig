@@ -11,6 +11,21 @@
 
 {% block gvm_actionbody %}
 
+<div id="block-voiture">
+
+	<h2>Gestion du parc véhicule :</h2>
+	<a href="{{ path('samu_gestion_vm_entitiesAdd', {'type' : 'vehicule'}) }}">Ajouter un véhicule</a>
+	<p>Modifier/supprimer les informations :</p>
+	<ul>
+	{% for vehicule in vehicules %}
+		<li>
+			<a href="{{ path('samu_gestion_vm_entitiesEdit', {'type' : 'vehicule', 'id' : vehicule.id}) }}">{{ vehicule.name }}</a>
+			<a href="{{ path('samu_gestion_vm_entitiesDelete', {'type' : 'vehicule', 'id' : vehicule.id}) }}">
+				<img src="{{ asset('bundles/samugestionvm/images/delete.png') }}">
+			</a>
+		</li>
+	{% endfor %}
+	</ul>
 	<h2>Veuillez choisir un historique à consulter :</h2>
 
 	<ul>
@@ -18,5 +33,10 @@
 		<li><a href="{{ path('samu_gestion_vm_entitiesView', {'type' : 'vehicule', 'id' : vehicule.id }) }}">{{ vehicule.name }}</a></li>
 	{% endfor %}
 	</ul>
+</div>
+
+<div id="block-materiel">
+	
+</div>
 
 {% endblock %}

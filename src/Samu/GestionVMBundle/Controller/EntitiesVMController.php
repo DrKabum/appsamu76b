@@ -15,10 +15,20 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class EntitiesVMController extends Controller
 {
+	public function indexAction()
+	{
+		$em = $this->getDoctrine()->getManager();
+
+		$vehicules = $em->getRepository('SamuGestionVMBundle:Vehicule')->findAll();
+
+		return $this->render('SamuGestionVMBundle:EntitiesVM:index.html.twig', array(
+			'vehicules' => $vehicules
+		));
+	}
 	/**
 	 * @Security("has_role('ROLE_USER')")
 	 */
-	public function indexAction($type)
+	public function indexParTypeAction($type)
 	{
 		// Recupère les entités du parc et les envoie à la vue
 		$em = $this->getDoctrine()->getManager();

@@ -29,11 +29,7 @@
 	</ul>
 	<ul class="nav_parc">
 		<li>
-			<a href="#">Gérer le parc</a>
-			<ul class="nav_parc_jquery">
-				<li><a href="{{ path('samu_gestion_vm_entitiesIndex', {'type' : 'vehicule'}) }}">Ajouter un Véhicule</a></li>
-				<li><a href="{{ path('samu_gestion_vm_entitiesIndex', {'type' : 'materiel'}) }}">Ajouter un Matériel</a></li>
-			</ul>
+			<a href="{{ path('samu_gestion_vm_entitiesIndex') }}">Gérer le parc</a>
 		</li>
 	</ul>
 {% if is_granted('ROLE_STAFF') %}
