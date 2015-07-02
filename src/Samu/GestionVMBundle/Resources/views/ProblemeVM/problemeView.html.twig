@@ -10,9 +10,9 @@ bool : validation
 	{% if validation and is_granted('ROLE_STAFF') and probleme.staffValidated == 0 %}
 	 - <a href="{{ path('samu_gestion_vm_problemeValidate', {'id' : probleme.id }) }}">Valider</a></li>
 	{% endif %}
-	
+
 	{% if is_granted('ROLE_STAFF') and probleme.active %}
-		<a href="{{ path('samu_gestion_vm_problemeClasser', {'id' : probleme.id }) }}">Cloturer</a>
+		 - <a href="{{ path('samu_gestion_vm_problemeClasser', {'id' : probleme.id }) }}">Cloturer</a>
 	{% endif %}
 
 <li>{{ probleme.vehicule.name }}</li>
