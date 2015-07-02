@@ -1,5 +1,5 @@
 {% if newValidation %}
-	<img src="{{ asset('bundles/samugestionvm/images/new-pb.png') }}" alt="Problèmes en attente">
+	<img src="{{ asset('bundles/samugestionvm/images/new-pb.png') }}" alt="Problèmes en attente"> {{ decompte }} problème(s) à valider
 {% else %}
-	<img src="{{ asset('bundles/samugestionvm/images/no-new-pb.png') }}" alt="Pas de problème en attente">
+	<img src="{{ asset('bundles/samugestionvm/images/no-new-pb.png') }}" alt="Pas de problème en attente"> Pas de problème en attente
 {% endif %}

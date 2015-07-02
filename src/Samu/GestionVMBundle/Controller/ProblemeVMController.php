@@ -240,9 +240,11 @@ class ProblemeVMController extends Controller
 	public function countNonValideAction()
 	{
 		$count = $this->getDoctrine()->getManager()->getRepository('SamuGestionVMBundle:ProblemeVM')->countAllProblemeNonValide();
+		$decompte = count($count);
 
 		return $this->render('SamuGestionVMBundle:ProblemeVM:new-validation.html.twig', array(
-			'newValidation' => $count
+			'newValidation' => $count,
+			'decompte'      => $decompte
 		));
 	}
 }
