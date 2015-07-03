@@ -1,13 +1,11 @@
-{% block stylesheets %}
-	<link rel="stylesheet" href="{{ asset('bundles/samugestionvm/css/nav_style.css') }}" type="text/css" media="all"/>
-{% endblock %}
+
 	{% if newValidation %}
 		<ul>
 			<li>
 				<a><img src="{{ asset('bundles/samugestionvm/images/new-pb.png') }}" alt="Problèmes en attente"></a>
 				<ul>
 					<li>
-						<span>{{ decompte }} problème(s) à valider</span>
+						<span> {{ decompte }} problème(s) à valider</span>
 						<a href="{{ path('samu_gestion_vm_indexNonValide') }}">Accéder</a>
 					</li>
 				</ul>

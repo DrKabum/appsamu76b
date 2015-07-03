@@ -1,6 +1,11 @@
 #nav {
-        background-color: rgb(194, 255, 240);
-        height: 38px;
+        background-color: #91BDB9;
+        height: 36px;
+        font-size: 14px;
+}
+
+#nav a {
+        color: #3e3e3e;
 }
 #nav ul {
         margin: 0;
@@ -9,22 +14,17 @@
         text-align:center;
 }
 #nav li {
+        width: 210px;
         float: left;
         margin: auto;
         float: left;
         margin: auto;
         padding: 10px 10px 10px 10px;
-        background-color: rgb(194, 255, 240);
+        background-color: #91BDB9;
         border-right: solid rgb(216, 216, 216) 1px;
-}
 
-#menu li a {
-        display: block;
-        width: 100px;
-        color: white;
-        text-decoration: none;
-        padding: 5px;
-} 
+}
+ 
 #nav ul li ul {
         display: none;
 }
@@ -32,7 +32,7 @@
         text-decoration: none;
 }
 #nav li a:hover {
-        color: #ffd700;
+        color: #A3A3A3;
 }
 
 #nav ul li:hover ul {
@@ -40,21 +40,55 @@
  }
 #nav li:hover ul li {
         float:none;
+        position: relative;
+        right: 10px;
+        top:10px;
+        background-color: #fff0f8
  }
  #nav li ul {
         position:absolute;
  }
 
+   
+/*------------------------------------------------------*/
+/*------------- Bounton valiation des problèmes --------*/
+/*------------------------------------------------------*/
+
+
 #nav_validation {
         float: right;
 }
-#nav_validation ul li {
+
+#nav_validation ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        text-align:center;
+}
+#nav_validation ul li, #nav_home ul li {
         padding-top: 0px;
         padding-bottom: 0px;
-        height: 38px;
+        height: 36px;
+        width: 70px;
  }
 
-#nav_validation ul li img {
+#nav_validation ul li img, #nav_home ul li img {
         position: relative;
-        top:3px;
+        top:2px;
+}
+
+
+} 
+#nav_validation li:hover ul li {
+        float:none;
+        position: relative;
+        right: 100px;
+        top:0px;
+        width: 210px;
+}
+
+#nav_validation ul li ul li {
+        position: relative;
+        right: 150px;  
+        width: 210px;
 }

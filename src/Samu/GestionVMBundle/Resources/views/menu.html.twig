@@ -4,12 +4,14 @@
 {% endblock %}
 
 <div id="nav">
-	<ul class="nav_home">
-		<li>
-			<a href="{{ path('samu_gestion_vm_index') }}">Accueil</a>
-		</li>
-	</ul>
-	<ul class="nav_add">
+	<div id="nav_home">
+		<ul>
+			<li class="nav_home">
+				<a href="{{ path('samu_gestion_vm_index') }}"><img src="{{ asset('bundles/samugestionvm/images/home-32.png') }}" alt="Accueil"></a>
+			</li>
+		</ul>
+	</div>
+	<ul>
 		<li>
 			<a href="#">Ajouter un nouveau problème</a>
 			<ul class="nav_add_jquery">
