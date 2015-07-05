@@ -11,6 +11,7 @@
 			</li>
 		</ul>
 	</div>
+{% if is_granted('ROLE_STAFF') %}
 	<ul>
 		<li>
 			<a href="#">Ajouter un nouveau problème</a>
@@ -20,6 +21,8 @@
 			</ul>
 		</li>
 	</ul>
+{% endif %}
+
 	<ul class="nav_report" >
 		<li>
 			<a href="#">Signaler un problème</a>
@@ -29,11 +32,15 @@
 		    </ul>
 		</li>	
 	</ul>
+
+{% if is_granted('ROLE_STAFF') %}
 	<ul class="nav_parc">
 		<li>
 			<a href="{{ path('samu_gestion_vm_entitiesIndex') }}">Gérer le parc</a>
 		</li>
 	</ul>
+{% endif %}
+
 {% if is_granted('ROLE_STAFF') %}
 	<div id="nav_validation">
 		{{ render(controller('SamuGestionVMBundle:ProblemeVM:countNonValide')) }} 
