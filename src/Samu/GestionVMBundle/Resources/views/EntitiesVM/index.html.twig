@@ -15,7 +15,7 @@
 
 	<h2>Gestion du parc véhicule :</h2>
 	<a href="{{ path('samu_gestion_vm_entitiesAdd', {'type' : 'vehicule'}) }}">Ajouter un véhicule</a>
-	<p>Modifier/supprimer les informations :</p>
+	<p>Modifier les informations/supprimer un véhicule :</p>
 	<ul>
 	{% for vehicule in vehicules %}
 		<li>
@@ -26,6 +26,12 @@
 		</li>
 	{% endfor %}
 	</ul>
+
+	<h2>Gestion du parc matériel :</h2>
+	<a href="{{ path('samu_gestion_vm_entitiesAdd', {'type' : 'materiel'}) }}">Ajouter un matériel</a>
+	<p>Modifier les informations/supprimer un matériel :</p>
+<!--A FINIR-->
+
 	<h2>Veuillez choisir un historique à consulter :</h2>
 
 	<ul>
