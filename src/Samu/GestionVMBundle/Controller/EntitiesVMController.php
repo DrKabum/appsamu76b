@@ -211,4 +211,15 @@ class EntitiesVMController extends Controller
 			'entity' => $entity,
 			'form'   => $formulaire);
 	}
+
+	public function historiqueAction($id, $type)
+	{
+		$em = $this->getDoctrine()->getManager();
+		$entity = $em->getRepository(findTypeRepositoryPath($type))->findOneById();
+		$template = 'SamuGestionVMBundle:EntitiesVM:historique-' . $type;
+
+		return $this->render($template, array(
+			'entity' => $entity
+		));
+	}
 }
