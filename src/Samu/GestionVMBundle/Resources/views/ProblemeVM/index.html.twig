@@ -1,6 +1,7 @@
 {# @Variables : 
 array : listPbVehicules
 array : listPbMateriel
+array : listVehicules
 int   : nbVehicules
 bool  : validation
 #}
@@ -22,7 +23,7 @@ bool  : validation
 		{% for i in 1..listPbVehicules[listPbVehicules|length - 1].vehicule.id %}
 			<div class="probleme_view">
 				<div class="vehicule_name">
-					<p>{{ probleme.vehicule.name }}</p>
+					<p>{{ listVehicules[i-1].name }}</p>
 				</div>
 
 				{% for probleme in listPbVehicules if probleme.vehicule.id == i %}
