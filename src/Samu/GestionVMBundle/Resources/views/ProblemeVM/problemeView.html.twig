@@ -3,33 +3,38 @@ array : listPbVehicules
 array : listPbMateriel
 bool : validation
 #}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('bundles/samugestionvm/css/probleme_view.css') }}" type="text/css" media="all"/>
+{% endblock %}
 
-<li>#
-	<a href="{{ path('samu_gestion_vm_problemeView', {'id' : probleme.id }) }}">{{ probleme.id }}</a></li> 
-	{{ render(controller('SamuGestionVMBundle:ProblemeVM:isProblemNew', {'id' : probleme.id })) }} 
-	{% if validation and is_granted('ROLE_STAFF') and probleme.staffValidated == 0 %}
-	 - <a href="{{ path('samu_gestion_vm_problemeValidate', {'id' : probleme.id }) }}">Valider</a></li>
+<div id="probleme_view">
+	<div class="vehicule_name"><p>{{ probleme.vehicule.name }}</p></div>
+	<li>#
+		<a href="{{ path('samu_gestion_vm_problemeView', {'id' : probleme.id }) }}">{{ probleme.id }}</a></li> 
+		{{ render(controller('SamuGestionVMBundle:ProblemeVM:isProblemNew', {'id' : probleme.id })) }} 
+		{% if validation and is_granted('ROLE_STAFF') and probleme.staffValidated == 0 %}
+		 - <a href="{{ path('samu_gestion_vm_problemeValidate', {'id' : probleme.id }) }}">Valider</a></li>
+		{% endif %}
+
+		{% if is_granted('ROLE_STAFF') and probleme.active %}
+			 - <a href="{{ path('samu_gestion_vm_problemeClasser', {'id' : probleme.id }) }}">Cloturer</a>
+		{% endif %}
+	
+	<li>Ajouté le {{ probleme.dateDebut|date('d/m/Y') }} par {{ probleme.author }}</li>
+	<li>{{ probleme.title }}
+	<li>{{probleme.content}}</li>
+	{% if probleme.dateModif %}
+		<li>Modifié le {{ probleme.datemodif|date('d/m/Y') }} par {{ probleme.author }}</li>
 	{% endif %}
-
-	{% if is_granted('ROLE_STAFF') and probleme.active %}
-		 - <a href="{{ path('samu_gestion_vm_problemeClasser', {'id' : probleme.id }) }}">Cloturer</a>
+	{% if probleme.active %}
+		<li>Cloturé le {{ probleme.dateFin|date('d/m/Y')}}</li>
 	{% endif %}
+	{% for com in probleme.commentaires %}
+		<li>le {{ com.date|date('d/m/Y') }} par {{ com.author }}</li>
+		<li>{{ com.content }}</li>
+		<li>{{ render(controller('SamuGestionVMBundle:ProblemeCom:generateButton', {'id' : com.id, 'action' : 'edit'})) }} {{ render(controller('SamuGestionVMBundle:ProblemeCom:generateButton', {'id' : com.id, 'action' : 'delete'})) }}</li>
+	{% endfor %}
+		<a href="{{ path('samu_gestion_vm_addCom', { 'id': probleme.id }) }}">Commenter</a>
+		</br>
+</div>
 
-<li>{{ probleme.vehicule.name }}</li>
-<li>Ajouté le {{ probleme.dateDebut|date('d/m/Y') }} par {{ probleme.author }}</li>
-<li>{{ probleme.title }}
-<li>{{probleme.content}}</li>
-<li>{{ getDuree(probleme.dateDebut, probleme.dateFin) }}</li>
-{% if probleme.dateModif %}
-	<li>Modifié le {{ probleme.datemodif|date('d/m/Y') }} par {{ probleme.author }}</li>
-{% endif %}
-{% if probleme.active %}
-	<li>Cloturé le {{ probleme.dateFin|date('d/m/Y')}}</li>
-{% endif %}
-{% for com in probleme.commentaires %}
-	<li>le {{ com.date|date('d/m/Y') }} par {{ com.author }}</li>
-	<li>{{ com.content }}</li>
-	<li>{{ render(controller('SamuGestionVMBundle:ProblemeCom:generateButton', {'id' : com.id, 'action' : 'edit'})) }} {{ render(controller('SamuGestionVMBundle:ProblemeCom:generateButton', {'id' : com.id, 'action' : 'delete'})) }}</li>
-{% endfor %}
-	<a href="{{ path('samu_gestion_vm_addCom', { 'id': probleme.id }) }}">Commenter</a>
-	</br>
