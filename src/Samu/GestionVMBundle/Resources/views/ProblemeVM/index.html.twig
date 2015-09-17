@@ -22,9 +22,16 @@ bool  : validation
 		Nombre de problèmes : {{ listPbVehicules|length }}
 		{% for i in 1..listPbVehicules[listPbVehicules|length - 1].vehicule.id %}
 			<div class="probleme_view">
-				<div class="vehicule_name">
-					<p>{{ listVehicules[i-1].name }}</p>
-				</div>
+				{% set isThereProbleme = false %}
+				{% for probleme in listPbVehicules if probleme.vehicule.id == i %}
+					{% set isThereProbleme = true %}
+				{% endfor %}
+
+				{% if isThereProbleme %}
+					<div class="vehicule_name">
+						<p>{{ listVehicules[i-1].name }}</p>
+					</div>
+				{% endif %}
 
 				{% for probleme in listPbVehicules if probleme.vehicule.id == i %}
 					{% include 'SamuGestionVMBundle:ProblemeVM:problemeView.html.twig' %}
