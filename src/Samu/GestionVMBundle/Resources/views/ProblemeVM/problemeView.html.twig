@@ -19,7 +19,6 @@ bool : validation
 		{% if is_granted('ROLE_STAFF') and probleme.active %}
 			 - <a href="{{ path('samu_gestion_vm_problemeClasser', {'id' : probleme.id }) }}">Cloturer</a>
 		{% endif %}
-
 	
 	<li>Ajouté le {{ probleme.dateDebut|date('d/m/Y') }} par {{ probleme.author }}</li>
 	<li>{{ probleme.title }}
@@ -38,3 +37,4 @@ bool : validation
 		<a href="{{ path('samu_gestion_vm_addCom', { 'id': probleme.id }) }}">Commenter</a>
 		</br>
 </div>
+
