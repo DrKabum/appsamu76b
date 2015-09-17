@@ -15,6 +15,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class EntitiesVMController extends Controller
 {
+	/**
+	 * @Security("has_role('ROLE_USER')")
+	 */
 	public function indexAction()
 	{
 		$em = $this->getDoctrine()->getManager();
@@ -57,7 +60,7 @@ class EntitiesVMController extends Controller
 
 			$request->getSession()->getFlashBag()->add('notice', 'Nouveau véhicule/matériel créé.');
 
-			return $this->redirect($this->generateUrl('samu_gestion_vm_entitiesAdd', array('type' => $type)));
+			return $this->redirect($this->generateUrl('samu_gestion_vm_entitiesIndex'));
 		}
 
 		return $this->render('SamuGestionVMBundle:EntitiesVM:add.html.twig', array(
@@ -68,7 +71,7 @@ class EntitiesVMController extends Controller
 	/**
 	 * @Security("has_role('ROLE_STAFF')")
 	 */
-	public function deleteAction($type, $id)
+	public function deleteAction($type, $id, Request $request)
 	{
 		$em = $this->getDoctrine()->getManager();
 		$cible = $em->getRepository($this->findTypeRepositoryPath($type))->findOneById($id);
@@ -151,6 +154,9 @@ class EntitiesVMController extends Controller
 			'form' => $formulaire->createView()));
 	}
 
+	/**
+	 * @Security("has_role('ROLE_STAFF')")
+	 */
 	public function deleteMatCatAction(MaterielCategory $matcat)
 	{
 		$em = $this->getDoctrine()->getManager();
@@ -161,6 +167,9 @@ class EntitiesVMController extends Controller
 		return $this->redirect($this->generateUrl('samu_gestion_vm_entitiesMatCatViewIndex'));
 	}
 
+	/**
+	 * @Security("has_role('ROLE_STAFF')")
+	 */
 	public function editMatCatAction(MaterielCategory $matcat, Request $request)
 	{
 		$formulaire = $this->createForm(new MaterielCategoryType(), $matcat);
@@ -181,6 +190,9 @@ class EntitiesVMController extends Controller
 			'form' => $formulaire->createView()));
 	}
 
+	/**
+	 * @Security("has_role('ROLE_STAFF')")
+	 */
 	public function indexMatCatAction()
 	{
 		$em = $this->getDoctrine()->getManager();
@@ -210,5 +222,19 @@ class EntitiesVMController extends Controller
 		return array(
 			'entity' => $entity,
 			'form'   => $formulaire);
+	}
+
+	/**
+	 * @Security("has_role('ROLE_USER')")
+	 */
+	public function historiqueViewAction($id, $type)
+	{
+		$em = $this->getDoctrine()->getManager();
+		$entity = $em->getRepository($this->findTypeRepositoryPath($type))->findOneById($id);
+		$template = 'SamuGestionVMBundle:EntitiesVM:historique-' . $type . '.html.twig';
+
+		return $this->render($template, array(
+			'entity' => $entity
+		));
 	}
 }
