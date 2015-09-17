@@ -8,7 +8,7 @@ bool : validation
 {% endblock %}
 
 <div id="probleme_view">
-	<div class="vehicule_name"><p>{{ probleme.vehicule.name }}</p></div>
+	
 	<li>#
 		<a href="{{ path('samu_gestion_vm_problemeView', {'id' : probleme.id }) }}">{{ probleme.id }}</a></li> 
 		{{ render(controller('SamuGestionVMBundle:ProblemeVM:isProblemNew', {'id' : probleme.id })) }} 
@@ -21,7 +21,7 @@ bool : validation
 		{% endif %}
 	
 	<li>Ajouté le {{ probleme.dateDebut|date('d/m/Y') }} par {{ probleme.author }}</li>
-	<li>{{ probleme.title }}
+	<li>{{ probleme.title }} depuis {{ getDuree(probleme.dateDebut, probleme.dateFin) }}
 	<li>{{probleme.content}}</li>
 	{% if probleme.dateModif %}
 		<li>Modifié le {{ probleme.datemodif|date('d/m/Y') }} par {{ probleme.author }}</li>
