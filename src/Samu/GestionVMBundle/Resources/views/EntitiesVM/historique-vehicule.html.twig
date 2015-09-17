@@ -1,0 +1,17 @@
+{# @var :
+	Vehicule/Materiel : entity #}
+
+{% block gvm_actionbody %}
+	<h2>Consulter l'historique de {{ entity.name }} :</h2>
+
+{% for probleme in entity.problemes %}
+	<table>
+		<tr>
+			<td>{{ probleme.dateDebut|date('d/m/Y') }}</td>
+			<td>{{ probleme.title }}</td>
+			<td><a href="{{ path('samu_gestion_vm_problemeView', { 'id' : probleme.id }) }}">Détail</a></td>
+		</tr>
+	</table>
+{% endfor %}
+
+{% endblock %}

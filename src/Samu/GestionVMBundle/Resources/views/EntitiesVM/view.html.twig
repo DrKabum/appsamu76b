@@ -23,5 +23,15 @@
 
 		<a href="{{ path('samu_gestion_vm_entitiesEdit', {'type' : type, 'id' : entity.id}) }}">Modifier</a>
 	</div>
+
+	<div>
+		<h1>Historique des problèmes :</h1>
+
+		<div id="historique">
+
+			{{ render(controller('SamuGestionVMBundle:EntitiesVM:historiqueView', {'id' : entity.id, 'type' : type})) }}
+			
+		</div>
+	</div>
 {% endblock %}
 

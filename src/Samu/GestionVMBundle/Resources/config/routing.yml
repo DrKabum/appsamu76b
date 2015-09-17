@@ -111,6 +111,13 @@ samu_gestion_vm_entitiesMatCatViewIndex:
     requirements:
         id:  \d+
 
+samu_gestion_vm_historiqueView:
+    path:     /historique-{type}/{id}
+    defaults: { _controller: SamuGestionVMBundle:EntitiesVM:historiqueView }
+    requirements:
+        id:   \d+
+        type: vehicule|materiel
+
 #--------Commentaires-------#
 samu_gestion_vm_addCom:
     path:     /comment/add/{id}
