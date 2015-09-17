@@ -19,6 +19,7 @@ bool : validation
 <li>Ajouté le {{ probleme.dateDebut|date('d/m/Y') }} par {{ probleme.author }}</li>
 <li>{{ probleme.title }}
 <li>{{probleme.content}}</li>
+<li>{{ getDuree(probleme.dateDebut, probleme.dateFin) }}</li>
 {% if probleme.dateModif %}
 	<li>Modifié le {{ probleme.datemodif|date('d/m/Y') }} par {{ probleme.author }}</li>
 {% endif %}

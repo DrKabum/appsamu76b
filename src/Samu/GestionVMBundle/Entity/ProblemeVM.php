@@ -51,7 +51,7 @@ class ProblemeVM
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateFin", type="datetime")
+     * @ORM\Column(name="dateFin", type="datetime", nullable=true)
      */
     private $dateFin;
 
@@ -98,7 +98,6 @@ class ProblemeVM
     public function __construct()
     {
         $this->setDateDebut(new \Datetime);
-        $this->setDateFin(new \Datetime);
     }
 
     /**

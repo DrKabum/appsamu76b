@@ -11,12 +11,16 @@ class CalculeDateExtension extends \Twig_Extension
       );
 	}
 
-	public function getDureeProbleme(\Datetime $dateDebut, \Datetime $dateFin)
+	public function getDureeProbleme(\Datetime $dateDebut, $dateFin)
 	{
-		$interval = $dateDebut->diff($dateFin);
-		$interval->format('%a jours');
+		if(!$dateFin)
+		{
+			$dateFin = new \Datetime;
+		}
 
-		return $interval;
+		$interval = $dateDebut->diff($dateFin);
+
+		return $interval->format('%a jours');
 	}
 
 	public function getName()
