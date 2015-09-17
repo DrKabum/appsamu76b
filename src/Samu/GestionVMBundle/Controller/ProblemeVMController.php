@@ -20,7 +20,7 @@ class ProblemeVMController extends Controller
 		$listPbVehicules = $this->getDoctrine()
 		  ->getManager()
 		  ->getRepository('SamuGestionVMBundle:ProblemeVM')
-		  ->getProblemesVEnCours()
+		  ->getProblemesVParVehicule()
 		;
 
 		$listPbMateriel = $this->getDoctrine()

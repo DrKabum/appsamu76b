@@ -13,6 +13,24 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
  */
 class ProblemeVMRepository extends EntityRepository
 {
+	public function getProblemesVParVehicule()
+	{
+		$qb = $this->createQueryBuilder('p');
+
+		$query = $qb
+			->select('p')
+			->where('p.active = 1')
+			->andWhere('p.staffValidated = 1')
+			->andWhere($qb->expr()->isNotNull('p.vehicule'))
+			->leftJoin('p.commentaires', 'c')
+			->addSelect('c')
+			->orderBy('p.vehicule', 'ASC')
+			->getQuery()
+		;
+
+		return $query->getResult();
+	}
+
 	public function getProblemesVEnCours()
 	{
 		$qb = $this->createQueryBuilder('p');
