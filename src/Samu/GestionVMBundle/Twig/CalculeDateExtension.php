@@ -20,7 +20,7 @@ class CalculeDateExtension extends \Twig_Extension
 
 		$interval = $dateDebut->diff($dateFin);
 
-		return $interval->format('%a jours');
+		return $interval->format('%a jour(s)');
 	}
 
 	public function getName()
