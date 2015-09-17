@@ -56,13 +56,10 @@ footer  {
 
 section {
 	display: block;
-	width: 800px;
+	width: 990px;
 	margin-top: 20px;
 	margin:0 auto;
 	padding-top: 10px;
-	border: 1px solid;
-	border-radius: 10px;
-	
 }
 
 
