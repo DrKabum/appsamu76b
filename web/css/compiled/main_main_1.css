@@ -44,7 +44,7 @@ nav {
 }
 
 footer  {
-	position: relative;
+	position: absolute;
 	bottom: 0px;
 	width: 100%;
 	max-width: 1024px;
@@ -56,12 +56,9 @@ footer  {
 
 section {
 	display: block;
-	width: 800px;
+	width: 990px;
 	margin-top: 20px;
 	margin:0 auto;
 	padding-top: 10px;
-	border: 1px solid;
-	border-radius: 10px;
-	
 }
 

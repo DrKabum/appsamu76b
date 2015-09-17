@@ -44,7 +44,7 @@ nav {
 }
 
 footer  {
-	position: relative;
+	position: absolute;
 	bottom: 0px;
 	width: 100%;
 	max-width: 1024px;
@@ -56,13 +56,10 @@ footer  {
 
 section {
 	display: block;
-	width: 800px;
+	width: 990px;
 	margin-top: 20px;
 	margin:0 auto;
 	padding-top: 10px;
-	border: 1px solid;
-	border-radius: 10px;
-	
 }
 
 
@@ -227,3 +224,34 @@ body {
  }
 
 
+
+#probleme_view {
+	margin:0 auto; 
+	margin-bottom: 10px;
+	width: 90%;
+	background: #FFFFFF;
+	border: 3px solid;
+	border-radius: 10px;
+}
+
+#probleme_view li {
+	list-style: none;
+}
+
+.vehicule_name {
+	margin: 0 auto; 
+	text-align: center;
+	width: 990px;
+	height: 30px;
+	background-color: #ABE3BF;
+	border-radius:10px 10px  0 0; 
+}
+
+.vehicule_name p {
+	font-size: 1.2em;
+	font-style: bold;
+	vertical-align: middle;
+	line-height: 30px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
