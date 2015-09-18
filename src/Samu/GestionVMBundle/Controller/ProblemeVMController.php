@@ -183,10 +183,10 @@ class ProblemeVMController extends Controller
 	public function createFormWithType($type, $entity = null)
 	{
 		if($type ==='pbvehicule') {
-			if(null === $entity) { $entity = new ProblemeVM();}
+			if(!$entity) { $entity = new ProblemeVM();}
 			$formulaire = $this->createForm(new ProblemeVType(), $entity);
 		} elseif($type ==='pbmateriel') {
-			if(null === $entity) { $entity = new ProblemeVM();}
+			if(!$entity) { $entity = new ProblemeVM();}
 			$formulaire = $this->createForm(new ProblemeMType(), $entity);
 		} else {
 			throw $this->createNotFoundException('Demande d\'ajout incorrecte');
