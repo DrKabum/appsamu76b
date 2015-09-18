@@ -1,3 +1,7 @@
+html, body, #block_page {
+	height: 100%;
+}
+
 html, body {
 	width: 100%;
 	max-width: 1024px;
@@ -42,8 +46,9 @@ nav {
 }
 
 footer  {
-	position: absolute;
-	bottom: 0px;
+	position: relative;
+	bottom: -150px;
+	height: 80px;
 	width: 100%;
 	max-width: 1024px;
 	background: #667F7D;
@@ -51,6 +56,10 @@ footer  {
 	padding-bottom: 20px;
 }
 
+#block_page {
+	height: auto;
+	min-height: 100%;
+}
 
 section {
 	display: block;
