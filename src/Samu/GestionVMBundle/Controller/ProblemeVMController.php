@@ -37,10 +37,6 @@ class ProblemeVMController extends Controller
 
 		$testPb = count($listPbVehicules) + count($listPbMateriel);
 
-		if(!$testPb) {
-			$this->get('session')->getFlashBag()->add('notice', 'Aucun problème en cours.');
-		}
-
 		return $this->render('SamuGestionVMBundle:ProblemeVM:index.html.twig', array(
 			'listPbVehicules' => $listPbVehicules,
 			'listPbMateriel'  => $listPbMateriel,
