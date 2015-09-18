@@ -21,11 +21,9 @@ bool : validation
 		<div>
 			{% if is_granted('ROLE_STAFF') and probleme.active %}
 					<a href="{{ path('samu_gestion_vm_problemeClasser', {'id' : probleme.id }) }}">Cloturer</a>
-				{% if vehicule is defined and vehicule == true or typePb == 'pbvehicule' %}
-					<a href="{{ path('samu_gestion_vm_problemeEdit', {'typePb' : 'pbvehicule', 'id' : probleme.id }) }}">Editer</a>
-				{% else %}	
-					<a href="{{ path('samu_gestion_vm_problemeEdit', {'typePb' : 'pbmateriel', 'id' : probleme.id }) }}">Editer</a>
-				{% endif %}	
+				
+					<a href="{{ path('samu_gestion_vm_problemeEdit', {'id' : probleme.id }) }}">Editer</a>
+				
 					<a href="{{ path('samu_gestion_vm_problemeDelete', {'id' : probleme.id }) }}">Supprimer</a>
 			{% endif %}
 		</div>
