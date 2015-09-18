@@ -1,4 +1,4 @@
-#probleme_view_content {
+#probleme_view_block {
 	margin:0 auto; 
 	margin-bottom: 10px;
 	width: 100%;
@@ -6,7 +6,7 @@
 	border-radius: 0px 0px 10px 10px;
 }
 
-#probleme_view_content li {
+#probleme_view_block li {
 	list-style: none;
 }
 
@@ -30,8 +30,25 @@
 }
 
 .probleme_view_title {
-	background: red;
-	height: 60px;
+	display: block;
+	float: left;
+	background: #ABE3BF;
+	height: 30px;
+	width: 100%;
+}
 
+.pvt_id  { 
+	float: left;
+}
 
+.pvt_title {
+	float: left;
+}
+
+.pvt_author {
+	float: left;
+}
+
+.pvt_validation{
+	float: left;
 }
