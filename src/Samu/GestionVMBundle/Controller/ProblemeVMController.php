@@ -163,7 +163,9 @@ class ProblemeVMController extends Controller
 		$probleme->setActive(0);
 		$em->flush();
 
-		return $this->redirect($this->generateUrl('samu_gestion_vm_problemeView', array('id' => $probleme->getId())));
+		$this->get('session')->getFlashBag()->add("notice", "Le problème n°" . $probleme->getId() . " a été validé.");
+
+		return $this->redirect($this->generateUrl('samu_gestion_vm_index'));
 	}
 
 	public function submitProblem(Request $request, ProblemeVM $probleme, $staffmode = false)
