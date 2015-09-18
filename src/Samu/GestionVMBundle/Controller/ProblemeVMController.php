@@ -81,11 +81,11 @@ class ProblemeVMController extends Controller
 	/**
 	 * @Security("has_role('ROLE_USER')")
 	 */
-	public function editAction($typePb, ProblemeVM $probleme, Request $request)
+	public function editAction(ProblemeVM $probleme, Request $request)
 	{
 		$em = $this->getDoctrine()->getManager();
 
-		$formulaire = $this->createFormWithType($typePb, $probleme);
+		$formulaire = $this->createFormWithType($probleme);
 
 		if($formulaire['form']->handleRequest($request)->isValid())
 		{
@@ -180,12 +180,12 @@ class ProblemeVMController extends Controller
 		$em->flush();
 	}
 
-	public function createFormWithType($type, $entity = null)
+	public function createFormWithType(ProblemeVM $probleme = null, $type = null, $entity = null)
 	{
-		if($type ==='pbvehicule') {
+		if($type ==='pbvehicule' OR $probleme->isPbVehicule()) {
 			if(!$entity) { $entity = new ProblemeVM();}
 			$formulaire = $this->createForm(new ProblemeVType(), $entity);
-		} elseif($type ==='pbmateriel') {
+		} elseif($type ==='pbmateriel' OR $probleme->isPbMateriel()) {
 			if(!$entity) { $entity = new ProblemeVM();}
 			$formulaire = $this->createForm(new ProblemeMType(), $entity);
 		} else {
