@@ -37,10 +37,6 @@ class ProblemeVMController extends Controller
 
 		$testPb = count($listPbVehicules) + count($listPbMateriel);
 
-		if(!$testPb) {
-			$this->get('session')->getFlashBag()->add('notice', 'Aucun problème en cours.');
-		}
-
 		return $this->render('SamuGestionVMBundle:ProblemeVM:index.html.twig', array(
 			'listPbVehicules' => $listPbVehicules,
 			'listPbMateriel'  => $listPbMateriel,
@@ -85,11 +81,11 @@ class ProblemeVMController extends Controller
 	/**
 	 * @Security("has_role('ROLE_USER')")
 	 */
-	public function editAction($typePb, ProblemeVM $probleme, Request $request)
+	public function editAction(ProblemeVM $probleme, Request $request)
 	{
 		$em = $this->getDoctrine()->getManager();
 
-		$formulaire = $this->createFormWithType($typePb, $probleme);
+		$formulaire = $this->createFormWithType($probleme);
 
 		if($formulaire['form']->handleRequest($request)->isValid())
 		{
@@ -98,7 +94,8 @@ class ProblemeVMController extends Controller
 
 			$request->getSession()->getFlashBag()->add('notice', 'Modifications réussie.');
 
-			return $this->redirect($this->generateUrl('samu_gestion_vm_problemeView', array('id' => $probleme->getId())));
+			return $this->redirect($this->generateUrl('samu_gestion_vm_problemeView', array(
+				'id'     => $probleme->getId())));
 		}
 
 		return $this->render('SamuGestionVMBundle:ProblemeVM:edit.html.twig', array(
@@ -156,6 +153,9 @@ class ProblemeVMController extends Controller
 
 	}
 
+	/**
+	 *@Security("has_role('ROLE_STAFF')")
+	 */
 	public function classerAction(ProblemeVM $probleme)
 	{
 		$em = $this->getDoctrine()->getManager();
@@ -163,9 +163,14 @@ class ProblemeVMController extends Controller
 		$probleme->setActive(0);
 		$em->flush();
 
-		return $this->redirect($this->generateUrl('samu_gestion_vm_problemeView', array('id' => $probleme->getId())));
+		$this->get('session')->getFlashBag()->add("notice", "Le problème n°" . $probleme->getId() . " a été validé.");
+
+		return $this->redirect($this->generateUrl('samu_gestion_vm_index'));
 	}
 
+	/**
+	 *@Security("has_role('ROLE_USER')")
+	 */
 	public function submitProblem(Request $request, ProblemeVM $probleme, $staffmode = false)
 	{
 		$em = $this->getDoctrine($request)->getManager();
@@ -176,20 +181,20 @@ class ProblemeVMController extends Controller
 		$em->flush();
 	}
 
-	public function createFormWithType($type, $entity = null)
+	public function createFormWithType(ProblemeVM $probleme = null, $type = null)
 	{
-		if($type ==='pbvehicule') {
-			if(null === $entity) { $entity = new ProblemeVM();}
-			$formulaire = $this->createForm(new ProblemeVType(), $entity);
-		} elseif($type ==='pbmateriel') {
-			if(null === $entity) { $entity = new ProblemeVM();}
-			$formulaire = $this->createForm(new ProblemeMType(), $entity);
+		if($type ==='pbvehicule' OR $probleme->isPbVehicule()) {
+			if(!$probleme) { $probleme = new ProblemeVM();}
+			$formulaire = $this->createForm(new ProblemeVType(), $probleme);
+		} elseif($type ==='pbmateriel' OR $probleme->isPbMateriel()) {
+			if(!$probleme) { $probleme = new ProblemeVM();}
+			$formulaire = $this->createForm(new ProblemeMType(), $probleme);
 		} else {
 			throw $this->createNotFoundException('Demande d\'ajout incorrecte');
 		}
 
 		return array(
-			'entity' => $entity,
+			'probleme' => $probleme,
 			'form'   => $formulaire);
 	}
 
@@ -216,19 +221,30 @@ class ProblemeVMController extends Controller
 			'isNew' 	=> $isNew));
 	}
 
+	/**
+	 *@Security("has_role('ROLE_USER')")
+	 */
 	public function indexNonValideAction()
 	{
 		$listPbVehicules = $this
 			->getDoctrine()
 			->getManager()
 			->getRepository('SamuGestionVMBundle:ProblemeVM')
-			->getProblemesVNonValide();
+			->getProblemesVNonValide()
+		;
 
 		$listPbMateriel = $this
 			->getDoctrine()
 			->getManager()
 			->getRepository('SamuGestionVMBundle:ProblemeVM')
-			->getProblemesMNonValide();
+			->getProblemesMNonValide()
+		;
+
+			$listVehicules = $this->getDoctrine()
+			->getManager()
+			->getRepository('SamuGestionVMBundle:Vehicule')
+			->findAll()
+		;
 
 		$testPb = count($listPbVehicules) + count($listPbMateriel);
 
@@ -240,6 +256,7 @@ class ProblemeVMController extends Controller
 		return $this->render('SamuGestionVMBundle:ProblemeVM:index.html.twig', array(
 			'listPbVehicules' => $listPbVehicules,
 			'listPbMateriel'  => $listPbMateriel,
+			'listVehicules'   => $listVehicules,
 			'validation'      => 1
 		));
 	}

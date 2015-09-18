@@ -21,7 +21,9 @@
 		<li>
 			<a href="{{ path('samu_gestion_vm_entitiesEdit', {'type' : 'vehicule', 'id' : vehicule.id}) }}">{{ vehicule.name }}</a>
 			<a href="{{ path('samu_gestion_vm_entitiesDelete', {'type' : 'vehicule', 'id' : vehicule.id}) }}">
-				<img src="{{ asset('bundles/samugestionvm/images/delete.png') }}">
+				{% image '@SamuGestionVMBundle/Resources/public/images/delete.png' %}
+					<img src="{{ asset_url }}" alt="Supprimer">
+				{% endimage %}
 			</a>
 		</li>
 	{% endfor %}

@@ -5,7 +5,11 @@
 		<div class:"btn_validation">
 			<ul>
 				<li>
-					<a><img src="{{ asset('bundles/samugestionvm/images/new-pb.png') }}" alt="Problèmes en attente"></a>
+					<a>
+						{% image '@SamuGestionVMBundle/Resources/public/images/new-pb.png' %}
+							<img src="{{ asset_url }}" alt="Problèmes en attente">
+						{% endimage %}
+					</a>
 					<ul>
 						<li>
 							<a href="{{ path('samu_gestion_vm_indexNonValide') }}">{{ decompte }} problème(s) à valider</a>
@@ -16,7 +20,11 @@
 		{% else %}
 			<ul>
 				<li>
-					<a><img src="{{ asset('bundles/samugestionvm/images/no-new-pb.png') }}" alt="Pas de problème en attente"></a>
+					<a>
+						{% image '@SamuGestionVMBundle/Resources/public/images/no-new-pb.png' %}
+							<img src="{{ asset_url }}" alt="Pas de problème en attente">
+						{% endimage %}
+					</a>
 					<ul>
 						<li>
 							<span>Pas de problème en attente</span>

@@ -12,18 +12,22 @@
 	  		'bundles/samugestionvm/css/probleme_view.css'
 		%}
 	  		<link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
-
-
-
 		{% endstylesheets %}
 	{% endblock %}
 </head>
+
 <body>
 	{% block body %}
 	{% endblock %}
-</body>
-<div class="footer">
+
 	{% block footer %}
 	{% endblock %}
-</footer>
+
+	{% block javascripts %}
+		{% javascripts  
+			"@SamuGestionVMBundle/Resources/public/js/jquery.min.js" %}
+			<script type="text/javascript" src="{{ asset_url }}"></script>
+		{% endjavascripts %}
+	{% endblock %}
+</body>
 </html>
