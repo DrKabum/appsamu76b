@@ -13,7 +13,9 @@ bool  : validation
 {% endblock %}
 {% block gvm_actionbody %}
 	{% for flashMessage in app.session.flashbag.get('notice') %}
-		<p>{{ flashMessage }}</p>
+		<div class='flashbag'>
+			<p>{{ flashMessage }}</p>
+		</div>	
 	{% endfor %}
 	<h1>Tableau de bord</h1>
 
