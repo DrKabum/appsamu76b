@@ -7,7 +7,11 @@
 	<div id="nav_home">
 		<ul>
 			<li class="nav_home">
-				<a href="{{ path('samu_gestion_vm_index') }}"><img src="{{ asset('bundles/samugestionvm/images/home-32.png') }}" alt="Accueil"></a>
+				<a href="{{ path('samu_gestion_vm_index') }}">
+					{% image '@SamuGestionVMBundle/Resources/public/images/home-32.png' %}
+    					<img src="{{ asset_url }}" alt="Accueil" />
+					{% endimage %}
+				</a>
 			</li>
 		</ul>
 	</div>
