@@ -59,3 +59,11 @@ section {
 	padding-top: 10px;
 }
 
+/*------------- Flashbags --------------*/
+
+.flashbag {
+	width: 150px;
+	height: 60px;
+	background: red;
+	margin: 0 auto;
+}

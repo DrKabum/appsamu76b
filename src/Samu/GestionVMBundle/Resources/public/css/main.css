@@ -1,12 +1,13 @@
 html, body {
 	width: 100%;
 	max-width: 1024px;
-	height: 100%;
 	background-color: #E7FFFD;
 	margin: 0 auto;
 }
 
 body{
+	height: auto;
+	background: #D9D9D9;
 	position: relative;
 	display: block;
 	color: black;
@@ -41,7 +42,7 @@ nav {
 }
 
 footer  {
-	position: relative;
+	position: absolute;
 	bottom: 0px;
 	width: 100%;
 	max-width: 1024px;

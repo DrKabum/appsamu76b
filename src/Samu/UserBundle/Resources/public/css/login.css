@@ -1,12 +1,11 @@
 body {
 	height: auto;
+	background: none;
+	position: absolute;
 }
-
 #login_header {
 	position: absolute;
 	top: 10px;
-
-
 }
 
 #login_header a {
