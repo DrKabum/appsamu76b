@@ -1,0 +1,37 @@
+#probleme_view_content {
+	margin:0 auto; 
+	margin-bottom: 10px;
+	width: 100%;
+	background: #FFFFFF;
+	border-radius: 0px 0px 10px 10px;
+}
+
+#probleme_view_content li {
+	list-style: none;
+}
+
+.vehicule_name {
+	margin: 0 auto; 
+	text-align: center;
+	width: 100%
+	;
+	height: 30px;
+	background-color: #ABE3BF;
+	border-radius:10px 10px  0 0; 
+}
+
+.vehicule_name p {
+	font-size: 1.2em;
+	font-style: bold;
+	vertical-align: middle;
+	line-height: 30px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.probleme_view_title {
+	background: red;
+	height: 60px;
+
+
+}

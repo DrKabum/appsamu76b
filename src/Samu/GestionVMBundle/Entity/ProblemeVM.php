@@ -377,4 +377,14 @@ class ProblemeVM
     {
         return $this->commentaires;
     }
+
+    public function isPbVehicule()
+    {
+        return $this->getVehicule() ? true : false;
+    }
+
+    public function isPbMateriel()
+    {
+        return $this->getMateriel() ? true : false;
+    }
 }
