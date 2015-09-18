@@ -1,7 +1,15 @@
 {# var : isNew (bool) #}
 
 {% if isNew %}
-	<img src="{{ asset('bundles/samugestionvm/images/new-topic.png') }}" alt="Nouveau problème">
+
+	{% image '@SamuGestionVMBundle/Resources/public/images/new-topic.png' %}
+		<img src="{{ asset_url }}" alt="Nouveau problème">
+	{% endimage %}				
+
 {% else %}
-	<img src="{{ asset('bundles/samugestionvm/images/old-topic.png') }}" alt="Problème connu">
+
+	{% image '@SamuGestionVMBundle/Resources/public/images/old-topic.png' %}
+		<img src="{{ asset_url }}" alt="Problème connu">
+	{% endimage %}
+
 {% endif %}
