@@ -220,13 +220,21 @@ class ProblemeVMController extends Controller
 			->getDoctrine()
 			->getManager()
 			->getRepository('SamuGestionVMBundle:ProblemeVM')
-			->getProblemesVNonValide();
+			->getProblemesVNonValide()
+		;
 
 		$listPbMateriel = $this
 			->getDoctrine()
 			->getManager()
 			->getRepository('SamuGestionVMBundle:ProblemeVM')
-			->getProblemesMNonValide();
+			->getProblemesMNonValide()
+		;
+
+			$listVehicules = $this->getDoctrine()
+			->getManager()
+			->getRepository('SamuGestionVMBundle:Vehicule')
+			->findAll()
+		;
 
 		$testPb = count($listPbVehicules) + count($listPbMateriel);
 
@@ -238,6 +246,7 @@ class ProblemeVMController extends Controller
 		return $this->render('SamuGestionVMBundle:ProblemeVM:index.html.twig', array(
 			'listPbVehicules' => $listPbVehicules,
 			'listPbMateriel'  => $listPbMateriel,
+			'listVehicules'   => $listVehicules,
 			'validation'      => 1
 		));
 	}
