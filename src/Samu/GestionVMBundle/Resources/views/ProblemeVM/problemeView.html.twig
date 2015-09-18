@@ -4,40 +4,43 @@ array : listPbMateriel
 bool : validation
 #}
 {% block stylesheets %}
-	<link rel="stylesheet" href="{{ asset('bundles/samugestionvm/css/probleme_view.css') }}" type="text/css" media="all"/>
+	{% stylesheets 'bundles/samugestionvm/css/probleme_view.css' filter='cssrewrite' %}
+    	<link rel="stylesheet" href="{{ asset_url }}" />
+	{% endstylesheets %}
 {% endblock %}
 
-<div id="probleme_view_content">
+<div id="probleme_view_block">
 	<div class="probleme_view_title">
-		<div >
+		<div class='pvt_id'>
 			{{ render(controller('SamuGestionVMBundle:ProblemeVM:isProblemNew', {'id' : probleme.id })) }} 
 		</div>
-		<div>
+		<div class='pvt_title'>
 			<a href="{{ path('samu_gestion_vm_problemeView', {'id' : probleme.id }) }}">{{ probleme.title }}</a>
 		</div>
-		<div>
+		<div class='pvt_author'>
 			Ajouté le {{ probleme.dateDebut|date('d/m/Y') }} par {{ probleme.author }}
 		</div>
-		<div>
+		<div class='pvt_validations'>
 			{% if is_granted('ROLE_STAFF') and probleme.active %}
 					<a href="{{ path('samu_gestion_vm_problemeClasser', {'id' : probleme.id }) }}">Cloturer</a>
-				{% if vehicule is defined and vehicule == true or typePb == 'pbvehicule' %}
-					<a href="{{ path('samu_gestion_vm_problemeEdit', {'typePb' : 'pbvehicule', 'id' : probleme.id }) }}">Editer</a>
-				{% else %}	
-					<a href="{{ path('samu_gestion_vm_problemeEdit', {'typePb' : 'pbmateriel', 'id' : probleme.id }) }}">Editer</a>
-				{% endif %}	
+				
+					<a href="{{ path('samu_gestion_vm_problemeEdit', { 'id' : probleme.id }) }}">Editer</a>
+			
 					<a href="{{ path('samu_gestion_vm_problemeDelete', {'id' : probleme.id }) }}">Supprimer</a>
 			{% endif %}
-		</div>
-		
-				{#{% if validation and is_granted('ROLE_STAFF') and probleme.staffValidated == 0 %}
+			{#{% if validation and is_granted('ROLE_STAFF') and probleme.staffValidated == 0 %}
 				 - <a href="{{ path('samu_gestion_vm_problemeValidate', {'id' : probleme.id }) }}">Valider</a></li>
 				{% endif %}#}
+		</div>
+		<div>
+
+		</div>
+	</div>		 
 				
 			
 			<li>{{ probleme.title }} depuis {{ getDuree(probleme.dateDebut, probleme.dateFin) }}
 			<li>{{probleme.content}}</li>
-	</div>
+	
 	
 	
 	{% if probleme.dateModif %}
