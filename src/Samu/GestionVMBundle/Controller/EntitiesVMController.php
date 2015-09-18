@@ -135,6 +135,10 @@ class EntitiesVMController extends Controller
 			'type'   => $type));
 	}
 
+	/**
+	 *@Security("has_role('ROLE_STAFF')")
+	 */
+
 	public function addMatCatAction(Request $request)
 	{
 		$matcat = new MaterielCategory();

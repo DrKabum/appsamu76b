@@ -152,6 +152,9 @@ class ProblemeVMController extends Controller
 
 	}
 
+	/**
+	 *@Security("has_role('ROLE_STAFF')")
+	 */
 	public function classerAction(ProblemeVM $probleme)
 	{
 		$em = $this->getDoctrine()->getManager();
@@ -164,6 +167,9 @@ class ProblemeVMController extends Controller
 		return $this->redirect($this->generateUrl('samu_gestion_vm_index'));
 	}
 
+	/**
+	 *@Security("has_role('ROLE_USER')")
+	 */
 	public function submitProblem(Request $request, ProblemeVM $probleme, $staffmode = false)
 	{
 		$em = $this->getDoctrine($request)->getManager();
@@ -214,6 +220,9 @@ class ProblemeVMController extends Controller
 			'isNew' 	=> $isNew));
 	}
 
+	/**
+	 *@Security("has_role('ROLE_USER')")
+	 */
 	public function indexNonValideAction()
 	{
 		$listPbVehicules = $this
