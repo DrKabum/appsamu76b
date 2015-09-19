@@ -1,0 +1,93 @@
+#nav {
+        background-color: #91BDB9;
+        height: 36px;
+        font-size: 14px;
+}
+
+#nav a {
+        color: #3e3e3e;
+}
+#nav ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        text-align:center;
+}
+#nav li {
+        width: 210px; 
+        float: left;
+        margin: auto;
+        padding: 10px 10px 10px 10px;
+        background-color: #91BDB9;
+        border-right: solid rgb(216, 216, 216) 1px;
+
+}
+#nav ul li ul {
+        display: none;
+}
+#nav a:link {
+        text-decoration: none;
+}
+#nav li a:hover {
+        color: #FBFBFB;
+}
+
+#nav ul li:hover ul {
+        display:block;
+ }
+#nav li:hover ul li {
+        float:none;
+        position: relative;
+        right: 10px;
+        top:10px;
+        background-color: #7DA3A0;
+ }
+ #nav li ul {
+        position:absolute;
+ }
+
+   
+/*--------------------------------------------------------------------*/
+/*----------- Bouton Home; Bounton validation des problèmes ----------*/
+/*--------------------------------------------------------------------*/
+
+#nav_validation ul li, #nav_home ul li {
+        padding: 0px 3px 0px 3px;
+        height: 36px;
+        width: 36px;
+ }
+#nav_validation ul li img, #nav_home ul li img {
+        position: relative;
+        top:2px;
+}
+
+#nav_validation {
+        float: none;
+}
+
+#nav_validation li {
+        margin: auto;
+        text-align:center;
+}
+
+#nav_validation ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        
+}
+
+} 
+#nav_validation li:hover ul li {
+        float:none;
+        position: relative;
+        right: 100px;
+        top:0px;
+        width: 210px;
+}
+
+#nav_validation ul li ul li {
+        position: relative;
+        right: 150px;  
+        width: 210px;
+}
