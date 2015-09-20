@@ -1,8 +1,8 @@
-html, body {
+html {
 	height: 100%;
 }
 
-html, body {
+html {
 	width: 100%;
 	max-width: 1024px;
 	background-color: #E7FFFD;
@@ -44,14 +44,13 @@ nav {
 	display: block;
 }
 
-footer  {
-	position: absolute;
-	bottom: 0px;
-	height: 80px;
-	width: 100%;
-	max-width: 1024px;
-	background: #667F7D;
-	color: #D9D7D3;
+footer {
+    bottom: 0px;
+    height: 80px;
+    width: 100%;
+    max-width: 1024px;
+    background: #667F7D;
+    color: #D9D7D3;
 }
 
 section {
