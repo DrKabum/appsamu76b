@@ -28,9 +28,25 @@ bool : validation
 		</div>
 		<div class='pvt_validations'>
 			{% if is_granted('ROLE_STAFF') and probleme.active %}
-					<a href="{{ path('samu_gestion_vm_problemeClasser', {'id' : probleme.id }) }}">Cloturer</a>
-					<a href="{{ path('samu_gestion_vm_problemeEdit', { 'id' : probleme.id }) }}">Editer</a>
-					<a href="{{ path('samu_gestion_vm_problemeDelete', {'id' : probleme.id }) }}">Supprimer</a>
+
+				<a href="{{ path('samu_gestion_vm_problemeClasser', {'id' : probleme.id }) }}">
+					{% image '@SamuGestionVMBundle/Resources/public/images/Check-24.png' %}
+						<img src="{{ asset_url }}" alt="Cloturer">
+					{% endimage %}
+				</a>
+
+				<a href="{{ path('samu_gestion_vm_problemeEdit', { 'id' : probleme.id }) }}">
+					{% image '@SamuGestionVMBundle/Resources/public/images/Data-Edit-24.png' %}
+						<img src="{{ asset_url }}" alt="Editer">
+					{% endimage %}
+				</a>
+
+				<a href="{{ path('samu_gestion_vm_problemeDelete', {'id' : probleme.id }) }}">
+					{% image '@SamuGestionVMBundle/Resources/public/images/Delete-24.png' %}
+						<img src="{{ asset_url }}" alt="Supprimer">
+					{% endimage %}
+				</a>
+				
 			{% endif %}
 			{#{% if validation and is_granted('ROLE_STAFF') and probleme.staffValidated == 0 %}
 				 - <a href="{{ path('samu_gestion_vm_problemeValidate', {'id' : probleme.id }) }}">Valider</a></li>

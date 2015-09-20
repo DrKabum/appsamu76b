@@ -62,11 +62,11 @@ class ProblemeVMController extends Controller
 	 */
 	public function addAction($typePb, Request $request)
 	{					
-		$formulaire = $this->createFormWithType($typePb);
+		$formulaire = $this->createFormWithType(null, $typePb);
 
 		if($formulaire['form']->handleRequest($request)->isValid())
 		{
-			$this->submitProblem($request, $formulaire['entity'], true);
+			$this->submitProblem($request, $formulaire['probleme'], true);
 
 			$request->getSession()->getFlashBag()->add('notice', 'Problème ajouté à la liste des problèmes en cours.');
 
@@ -94,8 +94,7 @@ class ProblemeVMController extends Controller
 
 			$request->getSession()->getFlashBag()->add('notice', 'Modifications réussie.');
 
-			return $this->redirect($this->generateUrl('samu_gestion_vm_problemeView', array(
-				'id'     => $probleme->getId())));
+			return $this->redirect($this->generateUrl('samu_gestion_vm_index'));
 		}
 
 		return $this->render('SamuGestionVMBundle:ProblemeVM:edit.html.twig', array(
@@ -181,17 +180,17 @@ class ProblemeVMController extends Controller
 		$em->flush();
 	}
 
-	public function createFormWithType(ProblemeVM $probleme = null, $type = null)
+	public function createFormWithType(ProblemeVM $probleme = null, $typePb = null)
 	{
-		if($type ==='pbvehicule' OR $probleme->isPbVehicule()) {
+		if($typePb ==='pbvehicule' OR !is_null($probleme) AND $probleme->isPbVehicule()) {
 			if(!$probleme) { $probleme = new ProblemeVM();}
 			$formulaire = $this->createForm(new ProblemeVType(), $probleme);
-		} elseif($type ==='pbmateriel' OR $probleme->isPbMateriel()) {
+		} elseif($typePb ==='pbmateriel' OR !is_null($probleme) AND $probleme->isPbMateriel()) {
 			if(!$probleme) { $probleme = new ProblemeVM();}
 			$formulaire = $this->createForm(new ProblemeMType(), $probleme);
 		} else {
 			throw $this->createNotFoundException('Demande d\'ajout incorrecte');
-		}
+		}				
 
 		return array(
 			'probleme' => $probleme,
