@@ -94,7 +94,7 @@ class ProblemeVMController extends Controller
 
 			$request->getSession()->getFlashBag()->add('notice', 'Modifications réussie.');
 
-			return $this->redirect($this->generateUrl('samu_gestion_vm_index');
+			return $this->redirect($this->generateUrl('samu_gestion_vm_index'));
 		}
 
 		return $this->render('SamuGestionVMBundle:ProblemeVM:edit.html.twig', array(
