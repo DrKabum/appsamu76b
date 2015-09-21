@@ -1,5 +1,5 @@
 var $flashbags = $('.flashbag');
 
 $flashbags.on('click', function() {
-	$(this).hide();
+	$(this).hide(1000);
 });

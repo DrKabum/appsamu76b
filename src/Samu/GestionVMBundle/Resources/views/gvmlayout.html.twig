@@ -2,7 +2,9 @@
 
 {% block stylesheets %}
 	{{ parent() }}
-	<link rel="stylesheet" href="{{ asset('bundles/samugestionvm/css/main.css') }}" type="text/css" media="all"/>
+	{% stylesheets 'bundles/samugestionvm/css/main.css' filter='cssrewrite' %}
+    	<link rel="stylesheet" href="{{ asset_url }}" />
+	{% endstylesheets %}
 {% endblock %}
 
 {% block title %}
@@ -12,8 +14,7 @@
 {% block body %}
 	
 			<header>
-				<h1>Gestion Véhicules et Matériel - 76B</h1>
-				<p>Projet en cours de développement.</p>	
+				{% include 'SamuGestionVMBundle::header.html.twig' %}
 			</header>
 
 			<nav>
