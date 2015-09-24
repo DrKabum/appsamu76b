@@ -17,15 +17,17 @@
 </head>
 
 <body>
-	{% block body %}
+	{% block body %}		
 	{% endblock %}
-
+	
 	{% block footer %}
 	{% endblock %}
 
 	{% block javascripts %}
-		{% javascripts  
-			"@SamuGestionVMBundle/Resources/public/js/jquery.min.js" %}
+		{% javascripts output="js/compiled/core.js"
+			"js/jquery.min.js"
+			
+			"@SamuGestionVMBundle/Resources/public/js/flashbags.js" %}
 			<script type="text/javascript" src="{{ asset_url }}"></script>
 		{% endjavascripts %}
 	{% endblock %}

@@ -1,6 +1,8 @@
 
 {% block stylesheets %}
-	<link rel="stylesheet" href="{{ asset('bundles/samugestionvm/css/nav_style.css') }}" type="text/css" media="all"/>
+	{% stylesheets 'bundles/samugestionvm/css/nav_style.css' filter='cssrewrite' %}
+    	<link rel="stylesheet" href="{{ asset_url }}" />
+	{% endstylesheets %}
 {% endblock %}
 
 <div id="nav">

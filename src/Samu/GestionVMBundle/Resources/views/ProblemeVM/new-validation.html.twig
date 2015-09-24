@@ -1,37 +1,35 @@
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{ asset('bundles/samugestionvm/css/nav_style.css') }}" type="text/css" media="all"/>
 {% endblock %}
-	{% if decompte %}
-		<div class:"btn_validation">
-			<ul>
-				<li>
-					<a>
-						{% image '@SamuGestionVMBundle/Resources/public/images/new-pb.png' %}
-							<img src="{{ asset_url }}" alt="Problèmes en attente">
-						{% endimage %}
-					</a>
-					<ul>
-						<li>
-							<a href="{{ path('samu_gestion_vm_indexNonValide') }}">{{ decompte }} problème(s) à valider</a>
-						</li>
-					</ul>
-				</li>
-			</ul>
-		{% else %}
-			<ul>
-				<li>
-					<a>
-						{% image '@SamuGestionVMBundle/Resources/public/images/no-new-pb.png' %}
-							<img src="{{ asset_url }}" alt="Pas de problème en attente">
-						{% endimage %}
-					</a>
-					<ul>
-						<li>
-							<span>Pas de problème en attente</span>
 
-						</li>
-					</ul>
-				</li>
-			</ul>	
-		</div>			
-	{% endif %}
+{% if decompte %}
+	<div class:"btn_validation">
+		<ul>
+			<li>
+				<a>
+					{% image '@SamuGestionVMBundle/Resources/public/images/nav-new-pb.png' %}
+						<img src="{{ asset_url }}" alt="Problèmes en attente">
+					{% endimage %}
+				</a>
+				
+						<a href="{{ path('samu_gestion_vm_indexNonValide') }}">{{ decompte }} problème(s) à valider</a>
+					
+			</li>
+		</ul>
+	{% else %}
+		<ul>
+			<li>
+				<a>
+					{% image '@SamuGestionVMBundle/Resources/public/images/nav-no-new-pb.png' %}
+						<img src="{{ asset_url }}" alt="Pas de problème en attente">
+					{% endimage %}
+				</a>
+			</li>
+			<li>	
+				<div class="btn_validation_message">
+					<p>Pas de problème en attente</p>
+				</div>		
+			</li>
+		</ul>	
+	</div>			
+{% endif %}

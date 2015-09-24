@@ -1,8 +1,12 @@
 body {
-	margin: 0;
 	height: auto;
-	background: none;
-	position: relative;
+}
+
+#login_header {
+	position: absolute;
+	top: 10px;
+
+
 }
 
 #login_header a {
