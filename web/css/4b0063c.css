@@ -1,9 +1,12 @@
+<<<<<<< HEAD
 nav {
         width: 100%;
         height: 36px;
         display: block;
 }
 
+=======
+>>>>>>> 68b02b3ba63e74aaee5270d2e7168620e309ea18
 #nav {
         background-color: #91BDB9;
         height: 36px;
@@ -68,14 +71,21 @@ nav {
 }
 
 #nav_validation {
+<<<<<<< HEAD
         float: left;
         padding-right: 4px;
+=======
+        float: none;
+>>>>>>> 68b02b3ba63e74aaee5270d2e7168620e309ea18
 }
 
 #nav_validation li {
         margin: auto;
         text-align:center;
+<<<<<<< HEAD
         border-right-width: 0px;
+=======
+>>>>>>> 68b02b3ba63e74aaee5270d2e7168620e309ea18
 }
 
 #nav_validation ul {
@@ -85,8 +95,14 @@ nav {
         
 }
 
+<<<<<<< HEAD
 #nav_validation li:hover ul li {
         float:left;
+=======
+} 
+#nav_validation li:hover ul li {
+        float:none;
+>>>>>>> 68b02b3ba63e74aaee5270d2e7168620e309ea18
         position: relative;
         right: 100px;
         top:0px;
@@ -97,6 +113,7 @@ nav {
         position: relative;
         right: 150px;  
         width: 210px;
+<<<<<<< HEAD
 }
 .btn_validation_message {
         width: 200px;
@@ -106,4 +123,6 @@ nav {
         vertical-align: middle;
         line-height: 36px
 
+=======
+>>>>>>> 68b02b3ba63e74aaee5270d2e7168620e309ea18
 }
