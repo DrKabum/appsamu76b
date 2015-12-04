@@ -69,11 +69,23 @@ bool : validation
 	{% if not probleme.active %}
 		<li>Cloturé le {{ probleme.dateFin|date('d/m/Y')}}</li>
 	{% endif %}
-	{% for com in probleme.commentaires %}
-		<li>le {{ com.date|date('d/m/Y') }} par {{ com.author }}</li>
-		<li>{{ com.content }}</li>
-		<li>{{ render(controller('SamuGestionVMBundle:ProblemeCom:generateButton', {'id' : com.id, 'action' : 'edit'})) }} {{ render(controller('SamuGestionVMBundle:ProblemeCom:generateButton', {'id' : com.id, 'action' : 'delete'})) }}</li>
-	{% endfor %}
-		<a href="{{ path('samu_gestion_vm_addCom', { 'id': probleme.id }) }}">Commenter</a>
-		</br>
+
+	<div class="coms"
+		{% for com in probleme.commentaires %}
+			<li>le {{ com.date|date('d/m/Y') }} par {{ com.author }}</li>
+			<li>{{ com.content }}</li>
+			<li>{{ render(controller('SamuGestionVMBundle:ProblemeCom:generateButton', {'id' : com.id, 'action' : 'edit'})) }} {{ render(controller('SamuGestionVMBundle:ProblemeCom:generateButton', {'id' : com.id, 'action' : 'delete'})) }}</li>
+		{% endfor %}
+	</div>
+
+	{# Commentaire AJAX #}
+	<div class="new-com" style="display:none">
+		<label for="com">Commenter : </label>
+		<input type="text" name="com" id="{{ probleme.id }}">
+		<input type="submit" value="Envoyer">
+	</div>
+
+	{# Si JS n'est pas activé, on commente à l'ancienne #}
+	<a href="{{ path('samu_gestion_vm_addCom', { 'id': probleme.id }) }}">Commenter</a>
+	</br>
 </div>
