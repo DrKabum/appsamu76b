@@ -14,6 +14,7 @@ body {
 	color: #D9D9D9;
 }
 
+/*----------------- Login Form -----------------*/
 #login_form {
 	width: 350px;
 	padding-left: 10px;
@@ -44,6 +45,20 @@ body {
 	margin-top: 20px;
 }
 
+
+/*------------------ Reset Form ------------------*/
+#reset_form {
+	width: 350px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	margin: 0 auto;
+	margin-top: 25%;
+	border-radius: 15px;
+	background: #D9D9D9;
+	color: #667F7D;
+}
 #_submit  {
 	width: 150px;
 	height: 20px;
