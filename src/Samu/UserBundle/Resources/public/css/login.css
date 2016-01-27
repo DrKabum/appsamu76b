@@ -18,8 +18,8 @@ body {
 	width: 350px;
 	padding-left: 10px;
 	padding-right: 10px;
-	padding-top: 30px;
-	padding-bottom: 30px;
+	padding-top: 20px;
+	padding-bottom: 20px;
 	margin: 0 auto;
 	margin-top: 25%;
 	border-radius: 15px;
@@ -35,34 +35,44 @@ body {
 }
 
 #login_form form {
-	width: 150px;
+	display: inline;
 	margin: 0 auto;
 }
 .btn_login_submit {
+	height: 30px;
 	text-align: center;
 	margin-top: 20px;
-	margin-bottom: 20px;
 }
 
-#_submit {
+#_submit  {
 	width: 150px;
 	height: 20px;
-
-
  }
+
+ #_submit:hover {
+ 	text-decoration: none;
+ }
+
  #username, #password {
  	height: 20px;
-
+ 	width: 164px;
+ 	font-size: 1em;
+ 	margin-bottom: 10px;
  }
 
  #passwordForget {
  	text-decoration: none;
 	color: grey;
+	font-size: 0.85em
  }
+
+#passwordForget:hover {
+	text-decoration: none;
+}
+
  .msg_error {
- 	width: 300px;
  	margin: 0 auto;
- 	margin-bottom: 10px;
+ 	margin-bottom: 20px;
  	padding-top: 10px;
  	padding-bottom: 10px;
  	background: rgb(255, 179, 25);
