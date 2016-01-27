@@ -9,3 +9,4 @@ var $flashbags = $('.flashbag');
 $flashbags.on('click', function() {
 	$(this).hide(1000);
 });
+$('.new-com').show();
