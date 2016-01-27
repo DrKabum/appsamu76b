@@ -78,14 +78,21 @@ bool : validation
 		{% endfor %}
 	</div>
 
-	{# Commentaire AJAX #}
+	{# Commentaires AJAX #}
 	<div class="new-com" style="display:none">
-		<label for="com">Commenter : </label>
-		<input type="text" name="com" id="{{ probleme.id }}">
-		<input type="submit" value="Envoyer">
+		{% image '@SamuGestionVMBundle/Resources/public/images/ajax-loader.gif' %}
+			<img src="{{ asset_url }}" alt="chargement" style="display:none">
+		{% endimage %}
+	</div>
+
+	<div class="add-com" style="display:none">
+		<form class="submit-com" action="{{ path('samu_gestion_vm_addCom', {'id' : probleme.id }) }}" method="post">
+			<label for="com">Commenter : </label>
+			<input type="text" name="com" id="com-text">
+			<input type="submit" value="Envoyer" id="submit">
+		</form>
 	</div>
 
 	{# Si JS n'est pas activé, on commente à l'ancienne #}
-	<a href="{{ path('samu_gestion_vm_addCom', { 'id': probleme.id }) }}">Commenter</a>
-	</br>
+	<a href="{{ path('samu_gestion_vm_addCom', { 'id': probleme.id }) }}" class="com-nojs">Commenter</a>
 </div>
