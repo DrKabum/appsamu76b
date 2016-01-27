@@ -15,7 +15,7 @@ body {
 }
 
 #login_form {
-	width: 321px;
+	width: 350px;
 	padding-left: 10px;
 	padding-right: 10px;
 	padding-top: 30px;
@@ -35,7 +35,7 @@ body {
 }
 
 #login_form form {
-	width: 150;
+	width: 150px;
 	margin: 0 auto;
 }
 .btn_login_submit {
@@ -43,11 +43,21 @@ body {
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
+
 #_submit {
-	width: 300px;
+	width: 150px;
 	height: 20px;
 
 
+ }
+ #username, #password {
+ 	height: 20px;
+
+ }
+
+ #passwordForget {
+ 	text-decoration: none;
+	color: grey;
  }
  .msg_error {
  	width: 300px;
