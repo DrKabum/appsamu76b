@@ -91,7 +91,7 @@ class ProblemeVM
     private $materiel;
 
     /**
-     * @ORM\OneToMany(targetEntity="Samu\GestionVMBundle\Entity\ProblemeCom", mappedBy="probleme")
+     * @ORM\OneToMany(targetEntity="Samu\GestionVMBundle\Entity\ProblemeCom", mappedBy="probleme", cascade={"remove"})
      */
     private $commentaires;
 
