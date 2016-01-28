@@ -144,7 +144,7 @@ class ProblemeComController extends Controller
 			"<div>" .
 			"<li>le " . $date->format('d/m/Y') . " par " . $auteur . "</li>" .
 			"<li>" . $contenu . "</li>" .
-			"<li><a href=\"" . $this->generateUrl('samu_gestion_vm_editCom', array('id' => $id)) . "\">Modifier</a>" . 
+			"<li><a href=\"" . $this->generateUrl('samu_gestion_vm_editCom', array('id' => $id)) . "\">Modifier</a> " . 
 			    "<a href=\"" . $this->generateUrl('samu_gestion_vm_deleteCom', array('id' => $id)) . "\">Supprimer</a></li>" .
 			"</div>",
 		    Response::HTTP_OK,

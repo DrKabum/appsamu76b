@@ -71,7 +71,7 @@ bool : validation
 	{% endif %}
 
 	{# Si JS n'est pas activé, on commente à l'ancienne #}
-	<div class="coms">
+	<div class="coms" id="{{ probleme.id }}">
 		{% for com in probleme.commentaires %}
 			<li>le {{ com.date|date('d/m/Y') }} par {{ com.author }}</li>
 			<li>{{ com.content }}</li>
@@ -87,7 +87,7 @@ bool : validation
 	</div>
 
 	<div class="add-com" style="display:none">
-		<form class="submit-com" action="{{ path('samu_gestion_vm_ajaxAdd', {'id' : probleme.id }) }}" method="post" >
+		<form class="submit-com" action="{{ path('samu_gestion_vm_ajaxAdd', {'id' : probleme.id }) }}" method="post" id="{{ probleme.id }}">
 			<label for="com">Commenter : </label>
 			<input type="text" name="com" id="com-text">
 			<input type="submit" value="Envoyer" id="submit">

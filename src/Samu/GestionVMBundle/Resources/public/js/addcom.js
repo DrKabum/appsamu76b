@@ -2,8 +2,10 @@ $('.add-com').show();
 
 $('.submit-com').submit(function(e) {
 	e.preventDefault();
-	var action  = $(this).attr('action');
+	var pb      = e.currentTarget.id;
+	var action  = e.currentTarget.action;
 	var donnees = 'content=' + $(this).children("#com-text").val();
+	console.log("pb :" + pb + ", action : " + action + ", donnees : " + donnees);
 
 	$.ajax({
 		url : action,
@@ -12,10 +14,8 @@ $('.submit-com').submit(function(e) {
 		dataType : 'html',
 		success : function(com, statut) 
 		{
-			/*$(this).append(com);
-			/*$(this).children("#com-text").val('');*/
-			console.log("Element : " + $(this).prop());
-			console.log(com);
+			$(".coms#" + pb).append(com);
+			$('.submit-com#' + pb + " input#com-text").val('');
 		},
 		error : function(resultat, statut, erreur) 
 		{
@@ -23,5 +23,3 @@ $('.submit-com').submit(function(e) {
 		}
 	});
 });
-
-/*trouver comment trouver le bon élément qui est undefined pour le moment avec cette fonction...*/
