@@ -75,7 +75,7 @@ bool : validation
 		{% for com in probleme.commentaires %}
 		<div class="combox" id="com{{ com.id }}">
 			<li>le {{ com.date|date('d/m/Y') }} par {{ com.author }}</li>
-			<li>{{ com.content }}</li>
+			<li class="combody" id="combody{{ com.id }}">{{ com.content }}</li>
 			<li>{{ render(controller('SamuGestionVMBundle:ProblemeCom:generateButton', {'id' : com.id, 'action' : 'edit'})) }} {{ render(controller('SamuGestionVMBundle:ProblemeCom:generateButton', {'id' : com.id, 'action' : 'delete'})) }}</li>
 		</div>
 		{% endfor %}
