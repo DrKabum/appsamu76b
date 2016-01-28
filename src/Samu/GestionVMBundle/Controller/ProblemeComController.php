@@ -60,6 +60,13 @@ class ProblemeComController extends Controller
 		}
 	}
 
+	public function ajaxDeleteAction(ProblemeCom $commentaire)
+	{
+		$em = $this->getDoctrine()->getManager();
+		$em->remove($commentaire);
+		$em->flush();
+	}
+
 	/**
 	 * @Security("has_role('ROLE_USER')")
 	 */
@@ -91,9 +98,16 @@ class ProblemeComController extends Controller
 		$em->remove($commentaire);
 		$em->flush();
 
-		$request->getSession()->getFlashBag()->add('notice', 'Commentaire supprimé');
+		if($request->isXmlHttpRequest())
+		{
+			return new Response('OK');
+		}
+		else
+		{
+			$request->getSession()->getFlashBag()->add('notice', 'Commentaire supprimé');
 
-		return $this->redirect($this->generateUrl('samu_gestion_vm_problemeView', array('id' => $commentaire->getProblemeId())));
+			return $this->redirect($this->generateUrl('samu_gestion_vm_problemeView', array('id' => $commentaire->getProblemeId())));
+		}
 	}
 
 	/**
@@ -141,7 +155,7 @@ class ProblemeComController extends Controller
 		$id      = $commentaire->getId();
 
 		return new Response(
-			"<div>" .
+			"<div class=\"combox\" id=\"com". $id ."\">" .
 			"<li>le " . $date->format('d/m/Y') . " par " . $auteur . "</li>" .
 			"<li>" . $contenu . "</li>" .
 			"<li><a href=\"" . $this->generateUrl('samu_gestion_vm_editCom', array('id' => $id)) . "\">Modifier</a> " . 
