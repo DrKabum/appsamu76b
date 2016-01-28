@@ -7,7 +7,8 @@ $('.submit-com').submit(function(e) {
 	var donnees = 'content=' + $(this).children("#com-text").val();
 	console.log("pb :" + pb + ", action : " + action + ", donnees : " + donnees);
 
-	$.ajax({
+	$.ajax
+	({
 		url : action,
 		type : 'GET',
 		data : donnees,

@@ -74,7 +74,16 @@ class ProblemeComController extends Controller
 	{
 		$formulaire = $this->createForm(new ProblemeComType(), $commentaire);
 
-		if($formulaire->handleRequest($request)->isValid())
+		if($request->isXmlHttpRequest())
+		{
+			$commentaire->setContent($request->request->get('modif'));
+			$commentaire->setDateModif(new \Datetime());
+			$em = $this->getDoctrine()->getManager();
+			$em->flush();
+
+			return new Response('OK');
+		}
+		elseif($formulaire->handleRequest($request)->isValid())
 		{
 			$commentaire->setDateModif(new \Datetime());
 			$em = $this->getDoctrine()->getManager();
