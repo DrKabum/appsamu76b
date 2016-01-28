@@ -23,44 +23,45 @@ bool : validation
 		<div class='pvt_title'>
 			<a href="{{ path('samu_gestion_vm_problemeView', {'id' : probleme.id }) }}">{{ probleme.title }}</a>
 		</div>
-		<div class='pvt_author'>
-			Ajouté le {{ probleme.dateDebut|date('d/m/Y') }} par {{ probleme.author }}
-		</div>
 		<div class='pvt_validations'>
 			{% if is_granted('ROLE_STAFF') and probleme.active %}
-
 				<a href="{{ path('samu_gestion_vm_problemeClasser', {'id' : probleme.id }) }}">
 					{% image '@SamuGestionVMBundle/Resources/public/images/Check-24.png' %}
 						<img src="{{ asset_url }}" alt="Cloturer">
 					{% endimage %}
 				</a>
-
 				<a href="{{ path('samu_gestion_vm_problemeEdit', { 'id' : probleme.id }) }}">
 					{% image '@SamuGestionVMBundle/Resources/public/images/Data-Edit-24.png' %}
 						<img src="{{ asset_url }}" alt="Editer">
 					{% endimage %}
 				</a>
-
 				<a href="{{ path('samu_gestion_vm_problemeDelete', {'id' : probleme.id }) }}">
 					{% image '@SamuGestionVMBundle/Resources/public/images/Delete-24.png' %}
 						<img src="{{ asset_url }}" alt="Supprimer">
 					{% endimage %}
 				</a>
-				
 			{% endif %}
 			{#{% if validation and is_granted('ROLE_STAFF') and probleme.staffValidated == 0 %}
 				 - <a href="{{ path('samu_gestion_vm_problemeValidate', {'id' : probleme.id }) }}">Valider</a></li>
 				{% endif %}#}
 		</div>
-		<div>
-
-		</div>
-	</div>		 
-				
-			
-			<li>{{ probleme.title }} depuis {{ getDuree(probleme.dateDebut, probleme.dateFin) }}
-			<li>{{probleme.content}}</li>
+	</div>
+	<div class="pvt_block_content">
+		<li>{{ probleme.title }} depuis {{ getDuree(probleme.dateDebut, probleme.dateFin) }}
+		<li>{{probleme.content}}</li>
 	
+		<div class='pvt_author'>
+			Ajouté le {{ probleme.dateDebut|date('d/m/Y') }} par {{ probleme.author }}
+		</div>
+
+	</div>	
+	<div class="coms_title">
+		<p>Commentaires</p>
+	</div>
+</div>		 
+			
+			
+			
 	
 	
 	{% if probleme.dateModif %}
