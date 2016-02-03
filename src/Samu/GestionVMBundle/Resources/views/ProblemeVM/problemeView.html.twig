@@ -15,7 +15,7 @@ bool : validation
 	</div>	
 {% endfor %}
 
-<div id="probleme_view_block">
+<div class="probleme_view_block">
 	<div class="probleme_view_title">
 		<div class='pvt_id'>
 			{{ render(controller('SamuGestionVMBundle:ProblemeVM:isProblemNew', {'id' : probleme.id })) }} 
@@ -57,10 +57,7 @@ bool : validation
 	</div>	
 	<div class="coms_title">
 		<p>Commentaires</p>
-	</div>
-</div>		 
-			
-			
+	</div>		 				
 	
 	{% if probleme.dateModif %}
 		<li>Modifié le {{ probleme.datemodif|date('d/m/Y') }} par {{ probleme.author }}</li>

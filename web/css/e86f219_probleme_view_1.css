@@ -1,10 +1,10 @@
-#probleme_view_block {
+.probleme_view_block {
 	width: 100%;
 	background: #FFFFFF;
 
 }
 
-#probleme_view_block li {
+.probleme_view_block li {
 	list-style: none;
 }
 

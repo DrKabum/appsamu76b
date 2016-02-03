@@ -22,34 +22,34 @@ bool  : validation
 	<div>
 		<h2>Problèmes véhicules</h2>
 		Nombre de problèmes : {{ listPbVehicules|length }}
-
-		{% if listPbVehicules %}
-			
-			{% for i in 1..listPbVehicules[listPbVehicules|length - 1].vehicule.id %}
-				{% set vehicule = true %}
-				<div class="probleme_view">
-					{% set isThereProbleme = false %}
-					{% for probleme in listPbVehicules if probleme.vehicule.id == i %}
-						{% set isThereProbleme = true %}
-					{% endfor %}
-
-					{% if isThereProbleme %}
-						<div class="vehicule_name">
-							<p>{{ listPbVehicules[i-1].vehicule.name }}</p>
-						</div>
-					{% endif %}
-
-					{% for probleme in listPbVehicules if probleme.vehicule.id == i %}
-						{% include 'SamuGestionVMBundle:ProblemeVM:problemeView.html.twig' %}
-					{% endfor %}
-				</div>
-			{% endfor %}
-
-		{% else %}
-			<p>Aucun problème en cours sur les véhicules.</p>
-		{% endif %}
-
 	</div>
+	{% if listPbVehicules %}
+		
+		{% for i in 1..listPbVehicules[listPbVehicules|length - 1].vehicule.id %}
+			{% set vehicule = true %}
+			<div class="probleme_view">
+				{% set isThereProbleme = false %}
+				{% for probleme in listPbVehicules if probleme.vehicule.id == i %}
+					{% set isThereProbleme = true %}
+				{% endfor %}
+
+				{% if isThereProbleme %}
+					<div class="vehicule_name">
+						<p>{{ listPbVehicules[i-1].vehicule.name }}</p>
+					</div>
+				{% endif %}
+
+				{% for probleme in listPbVehicules if probleme.vehicule.id == i %}
+					{% include 'SamuGestionVMBundle:ProblemeVM:problemeView.html.twig' %}
+				{% endfor %}
+			</div>
+		{% endfor %}
+
+	{% else %}
+		<p>Aucun problème en cours sur les véhicules.</p>
+	{% endif %}
+
+	
 
 	<div>
 		<h2>Problèmes Matériels</h2>

@@ -1,0 +1,90 @@
+body {
+	margin: 0;
+	height: auto;
+	background: none;
+	position: relative;
+}
+
+#login_header a {
+	text-decoration: none;
+	font-size: 0.75em;
+}
+
+#login_header a:hover {
+	color: #D9D9D9;
+}
+
+/*----------------- Login Form -----------------*/
+/*------------------ Request Form  (Affiche request.html.twig) ------------------*/
+#login_form, #request_form {
+	width: 350px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	margin: 0 auto;
+	margin-top: 25%;
+	border-radius: 15px;
+	background: #D9D9D9;
+	color: #667F7D;
+
+}
+
+#login_form label, #request_form label {
+	display: block;
+	float: left;
+	width: 180px;
+}
+
+#login_form form, #request_form form {
+	display: inline;
+	margin: 0 auto;
+}
+
+.btn_login_submit {
+	height: 30px;
+	text-align: center;
+	margin-top: 20px;
+}
+
+
+
+
+#_submit  {
+	width: auto;
+	height: 20px;
+ }
+
+ #_submit:hover {
+ 	text-decoration: none;
+ }
+
+ #username, #password {
+ 	height: 20px;
+ 	width: 164px;
+ 	font-size: 1em;
+ 	margin-bottom: 10px;
+ }
+
+ #passwordForget {
+ 	text-decoration: none;
+	color: grey;
+	font-size: 0.85em
+ }
+
+#passwordForget:hover {
+	text-decoration: none;
+}
+
+ .msg_error {
+ 	margin: 0 auto;
+ 	margin-bottom: 20px;
+ 	padding-top: 10px;
+ 	padding-bottom: 10px;
+ 	background: rgb(255, 179, 25);
+ 	border-radius: 3px;
+ 	text-align: center;
+
+ }
+
+
