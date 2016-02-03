@@ -51,7 +51,7 @@ bool : validation
 		<li>{{probleme.content}}</li>
 	
 		<div class='pvt_author'>
-			Ajouté le {{ probleme.dateDebut|date('d/m/Y') }} par {{ probleme.author }}
+			<li>Ajouté le {{ probleme.dateDebut|date('d/m/Y') }} par {{ probleme.author }}<li>
 		</div>
 
 	</div>	
@@ -60,10 +60,10 @@ bool : validation
 	</div>		 				
 	
 	{% if probleme.dateModif %}
-		<li>Modifié le {{ probleme.datemodif|date('d/m/Y') }} par {{ probleme.author }}</li>
+		<p>Modifié le {{ probleme.datemodif|date('d/m/Y') }} par {{ probleme.author }}</p>
 	{% endif %}
 	{% if not probleme.active %}
-		<li>Cloturé le {{ probleme.dateFin|date('d/m/Y')}}</li>
+		<p>Cloturé le {{ probleme.dateFin|date('d/m/Y')}}</p>
 	{% endif %}
 
 	{# Si JS n'est pas activé, on commente à l'ancienne #}
