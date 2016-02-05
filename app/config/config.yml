@@ -85,7 +85,7 @@ fos_user:
         mailer: fos_user.mailer.twig_swift
     resetting:
         email:
-            template: SamuUserBundle:User:resetting.email.hml.twig
+            template: SamuUserBundle::resetting.email.hml.twig
     from_email: 
         address: administration@samu76b.org
         sender_name: Administrateurs du site SAMU 76B

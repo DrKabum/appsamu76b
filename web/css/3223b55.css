@@ -1,0 +1,21 @@
+/*---------- Login header --------*/
+header {
+	width: 100%;
+	max-width: 1024px;
+	background-color: #667F7D;
+	color: #D9D9D9;
+	padding-top: 1px;
+	padding-bottom: 1px;
+}
+
+.header_content {
+	padding: 8px;
+}
+
+.header_logo {
+
+	float: right;
+	position: relative;
+	top: 8px;
+}
+

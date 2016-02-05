@@ -9,3 +9,91 @@ var $flashbags = $('.flashbag');
 $flashbags.on('click', function() {
 	$(this).hide(1000);
 });
+$('.add-com').show();
+
+$('.submit-com').submit(function(e) {
+	e.preventDefault();
+	var pb      = e.currentTarget.id;
+	var action  = e.currentTarget.action;
+	var donnees = 'content=' + $(this).children("#com-text").val();
+	console.log("pb :" + pb + ", action : " + action + ", donnees : " + donnees);
+
+	$.ajax
+	({
+		url : action,
+		type : 'GET',
+		data : donnees,
+		dataType : 'html',
+		success : function(com, statut) 
+		{
+			$(".coms#" + pb).append(com);
+			$('.submit-com#' + pb + " input#com-text").val('');
+		},
+		error : function(resultat, statut, erreur) 
+		{
+			console.log(com);
+		}
+	});
+});
+$(".coms").on("click", "a",function(e) {
+	e.preventDefault();
+	var id = $(this).parents(".combox").prop('id');
+
+	if($(this).is(":contains('Supprimer')")) 
+	{
+		if(confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?'))
+		{
+			var action = $(this).attr('href');
+
+			$.ajax
+			({
+				url: action,
+				type: 'GET',
+				success: function(statut)
+				{
+					$("#" + id).hide();
+				},
+				error: function()
+				{
+					prompt('Oups, il y a eu un problème... Veuillez rafraîchir la page.');
+				}
+			});
+		}
+	}
+});
+$(".coms").on("click", "a",function(e)
+{
+	e.preventDefault();
+	var id = $(this).parents(".combox").children(".combody").prop('id');
+
+	if($(this).is(":contains('Modifier')")) 
+	{
+		var content = $("#" + id).html();
+		var action  = $(this).attr('href');
+
+		$("#" + id).html('');
+		$("#" + id).append('<form class="modif" id="modif-' + id + '" method="post" action="' + action + '"><input type="text" name="edit-com" id="content"/><input type="submit" value="Modifier le commentaire" /></form>');
+		$("#" + id + " input#content").val(content);
+	}
+});
+
+$(".coms").on("submit", "form.modif", function(e) { 
+
+	e.preventDefault();
+
+	console.log($(this));
+
+	var action = $(this).parents(".combox").find(".Modifier").attr('href');
+	var newContent = $(this).children("input#content").val();
+
+	$.ajax({
+		url: action,
+		type: 'POST',
+		data: {modif:newContent},
+		success: function(reponse, statut)
+		{
+			$('form.modif').parents('.combody').append(newContent);
+			$('form.modif').detach();
+		}
+	});
+});

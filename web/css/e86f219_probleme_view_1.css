@@ -1,14 +1,19 @@
-#probleme_view_block {
-	margin:0 auto; 
-	margin-bottom: 10px;
+.probleme_view_block {
 	width: 100%;
 	background: #FFFFFF;
-	border-radius: 0px 0px 10px 10px;
+
 }
 
-#probleme_view_block li {
+.probleme_view_block li {
 	list-style: none;
 }
+
+/*----------------------- Problème view ----------------------*/
+
+.probleme_view {
+	background-color: #FFFFFF;
+}
+
 
 .vehicule_name {
 	margin: 0 auto; 
@@ -17,7 +22,7 @@
 	;
 	height: 30px;
 	background-color: #ABE3BF;
-	border-radius:10px 10px  0 0; 
+	 
 }
 
 .vehicule_name p {
@@ -45,10 +50,26 @@
 	float: left;
 }
 
+.pvt_content {
+	display: inline-block;
+}
 .pvt_author {
-	float: left;
+	float: right;
+	padding-right: 10px;
 }
 
 .pvt_validation{
 	float: left;
+}
+
+/*------------------- Coms ------------------*/
+.coms {
+	background-color: #FFFFFF;
+	border-radius:0 0 10px 10px;
+	padding-left: 10px !important;
+}
+
+.coms_title {
+	background-color: #ABE3BF;
+	padding-left: 10px;
 }

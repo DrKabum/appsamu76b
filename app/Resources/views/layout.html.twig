@@ -7,6 +7,7 @@
 	{% block stylesheets %}
 		{% stylesheets output="css/compiled/main.css" filter='cssrewrite'
 			'bundles/samugestionvm/css/main.css'
+			'bundles/samugestionvm/css/header.css'
 			'bundles/samugestionvm/css/nav_style.css'
 	  		'bundles/samuuser/css/login.css'
 	  		'bundles/samugestionvm/css/probleme_view.css'
@@ -27,7 +28,10 @@
 		{% javascripts output="js/compiled/core.js"
 			"js/jquery.min.js"
 			
-			"@SamuGestionVMBundle/Resources/public/js/flashbags.js" %}
+			"@SamuGestionVMBundle/Resources/public/js/flashbags.js"
+			"@SamuGestionVMBundle/Resources/public/js/addcom.js"
+			"@SamuGestionVMBundle/Resources/public/js/delcom.js"
+			"@SamuGestionVMBundle/Resources/public/js/editcom.js" %}
 			<script type="text/javascript" src="{{ asset_url }}"></script>
 		{% endjavascripts %}
 	{% endblock %}
