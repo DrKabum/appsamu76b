@@ -60,6 +60,9 @@ class ProblemeComController extends Controller
 		}
 	}
 
+	/**
+	 * @Security("has_role('ROLE_USER')")
+	 */
 	public function ajaxDeleteAction(ProblemeCom $commentaire)
 	{
 		$em = $this->getDoctrine()->getManager();
