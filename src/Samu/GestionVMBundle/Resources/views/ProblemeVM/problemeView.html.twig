@@ -54,10 +54,7 @@ bool : validation
 			<li>Ajouté le {{ probleme.dateDebut|date('d/m/Y') }} par {{ probleme.author }}<li>
 		</div>
 
-	</div>	
-	<div class="coms_title">
-		<p>Commentaires</p>
-	</div>		 				
+	</div>			 				
 	
 	{% if probleme.dateModif %}
 		<p>Modifié le {{ probleme.datemodif|date('d/m/Y') }} par {{ probleme.author }}</p>
@@ -66,11 +63,15 @@ bool : validation
 		<p>Cloturé le {{ probleme.dateFin|date('d/m/Y')}}</p>
 	{% endif %}
 
+	<div class="coms_title">
+		<p>Commentaires</p>
+	</div>
+
 	{# Si JS n'est pas activé, on commente à l'ancienne #}
 	<div class="coms" id="{{ probleme.id }}">
 		{% for com in probleme.commentaires %}
 		<div class="combox" id="com{{ com.id }}">
-			{% include 'SamuGestionVMBundle:ProblemeVM:commentaireView.html.twig' %}
+			{% include 'SamuGestionVMBundle:ProblemeCom:commentaireView.html.twig' %}
 		</div>
 		{% endfor %}
 	</div>

@@ -56,7 +56,9 @@ class ProblemeComController extends Controller
 			$em->persist($commentaire);
 			$em->flush();
 
-			return $this->generateOneComView($commentaire);
+			return $this->render('SamuGestionVMBundle:ProblemeCom:commentaireView.html.twig', array(
+				'com' => $commentaire
+			));
 		}
 	}
 
@@ -154,26 +156,5 @@ class ProblemeComController extends Controller
 		{
 			return new Response($actionFR);
 		}		
-	}
-
-	/**
-	 * Cette fonction génère le code html d'un commentaire à ajouter en ajax
-	 */
-	public function generateOneComView(ProblemeCom $commentaire)
-	{
-		$date    = $commentaire->getDate();
-		$auteur  = $commentaire->getAuthor();
-		$contenu = $commentaire->getContent();
-		$id      = $commentaire->getId();
-
-		return new Response(
-			"<div class=\"combox\" id=\"com". $id ."\">" .
-			"<li>le " . $date->format('d/m/Y') . " par " . $auteur . "</li>" .
-			"<li>" . $contenu . "</li>" .
-			"<li><a href=\"" . $this->generateUrl('samu_gestion_vm_editCom', array('id' => $id)) . "\">Modifier</a> " . 
-			    "<a href=\"" . $this->generateUrl('samu_gestion_vm_deleteCom', array('id' => $id)) . "\">Supprimer</a></li>" .
-			"</div>",
-		    Response::HTTP_OK,
-		    array('content-type' => 'text/html'));
 	}
 }
