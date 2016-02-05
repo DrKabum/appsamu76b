@@ -26,7 +26,6 @@ bool  : validation
 		{% if listPbVehicules %}
 			
 			{% for i in 1..listPbVehicules[listPbVehicules|length - 1].vehicule.id %}
-				{% set vehicule = true %}
 				<div class="probleme_view">
 					{% set isThereProbleme = false %}
 					{% for probleme in listPbVehicules if probleme.vehicule.id == i %}
