@@ -1,7 +1,8 @@
 {# 
 var : Object Commmentaire : com 
 #}
-
-<div class="com-title">Le {{ com.date|date('d/m/Y') }} par {{ com.author }}</div>
-<div class="combody" id="combody{{ com.id }}">{{ com.content }}</div>
-<div class="com-links">{{ render(controller('SamuGestionVMBundle:ProblemeCom:generateButton', {'id' : com.id, 'action' : 'edit'})) }} {{ render(controller('SamuGestionVMBundle:ProblemeCom:generateButton', {'id' : com.id, 'action' : 'delete'})) }}</div>
+<div class="combox" id="com{{ com.id }}">
+	<div class="com-title">Le {{ com.date|date('d/m/Y') }} par {{ com.author }}</div>
+	<div class="combody" id="combody{{ com.id }}">{{ com.content }}</div>
+	<div class="com-links">{{ render(controller('SamuGestionVMBundle:ProblemeCom:generateButton', {'id' : com.id, 'action' : 'edit'})) }} {{ render(controller('SamuGestionVMBundle:ProblemeCom:generateButton', {'id' : com.id, 'action' : 'delete'})) }}</div>
+</div>

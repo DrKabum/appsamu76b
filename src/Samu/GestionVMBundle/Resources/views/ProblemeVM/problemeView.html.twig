@@ -70,9 +70,7 @@ bool : validation
 	{# Si JS n'est pas activé, on commente à l'ancienne #}
 	<div class="coms" id="{{ probleme.id }}">
 		{% for com in probleme.commentaires %}
-		<div class="combox" id="com{{ com.id }}">
 			{% include 'SamuGestionVMBundle:ProblemeCom:commentaireView.html.twig' %}
-		</div>
 		{% endfor %}
 	</div>
 
