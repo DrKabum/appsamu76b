@@ -115,14 +115,15 @@
     border-bottom-left-radius: 5px;
     padding: 5px;
     margin-left: 4px;
+    position: relative;
+    right: -17px;
 }
 
 .combox
 {
 	background-color: #FFE9B7;
 	padding: 7px;
-    border-top-left-radius: 7px;
-    border-bottom-left-radius: 7px;
-    margin: 2px;
-    margin-right: 0px;
+    border-radius: 7px;
+    margin: 5px;
+    margin-right: 10px;
 }
