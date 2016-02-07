@@ -26,17 +26,17 @@ bool : validation
 		</div>
 		<div class='pvt_validations'>
 			{% if is_granted('ROLE_STAFF') and probleme.active %}
-				<a href="{{ path('samu_gestion_vm_problemeClasser', {'id' : probleme.id }) }}">
+				<a href="{{ path('samu_gestion_vm_problemeClasser', {'id' : probleme.id }) }}" title="Classer">
 					{% image '@SamuGestionVMBundle/Resources/public/images/Check-24.png' %}
 						<img src="{{ asset_url }}" alt="Cloturer">
 					{% endimage %}
 				</a>
-				<a href="{{ path('samu_gestion_vm_problemeEdit', { 'id' : probleme.id }) }}">
+				<a href="{{ path('samu_gestion_vm_problemeEdit', { 'id' : probleme.id }) }}" title="Modifier">
 					{% image '@SamuGestionVMBundle/Resources/public/images/Data-Edit-24.png' %}
 						<img src="{{ asset_url }}" alt="Editer">
 					{% endimage %}
 				</a>
-				<a href="{{ path('samu_gestion_vm_problemeDelete', {'id' : probleme.id }) }}">
+				<a href="{{ path('samu_gestion_vm_problemeDelete', {'id' : probleme.id }) }}" title="Supprimer">
 					{% image '@SamuGestionVMBundle/Resources/public/images/Delete-24.png' %}
 						<img src="{{ asset_url }}" alt="Supprimer">
 					{% endimage %}
