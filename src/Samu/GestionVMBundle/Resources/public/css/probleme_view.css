@@ -90,6 +90,14 @@
 	text-decoration: none;
 }
 
+.pvt_id span
+{
+	background-color: #FFE9B7;
+	position: relative;
+	top:-7px;
+	border-radius: 10px;
+	padding: 6px;
+}
 /*------------------- Coms ------------------*/
 .coms {
 	background-color: #FFFFFF;
