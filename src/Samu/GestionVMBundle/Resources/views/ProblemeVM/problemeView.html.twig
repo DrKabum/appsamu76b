@@ -48,11 +48,10 @@ bool : validation
 		</div>
 	</div>
 	<div class="pvt_block_content">
-		<li>{{ probleme.title }} depuis {{ getDuree(probleme.dateDebut, probleme.dateFin) }}
-		<li>{{probleme.content}}</li>
+		<p>{{probleme.content}}</p>
 	
 		<div class='pvt_author'>
-			<li>Ajouté le {{ probleme.dateDebut|date('d/m/Y') }} par {{ probleme.author }}<li>
+			<p>Ajouté le {{ probleme.dateDebut|date('d/m/Y') }} par {{ probleme.author }}<p>
 		</div>
 
 	</div>			 				
