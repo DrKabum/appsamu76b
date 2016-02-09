@@ -18,6 +18,8 @@ $('.submit-com').submit(function(e) {
 	var donnees = 'content=' + $(this).children("#com-text").val();
 	console.log("pb :" + pb + ", action : " + action + ", donnees : " + donnees);
 
+	$(".new-com").show();
+
 	$.ajax
 	({
 		url : action,
@@ -26,6 +28,7 @@ $('.submit-com').submit(function(e) {
 		dataType : 'html',
 		success : function(com, statut) 
 		{
+			$(".new-com").hide();
 			$(".coms#" + pb).append(com);
 			$('.submit-com#' + pb + " input#com-text").val('');
 		},
@@ -61,6 +64,8 @@ $(".coms").on("click", "a",function(e) {
 		}
 	}
 });
+//Script d'apparition de la zone de texte
+
 $(".coms").on("click", "a",function(e)
 {
 	e.preventDefault();
@@ -68,14 +73,27 @@ $(".coms").on("click", "a",function(e)
 
 	if($(this).is(":contains('Modifier')")) 
 	{
-		var content = $("#" + id).html();
-		var action  = $(this).attr('href');
+		if(!$(this).parents(".combox").find("form.modif").length)
+		{
+			//Si le formulaire n'existe pas, je le crée
+			var content = $("#" + id).html();
+			var action  = $(this).attr('href');
 
-		$("#" + id).html('');
-		$("#" + id).append('<form class="modif" id="modif-' + id + '" method="post" action="' + action + '"><input type="text" name="edit-com" id="content"/><input type="submit" value="Modifier le commentaire" /></form>');
-		$("#" + id + " input#content").val(content);
+			$("#" + id).html('');
+			$("#" + id).append('<form class="modif" id="modif-' + id + '" method="post" action="' + action + '"><input type="text" name="edit-com" id="content"/><input type="submit" value="Modifier le commentaire" /></form>');
+			$("#" + id + " input#content").val(content);
+		
+		//Si le formulaire existe déjà, c'est qu'on veut annuler
+		} else {
+			var content = $("#" + id + " input#content").val();
+
+			$("#modif-" + id).remove();
+			$("#" + id).append(content);
+		}
 	}
 });
+
+//Script AJAX de modification du commentaire
 
 $(".coms").on("submit", "form.modif", function(e) { 
 

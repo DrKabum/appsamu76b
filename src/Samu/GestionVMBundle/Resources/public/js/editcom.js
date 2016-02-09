@@ -9,6 +9,32 @@ $(".coms").on("click", "a",function(e)
 	{
 		if(!$(this).parents(".combox").find("form.modif").length)
 		{
+			//On enlève les modifications en cours
+			var modifEnCours = $(".modif");
+
+			if(modifEnCours.length)
+			{
+				modifEnCours.each(function()
+				{
+					var id = $(this).parents(".combox").prop('id');
+					var idForm = $(this).parents(".combox").children(".combody").prop('id');
+					var content;
+
+					$.ajax({
+						url: "/app_dev.php/GestionVM/comment/view/" + id,
+						type: 'GET',
+						success: function(reponse, statut)
+						{
+							$("#modif-" + idForm).remove();
+							$("#" + id).prepend(reponse);
+						}
+					});
+
+					//$("#modif-" + id).remove();
+					//$("#" + id).append(content);
+				});
+			}
+
 			//Si le formulaire n'existe pas, je le crée
 			var content = $("#" + id).html();
 			var action  = $(this).attr('href');
@@ -19,10 +45,19 @@ $(".coms").on("click", "a",function(e)
 		
 		//Si le formulaire existe déjà, c'est qu'on veut annuler
 		} else {
-			var content = $("#" + id + " input#content").val();
-
-			$("#modif-" + id).remove();
-			$("#" + id).append(content);
+			var id = $(this).parents(".combox").prop('id');
+			var idForm = $(this).parents(".combox").children(".combody").prop('id');
+			var content;
+			
+			$.ajax({
+				url: "/app_dev.php/GestionVM/comment/view/" + id,
+				type: 'GET',
+				success: function(reponse, statut)
+				{
+					$("#modif-" + idForm).remove();
+					$("#" + id).prepend(reponse);
+				}
+			});
 		}
 	}
 });
@@ -49,6 +84,3 @@ $(".coms").on("submit", "form.modif", function(e) {
 		}
 	});
 });
-
-//Script d'annulation du commentaire
-

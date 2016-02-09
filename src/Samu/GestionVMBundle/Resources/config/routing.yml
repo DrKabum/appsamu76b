@@ -141,3 +141,9 @@ samu_gestion_vm_ajaxAdd:
     defaults: { _controller: SamuGestionVMBundle:ProblemeCom:ajaxAdd }
     requirements:
         id:   \d+
+
+samu_gestion_vm_ajaxView:
+    path:     /comment/view/com{id}
+    defaults: { _controller: SamuGestionVMBundle:ProblemeCom:ajaxView }
+    requirements:
+        id:   \d+

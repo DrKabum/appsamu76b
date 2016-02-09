@@ -72,6 +72,11 @@ class ProblemeComController extends Controller
 		$em->flush();
 	}
 
+	public function ajaxViewAction(ProblemeCom $commentaire)
+	{
+		return new Response($commentaire->getContent());
+	}
+
 	/**
 	 * @Security("has_role('ROLE_USER')")
 	 */
