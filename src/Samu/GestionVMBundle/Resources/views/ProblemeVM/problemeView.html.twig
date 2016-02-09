@@ -3,11 +3,11 @@ array : listPbVehicules
 array : listPbMateriel
 bool : validation
 #}
-{% block stylesheets %}
+{#{% block stylesheets %}
 	{% stylesheets 'bundles/samugestionvm/css/probleme_view.css' filter='cssrewrite' %}
     	<link rel="stylesheet" href="{{ asset_url }}" />
 	{% endstylesheets %}
-{% endblock %}
+{% endblock %}#}
 
 {% for flashMessage in app.session.flashbag.get('notice') %}
 	<div class='flashbag'>
