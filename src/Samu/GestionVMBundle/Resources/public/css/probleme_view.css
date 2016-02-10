@@ -40,7 +40,8 @@
 /*--------------------- Titre du problème -----------------*/
 .probleme_view_title {
 	display: block;
-	float: left;
+	padding-bottom: 10px;	
+	padding-top: 10px;
 	background-color: #D3FFD9;
 	height: 30px;
 	width: 100%;
@@ -50,16 +51,16 @@
 	float: left;
 	position: relative;
 	top: 3px;	
-	left: 3px;
+	left: 10px;
+	margin-right: 5px !important;
 }
 
 .pvt_title a {
 	float: left;
 	position: relative;
-	top: 4px;
+	top: 3px;
 	padding-left: 10px;
-	font-size: 1.2em;
-	font-style: bold; 
+	font-size: 1.5em;
 	color: #3e3e3e;
 }
 
@@ -67,23 +68,32 @@
 	color: #E58B06;
 }
 
-.pvt_content {
-	display: inline-block;
+.pvt_block_content {
+	padding-bottom: 10px;
+	padding-left: 10px;
 }
+
 .pvt_author {
-	float: right;
+	/*position: relative;
+	right: 10px;
+	bottom: 10px;
+	float: right;*/
+	width: 100%;
 	padding-right: 10px;
-	padding-bottom: 5px;
+	margin-bottom: 10px;
 	font-size: 0.8em;
 	font-style: italic;
-	color: #E58B06;
+	color: #9a9293;
+}
+.pvt_author p {
+	float:right;
 }
 
 .pvt_validations {
 	float: right;
 	position: relative;
 	top: 3px;
-	right: 3px;
+	right: 10px;
 }
 
 .pvt_title a, .pvt_validations a {
@@ -117,7 +127,7 @@
 	padding-bottom: 5px;
 	font-size: 0.8em;
 	font-style: italic;
-	color: #D3FFD9;
+	color: #e58819;
 	background-color: #ABE3BF;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
