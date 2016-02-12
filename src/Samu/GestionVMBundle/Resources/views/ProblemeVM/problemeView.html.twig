@@ -3,11 +3,11 @@ array : listPbVehicules
 array : listPbMateriel
 bool : validation
 #}
-{% block stylesheets %}
+{#{% block stylesheets %}
 	{% stylesheets 'bundles/samugestionvm/css/probleme_view.css' filter='cssrewrite' %}
     	<link rel="stylesheet" href="{{ asset_url }}" />
 	{% endstylesheets %}
-{% endblock %}
+{% endblock %}#}
 
 {% for flashMessage in app.session.flashbag.get('notice') %}
 	<div class='flashbag'>
@@ -19,7 +19,7 @@ bool : validation
 	<div class="probleme_view_title">
 		<div class='pvt_id'>
 			{{ render(controller('SamuGestionVMBundle:ProblemeVM:isProblemNew', {'id' : probleme.id })) }} 
-			<span class="timer">{{ getDuree(probleme.dateDebut, probleme.dateFin) }}</span>
+			<span class="pvt_timer">{{ getDuree(probleme.dateDebut, probleme.dateFin) }}</span>
 		</div>
 		<div class='pvt_title'>
 			<a href="{{ path('samu_gestion_vm_problemeView', {'id' : probleme.id }) }}">{{ probleme.title }}</a>
@@ -49,18 +49,29 @@ bool : validation
 	</div>
 	<div class="pvt_block_content">
 		<p>{{probleme.content}}</p>
+<<<<<<< HEAD
 	
 		<div class='pvt_author'>
 			<p>Ajouté le {{ probleme.dateDebut|date('d/m/Y') }} par {{ probleme.author }}<p>
 		</div>
 	</div>			 				
+=======
+	</div>	
+	<div class='pvt_author'>
+		<p>Ajouté le {{ probleme.dateDebut|date('d/m/Y') }} par {{ probleme.author }}<p>
+		
+		{% if probleme.dateModif %}
+			<p>Modifié le {{ probleme.datemodif|date('d/m/Y') }} par {{ probleme.author }}</p>
+		{% endif %}
+
+		{% if not probleme.active %}
+			<p>Cloturé le {{ probleme.dateFin|date('d/m/Y')}}</p>
+		{% endif %}	
+	</div>
+			 				
 	
-	{% if probleme.dateModif %}
-		<p>Modifié le {{ probleme.datemodif|date('d/m/Y') }} par {{ probleme.author }}</p>
-	{% endif %}
-	{% if not probleme.active %}
-		<p>Cloturé le {{ probleme.dateFin|date('d/m/Y')}}</p>
-	{% endif %}
+>>>>>>> 6039bf5944624970cd7b327c45701e74eedc78c5
+	
 
 	<div class="coms_title">
 		<p>Commentaires</p>

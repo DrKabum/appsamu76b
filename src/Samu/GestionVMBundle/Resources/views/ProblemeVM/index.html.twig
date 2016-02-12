@@ -26,7 +26,7 @@ bool  : validation
 	</div>
 	{% if listPbVehicules %}
 		
-		{% for i in 0..listPbVehicules[listPbVehicules|length - 1].vehicule.id %}
+		{% for i in 1..listPbVehicules[listPbVehicules|length-1].vehicule.id %}
 			{% set vehicule = true %}
 			<div class="probleme_view">
 				{% set isThereProbleme = false %}
@@ -36,7 +36,7 @@ bool  : validation
 
 				{% if isThereProbleme %}
 					<div class="vehicule_name">
-						<p>{{ listPbVehicules[i-1].vehicule.name }}</p>
+						<p>{{ listVehicules[i-1].name }}</p>
 					</div>
 				{% endif %}
 
