@@ -70,7 +70,10 @@
 
 .pvt_block_content {
 	padding-bottom: 10px;
-	padding-left: 10px;
+	background: rgb(255, 251, 140);
+	padding: 10px;
+	margin: 5px;
+	border-radius: 7px;
 }
 
 .pvt_author {
@@ -112,12 +115,13 @@
 .coms {
 	background-color: #FFFFFF;
 	border-radius:0 0 10px 10px;
-	padding-left: 10px !important;
 }
 
 .coms_title {
 	background-color: #D3FFD9;
 	padding-left: 10px;
+	padding: 5px;
+	font-weight: bold;
 }
 
 .com-title
@@ -144,5 +148,21 @@
 	padding: 7px;
     border-radius: 7px;
     margin: 5px;
-    margin-right: 10px;
+}
+
+.com-links {
+	text-decoration: none;
+	color: #9a9293;
+	font-size: 0.8em;
+	font-style: italic;
+}
+
+.add-com {
+	padding: 5px;
+}
+
+.add-com input[type=text] {
+	width: 850px;
+	padding: 5px;
+	margin: 3px;
 }
