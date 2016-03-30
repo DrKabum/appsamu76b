@@ -91,7 +91,9 @@ class ProblemeComController extends Controller
 			$em = $this->getDoctrine()->getManager();
 			$em->flush();
 
-			return new Response('OK');
+			return $this->render('SamuGestionVMBundle:ProblemeCom:commentaireView.html.twig', array(
+				'com' => $commentaire
+			));
 		}
 		elseif($formulaire->handleRequest($request)->isValid())
 		{

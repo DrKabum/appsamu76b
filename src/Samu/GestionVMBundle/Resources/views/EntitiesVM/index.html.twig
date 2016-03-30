@@ -11,36 +11,24 @@
 
 {% block gvm_actionbody %}
 
-<div id="block-voiture">
+<div id="block-vehicules" class="entity-container">
+	<div id="block-title" class="entity-title">Gestion du parc véhicule</div>
+	<div id="block-UMH" class="entities-container">			
+		{% for vehicule in vehicules if vehicule.typeVehicule == 'UMH' %}
 
-	<h2>Gestion du parc véhicule :</h2>
-	<a href="{{ path('samu_gestion_vm_entitiesAdd', {'type' : 'vehicule'}) }}">Ajouter un véhicule</a>
-	<p>Modifier les informations/supprimer un véhicule :</p>
-	<ul>
-	{% for vehicule in vehicules %}
-		<li>
-			<a href="{{ path('samu_gestion_vm_entitiesEdit', {'type' : 'vehicule', 'id' : vehicule.id}) }}">{{ vehicule.name }}</a>
-			<a href="{{ path('samu_gestion_vm_entitiesDelete', {'type' : 'vehicule', 'id' : vehicule.id}) }}">
-				{% image '@SamuGestionVMBundle/Resources/public/images/delete.png' %}
-					<img src="{{ asset_url }}" alt="Supprimer">
-				{% endimage %}
-			</a>
-		</li>
-	{% endfor %}
-	</ul>
+			{% include 'SamuGestionVMBundle:EntitiesVM:cartouche_vehicule.html.twig' %}
 
-	<h2>Gestion du parc matériel :</h2>
-	<a href="{{ path('samu_gestion_vm_entitiesAdd', {'type' : 'materiel'}) }}">Ajouter un matériel</a>
-	<p>Modifier les informations/supprimer un matériel :</p>
-<!--A FINIR-->
+		{% endfor %}
+	</div>
 
-	<h2>Veuillez choisir un historique à consulter :</h2>
+	<div id="block-VML" class="entities-container">
+		{% for vehicule in vehicules if vehicule.typeVehicule == 'VML' %}
 
-	<ul>
-	{% for vehicule in vehicules %}
-		<li><a href="{{ path('samu_gestion_vm_entitiesView', {'type' : 'vehicule', 'id' : vehicule.id }) }}">{{ vehicule.name }}</a></li>
-	{% endfor %}
-	</ul>
+			{% include 'SamuGestionVMBundle:EntitiesVM:cartouche_vehicule.html.twig' %}
+
+		{% endfor %}			
+	</div>
+	<div id="add-vehicule" class="add-button">Ajouter un véhicule</div>
 </div>
 
 <div id="block-materiel">
