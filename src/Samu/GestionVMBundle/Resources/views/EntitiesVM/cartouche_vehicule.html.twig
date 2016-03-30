@@ -1,0 +1,18 @@
+<div class="ordre-depart"> {{ vehicule.ordreDepart }} </div>
+<div class="nom-vehicule"> {{ vehicule.name }}</div>
+<div class="infos-vehicule">
+	<ul>
+		<li>{{vehicule.modele}}</li>
+		<li>{{vehicule.immatriculation}}</li>
+		<li>{{vehicule.annee|date("d/m/Y")}}</li>
+	</ul>
+</div>
+<div class="entity-buttons-container">
+	<div class="edit-button">
+		{% image '@SamuGestionVMBundle/Resources/public/images/Data-Edit-24.png' %}
+			<img src="{{ asset_url }}" alt="Editer">
+		{% endimage %}
+	</div>
+	<div class="delete-button">
+	</div>
+</div>
