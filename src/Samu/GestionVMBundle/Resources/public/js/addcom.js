@@ -2,12 +2,12 @@ $('.add-com').hide();
 
 $('.open-com-tab').click(function(e)
 {
-	if ($(this).find(".add-com").is(":hidden"))
+	if ($(this).parent(".com-tab-container").find(".add-com").is(":hidden"))
 	{
-   		$(this).find(".add-com").slideDown("slow");
+   		$(this).parent(".com-tab-container").find(".add-com").slideDown("slow");
 	} else 
 	{
-		$(this).find(".add-com").slideUp("slow");
+		$(this).parent(".com-tab-container").find(".add-com").slideUp("slow");
 	}
 	
 })

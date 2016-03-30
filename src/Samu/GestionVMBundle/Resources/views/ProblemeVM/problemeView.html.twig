@@ -82,8 +82,8 @@ bool : validation
 		{% endimage %}
 	</div>
 
-	<div class="open-com-tab">
-		<span>Cliquez pour ajouter un commentaire</span>
+	<div class="com-tab-container">
+		<span class="open-com-tab">Cliquez pour ajouter un commentaire</span>
 		<div class="add-com">
 			<form class="submit-com" action="{{ path('samu_gestion_vm_ajaxAdd', {'id' : probleme.id }) }}" method="post" id="{{ probleme.id }}">
 				<textarea name="com" id="com-text" size="136" cols="136" rows="5" placeholder="Commenter..."></textarea>
