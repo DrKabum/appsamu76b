@@ -143,6 +143,8 @@ samu_gestion_vm_editCom:
     defaults: { _controller: SamuGestionVMBundle:ProblemeCom:edit }
     requirements:
         id:   \d+
+    options:
+        expose: true
 
 samu_gestion_vm_ajaxAdd:
     path:     /comment/addax/{id}
@@ -155,3 +157,5 @@ samu_gestion_vm_ajaxView:
     defaults: { _controller: SamuGestionVMBundle:ProblemeCom:ajaxView }
     requirements:
         id:   \d+
+    options:
+        expose: true

@@ -20,6 +20,7 @@ $(".coms").on("click", "a",function(e)
 					var id          = $(this).parents(".combox").prop('id');
 					var idForm      = $(this).parents(".combox").children(".combody").prop('id');
 					var thisCombody = $('#' + id).children('.combody');
+					var action      = Routing.generate('samu_gestion_vm_ajaxView', {id: idficator(id)});
 
 					$(this).parents(".combox").children(".com-links").children(".Modifier").html('Modifier');
 
@@ -27,7 +28,7 @@ $(".coms").on("click", "a",function(e)
 					thisCombody.children(".loader").show();
 
 					$.ajax({
-						url: "/app_dev.php/GestionVM/comment/view/" + id,
+						url: action,
 						type: 'GET',
 						success: function(reponse, statut)
 						{
@@ -61,14 +62,14 @@ $(".coms").on("click", "a",function(e)
 			thisCombody.children(".loader").show();
 			
 			$.ajax({
-				url: Routing.generate('samu_gestion_vm_entitiesView', 'vehicule', id),
+				url: Routing.generate('samu_gestion_vm_ajaxView', {id: idficator(id)}),
 				type: 'GET',
 				success: function(reponse, statut)
 				{
 					thisCombody.children(".loader").remove();
 					$("#modif-" + idForm).remove();
-					$("#" + id).children('.combody').html('');
-					$("#" + id).children('.combody').prepend(reponse);
+					//$("#" + id).children('.combody').html('');
+					$("#" + id).children('.combody').html(reponse);
 				}
 			});
 		}
@@ -96,3 +97,12 @@ $(".coms").on("submit", "form.modif", function(e) {
 		}
 	});
 });
+
+function idficator(id)
+{
+	var re = /com/gi;
+	var str = id;
+	var nouvelleStr = str.replace(re, "");
+
+	return nouvelleStr;
+}
