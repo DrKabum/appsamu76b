@@ -30,7 +30,7 @@ $('.submit-com').submit(function(e) {
 		{
 			$(".new-com").hide();
 			$(".coms#" + pb).append(com);
-			$('.submit-com#' + pb + " input#com-text").val('');
+			$('.submit-com#' + pb + " textarea#com-text").val('');
 		},
 		error : function(resultat, statut, erreur) 
 		{
@@ -87,6 +87,8 @@ $(".coms").on("click", "a",function(e)
 					var idForm      = $(this).parents(".combox").children(".combody").prop('id');
 					var thisCombody = $('#' + id).children('.combody');
 
+					$(this).parents(".combox").children(".com-links").children(".Modifier").html('Modifier');
+
 					$(".loader").clone().appendTo(thisCombody);
 					thisCombody.children(".loader").show();
 
@@ -110,14 +112,16 @@ $(".coms").on("click", "a",function(e)
 
 			$(this).html('Annuler');
 			$("#" + id).html('');
-			$("#" + id).append('<form class="modif" id="modif-' + id + '" method="post" action="' + action + '"><input type="text" name="edit-com" id="content"/><input type="submit" value="Modifier le commentaire" /></form>');
-			$("#" + id + " input#content").val(content);
+			$("#" + id).append('<form class="modif" id="modif-' + id + '" method="post" action="' + action + '"><textarea name="edit-com" id="content"></textarea><input type="submit" value="Modifier le commentaire" /></form>');
+			$("#" + id + " textarea#content").val(content);
 		
 		//Si le formulaire existe déjà, c'est qu'on veut annuler
 		} else {
 			var id          = $(this).parents(".combox").prop('id');
 			var idForm      = $(this).parents(".combox").children(".combody").prop('id');
 			var thisCombody = $('#' + id).children('.combody');
+
+			$(this).html('Modifier');
 
 			$(".loader").clone().appendTo(thisCombody);
 			thisCombody.children(".loader").show();
@@ -143,10 +147,8 @@ $(".coms").on("submit", "form.modif", function(e) {
 
 	e.preventDefault();
 
-	console.log($(this));
-
 	var action = $(this).parents(".combox").find(".Modifier").attr('href');
-	var newContent = $(this).children("input#content").val();
+	var newContent = $(this).children("textarea#content").val();
 
 	$.ajax({
 		url: action,
@@ -154,9 +156,8 @@ $(".coms").on("submit", "form.modif", function(e) {
 		data: {modif:newContent},
 		success: function(reponse, statut)
 		{
-			$('form.modif').parents('.combody').html('');
-			$('form.modif').parents('.combody').prepend(newContent);
-			$('form.modif').detach();
+			$('form.modif').parents('.combody').parents(".combox").children(".com-links").children(".Modifier").html('Modifier');
+			$('form.modif').parents('.combody').html(newContent);
 		}
 	});
 });

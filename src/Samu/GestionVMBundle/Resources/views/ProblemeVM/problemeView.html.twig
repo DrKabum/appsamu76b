@@ -19,10 +19,10 @@ bool : validation
 	<div class="probleme_view_title">
 		<div class='pvt_id'>
 			{{ render(controller('SamuGestionVMBundle:ProblemeVM:isProblemNew', {'id' : probleme.id })) }} 
-			<span class="pvt_timer">{{ getDuree(probleme.dateDebut, probleme.dateFin) }}</span>
 		</div>
-		<div class='pvt_title'>
+		<div class="pvt_title">
 			<a href="{{ path('samu_gestion_vm_problemeView', {'id' : probleme.id }) }}">{{ probleme.title }}</a>
+			<span class="pvt_timer"> - Depuis {{ getDuree(probleme.dateDebut, probleme.dateFin) }}</span>
 		</div>
 		<div class='pvt_validations'>
 			{% if is_granted('ROLE_STAFF') and probleme.active %}

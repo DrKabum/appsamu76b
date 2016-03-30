@@ -28,6 +28,10 @@ p {
 	margin-bottom: 0px !important;
 }
 
+a:hover {
+	color: #E58B06;
+}
+
 li {
 	list-style: none;
 }
