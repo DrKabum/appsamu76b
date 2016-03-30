@@ -1,4 +1,16 @@
-$('.add-com').show();
+$('.add-com').hide();
+
+$('.open-com-tab').click(function(e)
+{
+	if ($(this).parent(".com-tab-container").find(".add-com").is(":hidden"))
+	{
+   		$(this).parent(".com-tab-container").find(".add-com").slideDown("slow");
+	} else 
+	{
+		$(this).parent(".com-tab-container").find(".add-com").slideUp("slow");
+	}
+	
+})
 
 $('.submit-com').submit(function(e) {
 	e.preventDefault();

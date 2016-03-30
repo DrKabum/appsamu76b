@@ -167,12 +167,31 @@
 .add-com {
 	background-color: #FFE9B7;
 	padding: 7px;
-    border-radius: 7px;
-    margin: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	margin: 5px;
+	margin-bottom: 0px;
 }
 
 .add-com input[type=text] {
 	width: 850px;
 	padding: 5px;
 	margin: 3px;
+}
+
+.open-com-tab {
+	background-color: #e4d0a4;
+	height: 30px;
+	text-align: center;
+	border-bottom-left-radius: 7px;
+	border-bottom-right-radius: 7px;
+	margin-bottom: 10px;
+	margin: 5px;
+	margin-top: 0px;
+	padding-top: 10px;
+}
+
+.open-com-tab p {
+	font-size: 0.9em;
+	color: grey;
 }
