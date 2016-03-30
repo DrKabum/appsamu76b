@@ -49,13 +49,6 @@ bool : validation
 	</div>
 	<div class="pvt_block_content">
 		<p>{{probleme.content}}</p>
-<<<<<<< HEAD
-	
-		<div class='pvt_author'>
-			<p>Ajouté le {{ probleme.dateDebut|date('d/m/Y') }} par {{ probleme.author }}<p>
-		</div>
-	</div>			 				
-=======
 	</div>	
 	<div class='pvt_author'>
 		<p>Ajouté le {{ probleme.dateDebut|date('d/m/Y') }} par {{ probleme.author }}<p>
@@ -68,10 +61,6 @@ bool : validation
 			<p>Cloturé le {{ probleme.dateFin|date('d/m/Y')}}</p>
 		{% endif %}	
 	</div>
-			 				
-	
->>>>>>> 6039bf5944624970cd7b327c45701e74eedc78c5
-	
 
 	<div class="coms_title">
 		<p>Commentaires</p>
@@ -85,7 +74,7 @@ bool : validation
 	</div>
 
 	{# Commentaires AJAX #}
-	<div class="new-com" style="display:none">
+	<div class="loader" style="display:none">
 		{% image '@SamuGestionVMBundle/Resources/public/images/ajax-loader.gif' %}
 			<img src="{{ asset_url }}" alt="chargement" style="display:none">
 		{% endimage %}
