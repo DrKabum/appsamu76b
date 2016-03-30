@@ -1,20 +1,7 @@
-{% extends "SamuGestionVMBundle::gvmlayout.html.twig" %}
+<h2>Entrez les informations du véhicule :</h2>
 
-{% block title %}
-	Ajouter un nouveau véhicule - {{ parent() }}
-{% endblock %}
-
-{% block gvm_actionbody %}
-	<h2>Entrez les informations du véhicule :</h2>
-
-	<div>
-		{% for flashMessage in app.session.flashbag.get('notice') %}
-			{{ flashMessage }}
-		{% endfor %}
+{% block form_row %}
+	<div class="form_row">
+		{{ form(form) }}
 	</div>
-	{% block form_row %}
-		<div class="form_row">
-			{{ form(form) }}
-		</div>
-	{% endblock form_row %}
-{% endblock %}
+{% endblock form_row %}

@@ -61,6 +61,12 @@ samu_gestion_vm_entitiesIndexParType:
     requirements:
         type: vehicule|materiel
 
+samu_gestion_vm_addRequest:
+    path:     /request-add-{type}
+    defaults: { _controller: SamuGestionVMBundle:EntitiesVM:addRequest }
+    requirements:
+        type: vehicule|materiel
+
 samu_gestion_vm_entitiesAdd:
     path:     /add-{type}
     defaults: { _controller: SamuGestionVMBundle:EntitiesVM:add }

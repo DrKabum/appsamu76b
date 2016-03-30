@@ -50,22 +50,27 @@ class EntitiesVMController extends Controller
 	 */
 	public function addAction($type, Request $request)
 	{
-		$f = $this->createFormWithType($type);
-
-		if($f['form']->handleRequest($request)->isValid())
+		if($request->isXmlHttpRequest())
 		{
-			$em = $this->getDoctrine($request)->getManager();
-			$em->persist($f['entity']);
-			$em->flush();
+			$f = $this->createFormWithType($type);
 
-			$request->getSession()->getFlashBag()->add('notice', 'Nouveau véhicule/matériel créé.');
+			if($f['form']->handleRequest($request)->isValid())
+			{
+				$em = $this->getDoctrine($request)->getManager();
+				$em->persist($f['entity']);
+				$em->flush();
 
-			return $this->redirect($this->generateUrl('samu_gestion_vm_entitiesIndex'));
+				//$request->getSession()->getFlashBag()->add('notice', 'Nouveau véhicule/matériel créé.');
+
+				return $this->render('SamuGestionVMBundle:EntitiesVM:cartouche_vehicule.html.twig', array(
+					'vehicule' => $f['entity']
+				));
+			}
+
+			return $this->render('SamuGestionVMBundle:EntitiesVM:add.html.twig', array(
+				'form' => $f['form']->createView()
+			));
 		}
-
-		return $this->render('SamuGestionVMBundle:EntitiesVM:add.html.twig', array(
-			'form' => $f['form']->createView()
-		));
 	}
 
 	/**
