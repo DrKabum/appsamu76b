@@ -1,7 +1,5 @@
 .probleme_view_block {
 	width: 100%;
-	border-bottom: solid 10px #ABE3BF;
-
 }
 
 .probleme_view_block li {
@@ -12,19 +10,17 @@
 
 .probleme_view {
 	background-color: #FFFFFF;
-	margin-bottom: 10px;
 	border: solid 7px #ABE3BF;
-	border-top: none;
-	border-bottom: none;
 }
 
 
 .vehicule_name {
-	margin: 0 auto; 
+	margin-top: 10px;
 	text-align: center;
 	width: 100%;
 	height: 30px;
 	background-color: #ABE3BF;
+	border-top: 10px solid #ABE3BF;
 	font-weight: bold;
 	 
 }

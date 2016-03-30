@@ -5,5 +5,6 @@
 {% extends 'SamuGestionVMBundle::gvmlayout.html.twig' %}
 
 {% block gvm_actionbody %}
-	{% include 'SamuGestionVMBundle:ProblemeVM:problemeView.html.twig' %}
+	<div class="vehicule_name"><p>{{probleme.vehicule.name}}</p></div>
+		{% include 'SamuGestionVMBundle:ProblemeVM:problemeView.html.twig' %}
 {% endblock %}

@@ -16,76 +16,78 @@ bool : validation
 {% endfor %}
 
 <div class="probleme_view_block">
-	<div class="probleme_view_title">
-		<div class='pvt_id'>
-			{{ render(controller('SamuGestionVMBundle:ProblemeVM:isProblemNew', {'id' : probleme.id })) }} 
+	<div class="probleme_view">
+		<div class="probleme_view_title">
+			<div class='pvt_id'>
+				{{ render(controller('SamuGestionVMBundle:ProblemeVM:isProblemNew', {'id' : probleme.id })) }} 
+			</div>
+			<div class="pvt_title">
+				<a href="{{ path('samu_gestion_vm_problemeView', {'id' : probleme.id }) }}">{{ probleme.title }}</a>
+				<span class="pvt_timer"> - Depuis {{ getDuree(probleme.dateDebut, probleme.dateFin) }}</span>
+			</div>
+			<div class='pvt_validations'>
+				{% if is_granted('ROLE_STAFF') and probleme.active %}
+					<a href="{{ path('samu_gestion_vm_problemeClasser', {'id' : probleme.id }) }}" title="Classer">
+						{% image '@SamuGestionVMBundle/Resources/public/images/Check-24.png' %}
+							<img src="{{ asset_url }}" alt="Cloturer">
+						{% endimage %}
+					</a>
+					<a href="{{ path('samu_gestion_vm_problemeEdit', { 'id' : probleme.id }) }}" title="Modifier">
+						{% image '@SamuGestionVMBundle/Resources/public/images/Data-Edit-24.png' %}
+							<img src="{{ asset_url }}" alt="Editer">
+						{% endimage %}
+					</a>
+					<a href="{{ path('samu_gestion_vm_problemeDelete', {'id' : probleme.id }) }}" title="Supprimer">
+						{% image '@SamuGestionVMBundle/Resources/public/images/Delete-24.png' %}
+							<img src="{{ asset_url }}" alt="Supprimer">
+						{% endimage %}
+					</a>
+				{% endif %}
+				{#{% if validation and is_granted('ROLE_STAFF') and probleme.staffValidated == 0 %}
+					 - <a href="{{ path('samu_gestion_vm_problemeValidate', {'id' : probleme.id }) }}">Valider</a></li>
+					{% endif %}#}
+			</div>
 		</div>
-		<div class="pvt_title">
-			<a href="{{ path('samu_gestion_vm_problemeView', {'id' : probleme.id }) }}">{{ probleme.title }}</a>
-			<span class="pvt_timer"> - Depuis {{ getDuree(probleme.dateDebut, probleme.dateFin) }}</span>
-		</div>
-		<div class='pvt_validations'>
-			{% if is_granted('ROLE_STAFF') and probleme.active %}
-				<a href="{{ path('samu_gestion_vm_problemeClasser', {'id' : probleme.id }) }}" title="Classer">
-					{% image '@SamuGestionVMBundle/Resources/public/images/Check-24.png' %}
-						<img src="{{ asset_url }}" alt="Cloturer">
-					{% endimage %}
-				</a>
-				<a href="{{ path('samu_gestion_vm_problemeEdit', { 'id' : probleme.id }) }}" title="Modifier">
-					{% image '@SamuGestionVMBundle/Resources/public/images/Data-Edit-24.png' %}
-						<img src="{{ asset_url }}" alt="Editer">
-					{% endimage %}
-				</a>
-				<a href="{{ path('samu_gestion_vm_problemeDelete', {'id' : probleme.id }) }}" title="Supprimer">
-					{% image '@SamuGestionVMBundle/Resources/public/images/Delete-24.png' %}
-						<img src="{{ asset_url }}" alt="Supprimer">
-					{% endimage %}
-				</a>
-			{% endif %}
-			{#{% if validation and is_granted('ROLE_STAFF') and probleme.staffValidated == 0 %}
-				 - <a href="{{ path('samu_gestion_vm_problemeValidate', {'id' : probleme.id }) }}">Valider</a></li>
-				{% endif %}#}
-		</div>
-	</div>
-	<div class="pvt_block_content">
-		<p>{{probleme.content}}</p>
-		
-		<div class='pvt_author'>
-			{% if probleme.datedebut %}
-			<p>Ajouté le {{ probleme.dateDebut|date('d/m/Y') }} par {{ probleme.author }}<p>
+		<div class="pvt_block_content">
+			<p>{{probleme.content}}</p>
 			
-				{% elseif probleme.dateDebut != probleme.dateModif %}
-					<p>Modifié le {{ probleme.datemodif|date('d/m/Y') }} par {{ probleme.author }}</p>
-			{% endif %}
+			<div class='pvt_author'>
+				{% if probleme.datedebut %}
+				<p>Ajouté le {{ probleme.dateDebut|date('d/m/Y') }} par {{ probleme.author }}<p>
+				
+					{% elseif probleme.dateDebut != probleme.dateModif %}
+						<p>Modifié le {{ probleme.datemodif|date('d/m/Y') }} par {{ probleme.author }}</p>
+				{% endif %}
 
-			{% if not probleme.active %}
-				<p>Cloturé le {{ probleme.dateFin|date('d/m/Y')}}</p>
-			{% endif %}	
+				{% if not probleme.active %}
+					<p>Cloturé le {{ probleme.dateFin|date('d/m/Y')}}</p>
+				{% endif %}	
+			</div>
+		</div>		 				
+			
+		<div class="coms_title">
+			<p>Commentaires</p>
 		</div>
-	</div>		 				
-		
-	<div class="coms_title">
-		<p>Commentaires</p>
-	</div>
 
-	{# Si JS n'est pas activé, on commente à l'ancienne #}
-	<div class="coms" id="{{ probleme.id }}">
-		{% for com in probleme.commentaires %}
-			{% include 'SamuGestionVMBundle:ProblemeCom:commentaireView.html.twig' %}
-		{% endfor %}
-	</div>
+		{# Si JS n'est pas activé, on commente à l'ancienne #}
+		<div class="coms" id="{{ probleme.id }}">
+			{% for com in probleme.commentaires %}
+				{% include 'SamuGestionVMBundle:ProblemeCom:commentaireView.html.twig' %}
+			{% endfor %}
+		</div>
 
-	{# Commentaires AJAX #}
-	<div class="loader" style="display:none">
-		{% image '@SamuGestionVMBundle/Resources/public/images/ajax-loader.gif' %}
-			<img src="{{ asset_url }}" alt="chargement" style="display:none">
-		{% endimage %}
-	</div>
+		{# Commentaires AJAX #}
+		<div class="loader" style="display:none">
+			{% image '@SamuGestionVMBundle/Resources/public/images/ajax-loader.gif' %}
+				<img src="{{ asset_url }}" alt="chargement" style="display:none">
+			{% endimage %}
+		</div>
 
-	<div class="add-com" style="display:none">
-		<form class="submit-com" action="{{ path('samu_gestion_vm_ajaxAdd', {'id' : probleme.id }) }}" method="post" id="{{ probleme.id }}">
-			<textarea name="com" id="com-text" size="136" cols="136" rows="5" placeholder="Commenter..."></textarea>
-			<input type="submit" value="Envoyer" id="submit">
-		</form>
-	</div>
+		<div class="add-com" style="display:none">
+			<form class="submit-com" action="{{ path('samu_gestion_vm_ajaxAdd', {'id' : probleme.id }) }}" method="post" id="{{ probleme.id }}">
+				<textarea name="com" id="com-text" size="136" cols="136" rows="5" placeholder="Commenter..."></textarea>
+				<input type="submit" value="Envoyer" id="submit">
+			</form>
+		</div>
+	</div>	
 </div>
