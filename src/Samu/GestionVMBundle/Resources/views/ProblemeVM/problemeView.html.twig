@@ -51,10 +51,11 @@ bool : validation
 		<p>{{probleme.content}}</p>
 	</div>	
 	<div class='pvt_author'>
+		{% if probleme.datedebut %}
 		<p>Ajouté le {{ probleme.dateDebut|date('d/m/Y') }} par {{ probleme.author }}<p>
 		
-		{% if probleme.dateModif %}
-			<p>Modifié le {{ probleme.datemodif|date('d/m/Y') }} par {{ probleme.author }}</p>
+			{% elseif probleme.dateDebut != probleme.dateModif %}
+				<p>Modifié le {{ probleme.datemodif|date('d/m/Y') }} par {{ probleme.author }}</p>
 		{% endif %}
 
 		{% if not probleme.active %}
