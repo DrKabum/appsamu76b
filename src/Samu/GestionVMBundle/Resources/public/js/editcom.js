@@ -90,9 +90,7 @@ $(".coms").on("submit", "form.modif", function(e) {
 		data: {modif:newContent},
 		success: function(reponse, statut)
 		{
-			console.log('fonction Ajax d\'édition');
-			console.log($('form.modif').parents('.combody'))
-			$('form.modif').parents('.combody').html('');
+			$('form.modif').parents('.combody').parents(".combox").children(".com-links").children(".Modifier").html('Modifier');
 			$('form.modif').parents('.combody').html(newContent);
 		}
 	});
