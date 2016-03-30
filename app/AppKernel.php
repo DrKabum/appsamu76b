@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new Samu\UserBundle\SamuUserBundle(),
             new Samu\PortalBundle\SamuPortalBundle(),
             new Knp\Bundle\TimeBundle\KnpTimeBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

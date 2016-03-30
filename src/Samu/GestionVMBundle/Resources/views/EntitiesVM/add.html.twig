@@ -1,7 +1,5 @@
-<h2>Entrez les informations du véhicule :</h2>
-
-{% block form_row %}
-	<div class="form_row">
-		{{ form(form) }}
-	</div>
-{% endblock form_row %}
+<div class="add-entity-form">
+	{{ form_start(form) }}
+	{{ form_widget(form) }}
+	{{ form_end(form) }}
+</div>

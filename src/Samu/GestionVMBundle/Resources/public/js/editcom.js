@@ -61,7 +61,7 @@ $(".coms").on("click", "a",function(e)
 			thisCombody.children(".loader").show();
 			
 			$.ajax({
-				url: "/app_dev.php/GestionVM/comment/view/" + id,
+				url: Routing.generate('samu_gestion_vm_entitiesView', 'vehicule', id),
 				type: 'GET',
 				success: function(reponse, statut)
 				{

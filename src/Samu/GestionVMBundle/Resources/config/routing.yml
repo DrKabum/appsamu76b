@@ -93,6 +93,8 @@ samu_gestion_vm_entitiesView:
     requirements:
         type: vehicule|materiel
         id:   \d+
+    options:
+        expose: true
 
 samu_gestion_vm_entitiesAddMatCat:
     path:    /add/categorie
