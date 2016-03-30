@@ -84,8 +84,7 @@ bool : validation
 
 	<div class="add-com" style="display:none">
 		<form class="submit-com" action="{{ path('samu_gestion_vm_ajaxAdd', {'id' : probleme.id }) }}" method="post" id="{{ probleme.id }}">
-			<label for="com">Commenter : </label>
-			<input type="text" name="com" id="com-text">
+			<textarea name="com" id="com-text" size="138" cols="138" rows="5" placeholder="Commenter..."></textarea>
 			<input type="submit" value="Envoyer" id="submit">
 		</form>
 	</div>
