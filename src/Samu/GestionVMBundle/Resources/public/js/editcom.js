@@ -92,6 +92,7 @@ $(".coms").on("submit", "form.modif", function(e) {
 		{
 			$('form.modif').parents('.combody').parents(".combox").children(".com-links").children(".Modifier").html('Modifier');
 			$('form.modif').parents('.combody').html(newContent);
+			$('form.modif').detach();
 		}
 	});
 });
