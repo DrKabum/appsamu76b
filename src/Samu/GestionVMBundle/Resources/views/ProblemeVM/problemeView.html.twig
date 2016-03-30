@@ -49,20 +49,20 @@ bool : validation
 	</div>
 	<div class="pvt_block_content">
 		<p>{{probleme.content}}</p>
-	</div>	
-	<div class='pvt_author'>
-		{% if probleme.datedebut %}
-		<p>Ajouté le {{ probleme.dateDebut|date('d/m/Y') }} par {{ probleme.author }}<p>
 		
-			{% elseif probleme.dateDebut != probleme.dateModif %}
-				<p>Modifié le {{ probleme.datemodif|date('d/m/Y') }} par {{ probleme.author }}</p>
-		{% endif %}
+		<div class='pvt_author'>
+			{% if probleme.datedebut %}
+			<p>Ajouté le {{ probleme.dateDebut|date('d/m/Y') }} par {{ probleme.author }}<p>
+			
+				{% elseif probleme.dateDebut != probleme.dateModif %}
+					<p>Modifié le {{ probleme.datemodif|date('d/m/Y') }} par {{ probleme.author }}</p>
+			{% endif %}
 
-		{% if not probleme.active %}
-			<p>Cloturé le {{ probleme.dateFin|date('d/m/Y')}}</p>
-		{% endif %}	
-	</div>
-			 				
+			{% if not probleme.active %}
+				<p>Cloturé le {{ probleme.dateFin|date('d/m/Y')}}</p>
+			{% endif %}	
+		</div>
+	</div>		 				
 	<div class="coms_title">
 		<p>Commentaires</p>
 	</div>
