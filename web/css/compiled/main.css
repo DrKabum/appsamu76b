@@ -28,6 +28,10 @@ p {
 	margin-bottom: 0px !important;
 }
 
+a:hover {
+	color: #E58B06;
+}
+
 li {
 	list-style: none;
 }
@@ -355,9 +359,6 @@ body {
 	color: #3e3e3e;
 }
 
-.pvt_title a:hover {
-	color: #E58B06;
-}
 
 .pvt_block_content {
 	padding-bottom: 10px;
@@ -411,6 +412,8 @@ body {
 .coms_title {
 	background-color: #D3FFD9;
 	padding-left: 10px;
+	padding: 5px;
+	font-weight: bold;
 }
 
 .com-title
@@ -439,9 +442,26 @@ body {
     margin: 5px;
 }
 
-.com-links {
+.com-links a {
 	text-decoration: none;
-	color: #9a9293;
+	color: grey;
 	font-size: 0.8em;
 	font-style: italic;
+}
+
+.combody {
+	text-align: justify;
+}
+
+.add-com {
+	background-color: #FFE9B7;
+	padding: 7px;
+    border-radius: 7px;
+    margin: 5px;
+}
+
+.add-com input[type=text] {
+	width: 850px;
+	padding: 5px;
+	margin: 3px;
 }

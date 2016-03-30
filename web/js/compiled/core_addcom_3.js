@@ -19,7 +19,7 @@ $('.submit-com').submit(function(e) {
 		{
 			$(".new-com").hide();
 			$(".coms#" + pb).append(com);
-			$('.submit-com#' + pb + " input#com-text").val('');
+			$('.submit-com#' + pb + " textarea#com-text").val('');
 		},
 		error : function(resultat, statut, erreur) 
 		{
