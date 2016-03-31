@@ -43,9 +43,9 @@ bool : validation
 						{% endimage %}
 					</a>
 				{% endif %}
-				{#{% if validation and is_granted('ROLE_STAFF') and probleme.staffValidated == 0 %}
-					 - <a href="{{ path('samu_gestion_vm_problemeValidate', {'id' : probleme.id }) }}">Valider</a></li>
-					{% endif %}#}
+				{% if validation and is_granted('ROLE_STAFF') and not probleme.staffValidated %}
+					<a href="{{ path('samu_gestion_vm_problemeValidate', {'id' : probleme.id }) }}">Valider</a>
+				{% endif %}
 			</div>
 		</div>
 		<div class="pvt_block_content">
