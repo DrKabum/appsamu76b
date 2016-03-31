@@ -52,12 +52,12 @@ bool  : validation
 
 	
 
-	<div>
+	{#<div>
 		<h2>Problèmes Matériels</h2>
 		Nombre de problèmes : {{ listPbMateriel|length }}
 			{% for probleme in listPbMateriel %}
 				{% include 'SamuGestionVMBundle:ProblemeVM:problemeView.html.twig' %}
 			{% endfor %}
-	</div>
+	</div>#}
 
 {% endblock %}
