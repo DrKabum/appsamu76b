@@ -62,20 +62,23 @@ class ProblemeVMController extends Controller
 	 */
 	public function addAction($typePb, Request $request)
 	{					
-		$formulaire = $this->createFormWithType(null, $typePb);
-
-		if($formulaire['form']->handleRequest($request)->isValid())
+		if($request->isXmlHttpRequest())
 		{
-			$this->submitProblem($request, $formulaire['probleme'], true);
-
-			$request->getSession()->getFlashBag()->add('notice', 'Problème ajouté à la liste des problèmes en cours.');
-
-			return $this->redirect($this->generateUrl('samu_gestion_vm_index', array('page' => 1)));
+			$formulaire = $this->createFormWithType(null, $typePb);
+		
+			if($formulaire['form']->handleRequest($request)->isValid())
+			{
+				$this->submitProblem($request, $formulaire['probleme'], true);
+	
+				$request->getSession()->getFlashBag()->add('notice', 'Problème ajouté à la liste des problèmes en cours.');
+	
+				return $this->redirect($this->generateUrl('samu_gestion_vm_index', array('page' => 1)));
+			}
+	
+			return $this->render('SamuGestionVMBundle:ProblemeVM:add.html.twig', array(
+				'form' => $formulaire['form']->createView()
+				));
 		}
-
-		return $this->render('SamuGestionVMBundle:ProblemeVM:add.html.twig', array(
-			'form' => $formulaire['form']->createView()
-			));
 	}
 
 	/**

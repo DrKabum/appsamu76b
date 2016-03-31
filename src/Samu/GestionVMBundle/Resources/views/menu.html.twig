@@ -20,7 +20,7 @@
 {% if is_granted('ROLE_STAFF') %}
 	<ul>
 		<li>
-			<a href="#">Ajouter un nouveau problème</a>
+			<a href="{{ path('samu_gestion_vm_problemeAdd', {'typePb': 'pbvehicule'}) }}" id="add-pb">Ajouter un nouveau problème</a>
 			{#<ul class="nav_add_jquery">
 				<li><a href="{{ path('samu_gestion_vm_problemeAdd', { 'typePb': 'pbvehicule' }) }}">Sur un Véhicule</a></li>
 				<li><a href="{{ path('samu_gestion_vm_problemeAdd', { 'typePb': 'pbmateriel' }) }}">Sur un Matériel</a></li>
