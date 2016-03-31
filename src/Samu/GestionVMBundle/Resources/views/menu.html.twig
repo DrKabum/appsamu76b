@@ -47,9 +47,9 @@
 	</ul>
 {% endif %}
 
-{% if is_granted('ROLE_STAFF') %}
-	<div id="nav_validation">
-		{{ render(controller('SamuGestionVMBundle:ProblemeVM:countNonValide')) }} 
-	</div>
-{% endif %}	
+	{% if is_granted('ROLE_STAFF') %}
+		<div class="nav_validation">
+			{{ render(controller('SamuGestionVMBundle:ProblemeVM:countNonValide')) }} 
+		</div>
+	{% endif %}	
 </div>
