@@ -121,11 +121,11 @@ class ProblemeVMController extends Controller
 	 */
 	public function reportAction($typePb, Request $request)
 	{
-		$formulaire = $this->createFormWithType($typePb);
+		$formulaire = $this->createFormWithType(null, $typePb);
 
 		if($formulaire['form']->handleRequest($request)->isValid())
 		{
-			$this->submitProblem($request, $formulaire['entity']);
+			$this->submitProblem($request, $formulaire['probleme']);
 			$request->getSession()->getFlashBag()->add('notice', 'Le problème a été soumis au staff. Il est d\'ores et déjà visible dans la section des problèmes non validés.');
 
 			return $this->redirect($this->generateUrl('samu_gestion_vm_index'));
