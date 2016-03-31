@@ -3,24 +3,20 @@
 {% endblock %}
 
 {% if decompte %}
-	<div class:"btn_validation">
-		<ul>
-			<li>
+	<div class="btn_validation">
+		
 				<a>
-					{% image '@SamuGestionVMBundle/Resources/public/images/nav-new-pb.png' %}
+					{% image '@SamuGestionVMBundle/Resources/public/images/new-pb.png' %}
 						<img src="{{ asset_url }}" alt="Problèmes en attente">
 					{% endimage %}
 				</a>
 				
 						<a href="{{ path('samu_gestion_vm_indexNonValide') }}">{{ decompte }} problème(s) à valider</a>
-					
-			</li>
-		</ul>
 	{% else %}
 		<ul>
 			<li>
 				<a>
-					{% image '@SamuGestionVMBundle/Resources/public/images/nav-no-new-pb.png' %}
+					{% image '@SamuGestionVMBundle/Resources/public/images/no-new-pb.png' %}
 						<img src="{{ asset_url }}" alt="Pas de problème en attente">
 					{% endimage %}
 				</a>
