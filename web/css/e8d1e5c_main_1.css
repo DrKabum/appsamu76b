@@ -71,3 +71,24 @@ section {
  	text-align: center;
 
  }
+
+ /*------------ Popup Ajout de problème JS -------------*/
+
+ #background-add-pb
+ {
+ 	z-index: 10;
+	height: 100%;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.75);
+	position: absolute;
+	top: 0px;
+ }
+
+ #popup-add-pb
+ {
+ 	margin: 50% auto auto;
+	width: 350px;
+	background-color: rgb(219, 219, 219);
+	padding: 10px;
+	border-radius: 15px;
+ }
