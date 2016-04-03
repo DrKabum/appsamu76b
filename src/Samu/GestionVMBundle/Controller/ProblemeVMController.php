@@ -68,11 +68,14 @@ class ProblemeVMController extends Controller
 		
 			if($formulaire['form']->handleRequest($request)->isValid())
 			{
-				$this->submitProblem($request, $formulaire['probleme'], true);
+				$probleme = $this->submitProblem($request, $formulaire['probleme'], true);
 	
 				$request->getSession()->getFlashBag()->add('notice', 'Problème ajouté à la liste des problèmes en cours.');
 	
-				return $this->redirect($this->generateUrl('samu_gestion_vm_index', array('page' => 1)));
+				return $this->render('SamuGestionVMBundle:ProblemeVM:problemeView.html.twig', array(
+					'probleme' => $probleme,
+					'validation' => 0
+				));
 			}
 	
 			return $this->render('SamuGestionVMBundle:ProblemeVM:add.html.twig', array(
@@ -181,6 +184,8 @@ class ProblemeVMController extends Controller
 		$probleme->setAuthor($this->container->get('security.context')->getToken()->getUser());
 		$em->persist($probleme);
 		$em->flush();
+
+		return $probleme;
 	}
 
 	public function createFormWithType(ProblemeVM $probleme = null, $typePb = null)

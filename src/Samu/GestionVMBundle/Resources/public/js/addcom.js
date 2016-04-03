@@ -1,6 +1,6 @@
 $('.add-com').hide();
 
-$('.open-com-tab').click(function(e)
+$('article').on("click", ".open-com-tab", function(e)
 {
 	if ($(this).parent(".com-tab-container").find(".add-com").is(":hidden"))
 	{
@@ -12,7 +12,7 @@ $('.open-com-tab').click(function(e)
 	
 })
 
-$('.submit-com').submit(function(e) {
+$('article').on("submit", '.submit-com', function(e) {
 	e.preventDefault();
 	var pb      = e.currentTarget.id;
 	var action  = e.currentTarget.action;

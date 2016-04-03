@@ -9,13 +9,7 @@ bool : validation
 	{% endstylesheets %}
 {% endblock %}#}
 
-{% for flashMessage in app.session.flashbag.get('notice') %}
-	<div class='flashbag'>
-		<p>{{ flashMessage }}</p>
-	</div>	
-{% endfor %}
-
-<div class="probleme_view_block">
+<div class="probleme_view_block" data-vehicule="{{ probleme.vehicule.name }}">
 	<div class="probleme_view">
 		<div class="probleme_view_title">
 			<div class='pvt_id'>
