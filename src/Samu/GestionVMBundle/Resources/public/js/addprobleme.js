@@ -1,22 +1,26 @@
-//Affichage du formulaire
+//Affichage du popup
 
 $("#add-pb").on("click", function(e) {
-		
-		console.log("addprobleme.js activé");
 
-		e.preventDefault();
+	e.preventDefault();
+	console.log("Pour ouvrir, ça marche hein... !");
 
-		var action = $(this).attr('href');
+	var action = $(this).attr('href');
 
-		$.ajax({
-			url: action,
-			type: 'GET',
-			success: function(reponse, statut) 
-			{
-				$("#block_page").append(reponse);
-			}
-		});
+	//demander le formulaire au controlleur
+	$.ajax({
+		url: action,
+		type: 'GET',
+		success: function(reponse, statut) 
+		{
+			$("#block_page").append(reponse);
+		}
+	});
 });
 
-//Ajout effectif du formulaire
+//fermeture du popup
+$("#block_page").on("click", "#popup-close", function(e) {
 
+	e.preventDefault();
+	$("#background-add-pb").remove();
+})

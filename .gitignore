@@ -11,4 +11,5 @@
 /web/bundles/
 /app/.DS_Store
 /.DS_Store
-
+/var/*
+/web/
