@@ -42,11 +42,12 @@ li {
 }
 
 footer {
-	position: relative;
+	position: absolute;
     bottom: 0px;
     height: 80px;
     width: 100%;
     max-width: 1024px;
+    margin-top: 5px;
     background: #667F7D;
     color: #D9D7D3;
 }
@@ -54,9 +55,8 @@ footer {
 section {
 	display: block;
 	width: 1012px;
-	margin-top: 20px;
+	margin-top: 5px;
 	margin:0 auto;
-	padding-top: 10px;
 }
 
 /*------------- Flashbags --------------*/
