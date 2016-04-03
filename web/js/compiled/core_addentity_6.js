@@ -1,4 +1,4 @@
-$('#add-vehicule').on('click', function(e)
+/*$('#add-vehicule').on('click', function(e)
 	{	
 		e.preventDefault();
 
@@ -13,4 +13,4 @@ $('#add-vehicule').on('click', function(e)
 			}
 		})
 	}
-);
+);*/
