@@ -25,6 +25,7 @@ class ProblemeVMRepository extends EntityRepository
 			->leftJoin('p.commentaires', 'c')
 			->addSelect('c')
 			->orderBy('p.vehicule', 'ASC')
+			->orderBy('p.dateDebut', 'DESC')
 			->getQuery()
 		;
 
