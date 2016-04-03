@@ -1,4 +1,4 @@
-$(".coms").on("click", "a",function(e) {
+$("article").on("click", ".com-links a",function(e) {
 	e.preventDefault();
 	var id = $(this).parents(".combox").prop('id');
 
