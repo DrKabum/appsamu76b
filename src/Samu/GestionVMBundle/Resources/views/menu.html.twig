@@ -20,11 +20,11 @@
 {% if is_granted('ROLE_STAFF') %}
 	<ul>
 		<li>
-			<a href="#">Ajouter un nouveau problème</a>
-			<ul class="nav_add_jquery">
+			<a href="{{ path('samu_gestion_vm_problemeAdd', {'typePb': 'pbvehicule'}) }}" id="add-pb">Ajouter un nouveau problème</a>
+			{#<ul class="nav_add_jquery">
 				<li><a href="{{ path('samu_gestion_vm_problemeAdd', { 'typePb': 'pbvehicule' }) }}">Sur un Véhicule</a></li>
 				<li><a href="{{ path('samu_gestion_vm_problemeAdd', { 'typePb': 'pbmateriel' }) }}">Sur un Matériel</a></li>
-			</ul>
+			</ul>#}
 		</li>
 	</ul>
 {% endif %}
@@ -32,10 +32,10 @@
 	<ul class="nav_report" >
 		<li>
 			<a href="#">Signaler un problème</a>
-			<ul class ="nav_report_jquery">
+			{#<ul class ="nav_report_jquery">
 				<li><a href="{{ path('samu_gestion_vm_problemeReport', { 'typePb': 'pbvehicule' }) }}">Signaler un problème Véhicule</a></li>
 		    	<li><a href="{{ path('samu_gestion_vm_problemeReport', { 'typePb': 'pbmateriel' }) }}">Signaler un problème Matériel</a></li>
-		    </ul>
+		    </ul>#}
 		</li>	
 	</ul>
 
@@ -47,9 +47,9 @@
 	</ul>
 {% endif %}
 
-{% if is_granted('ROLE_STAFF') %}
-	<div id="nav_validation">
-		{{ render(controller('SamuGestionVMBundle:ProblemeVM:countNonValide')) }} 
-	</div>
-{% endif %}	
+	{% if is_granted('ROLE_STAFF') %}
+		<div class="nav_validation">
+			{{ render(controller('SamuGestionVMBundle:ProblemeVM:countNonValide')) }} 
+		</div>
+	{% endif %}	
 </div>

@@ -10,6 +10,7 @@ $flashbags.on('click', function() {
 	$(this).hide(1000);
 });
 $('.add-com').hide();
+<<<<<<< HEAD
 
 $('.open-com-tab').click(function(e)
 {
@@ -22,8 +23,22 @@ $('.open-com-tab').click(function(e)
 	}
 	
 })
+=======
+>>>>>>> 83d9b59b70225b39a6067d2280fcae5c70997e20
 
-$('.submit-com').submit(function(e) {
+$('article').on("click", ".open-com-tab", function(e)
+{
+	if ($(this).parent(".com-tab-container").find(".add-com").is(":hidden"))
+	{
+   		$(this).parent(".com-tab-container").find(".add-com").slideDown("slow");
+	} else 
+	{
+		$(this).parent(".com-tab-container").find(".add-com").slideUp("slow");
+	}
+	
+})
+
+$('article').on("submit", '.submit-com', function(e) {
 	e.preventDefault();
 	var pb      = e.currentTarget.id;
 	var action  = e.currentTarget.action;
@@ -50,7 +65,7 @@ $('.submit-com').submit(function(e) {
 		}
 	});
 });
-$(".coms").on("click", "a",function(e) {
+$("article").on("click", ".com-links a",function(e) {
 	e.preventDefault();
 	var id = $(this).parents(".combox").prop('id');
 
@@ -78,7 +93,7 @@ $(".coms").on("click", "a",function(e) {
 });
 //Script d'apparition de la zone de texte
 
-$(".coms").on("click", "a",function(e)
+$("article").on("click", ".com-links a",function(e)
 {
 	e.preventDefault();
 	var id = $(this).parents(".combox").children(".combody").prop('id');
@@ -156,7 +171,7 @@ $(".coms").on("click", "a",function(e)
 
 //Script AJAX de modification du commentaire
 
-$(".coms").on("submit", "form.modif", function(e) { 
+$("article").on("submit", "form.modif", function(e) { 
 
 	e.preventDefault();
 
@@ -172,10 +187,58 @@ $(".coms").on("submit", "form.modif", function(e) {
 			$('form.modif').parents('.combody').parents(".combox").children(".com-links").children(".Modifier").html('Modifier');
 			$('form.modif').parents('.combody').html(newContent);
 			$('form.modif').detach();
+<<<<<<< HEAD
+=======
 		}
 	});
 });
 
+function idficator(id)
+{
+	var re = /com/gi;
+	var str = id;
+	var nouvelleStr = str.replace(re, "");
+
+	return nouvelleStr;
+}
+/*$('#add-vehicule').on('click', function(e)
+	{	
+		e.preventDefault();
+
+		var url = $(this).attr('href');
+
+		$.ajax({
+			url: url,
+			type: 'POST',
+			success: function(reponse, statut)
+			{
+				$('#block_UMH').append(reponse);
+			}
+		})
+	}
+);*/
+//Affichage du popup
+
+$("#add-pb").on("click", function(e) {
+
+	e.preventDefault();
+	console.log("Pour ouvrir, ça marche hein... !");
+
+	var action = $(this).attr('href');
+
+	//demander le formulaire au controlleur
+	$.ajax({
+		url: action,
+		type: 'GET',
+		success: function(reponse, statut) 
+		{
+			$("#block_page").append(reponse);
+>>>>>>> 83d9b59b70225b39a6067d2280fcae5c70997e20
+		}
+	});
+});
+
+<<<<<<< HEAD
 function idficator(id)
 {
 	var re = /com/gi;
@@ -200,3 +263,40 @@ $('#add-vehicule').on('click', function(e)
 		})
 	}
 );
+=======
+//fermeture du popup
+$("#block_page").on("click", "#popup-close", function(e) {
+
+	e.preventDefault();
+	closePopup();
+})
+
+$("#block_page").on("submit", "form", function(e) {
+	e.preventDefault();
+
+	var nomVehicule = $("")
+
+	$.ajax({
+		url : Routing.generate("samu_gestion_vm_problemeAdd", {"typePb" : "pbvehicule"}),
+		type: 'POST',
+		data: $(this).serialize(),
+		success: function(reponse, statut)
+		{
+			//récupérer le nom du vehicule de la réponse avec data()
+			$("#block_page").append("<div id=reponse>" + reponse + "</div>");
+			var vehiculeReponse = $("#reponse .probleme_view_block").data('vehicule');
+
+			//trouver la div du même véhicule et ajouter le contenu
+			$("#reponse .probleme_view_block").insertAfter("#groupe-" + vehiculeReponse);
+			$("#reponse").remove();
+			$('.add-com').hide();
+
+			closePopup();			
+		}
+	});
+});
+
+function closePopup() {
+	$("#background-add-pb").remove();
+}
+>>>>>>> 83d9b59b70225b39a6067d2280fcae5c70997e20

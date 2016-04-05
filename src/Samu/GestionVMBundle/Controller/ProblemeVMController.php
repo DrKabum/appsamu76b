@@ -62,20 +62,26 @@ class ProblemeVMController extends Controller
 	 */
 	public function addAction($typePb, Request $request)
 	{					
-		$formulaire = $this->createFormWithType(null, $typePb);
-
-		if($formulaire['form']->handleRequest($request)->isValid())
+		if($request->isXmlHttpRequest())
 		{
-			$this->submitProblem($request, $formulaire['probleme'], true);
-
-			$request->getSession()->getFlashBag()->add('notice', 'Problème ajouté à la liste des problèmes en cours.');
-
-			return $this->redirect($this->generateUrl('samu_gestion_vm_index', array('page' => 1)));
+			$formulaire = $this->createFormWithType(null, $typePb);
+		
+			if($formulaire['form']->handleRequest($request)->isValid())
+			{
+				$probleme = $this->submitProblem($request, $formulaire['probleme'], true);
+	
+				$request->getSession()->getFlashBag()->add('notice', 'Problème ajouté à la liste des problèmes en cours.');
+	
+				return $this->render('SamuGestionVMBundle:ProblemeVM:problemeView.html.twig', array(
+					'probleme' => $probleme,
+					'validation' => 0
+				));
+			}
+	
+			return $this->render('SamuGestionVMBundle:ProblemeVM:add.html.twig', array(
+				'form' => $formulaire['form']->createView()
+				));
 		}
-
-		return $this->render('SamuGestionVMBundle:ProblemeVM:add.html.twig', array(
-			'form' => $formulaire['form']->createView()
-			));
 	}
 
 	/**
@@ -121,11 +127,11 @@ class ProblemeVMController extends Controller
 	 */
 	public function reportAction($typePb, Request $request)
 	{
-		$formulaire = $this->createFormWithType($typePb);
+		$formulaire = $this->createFormWithType(null, $typePb);
 
 		if($formulaire['form']->handleRequest($request)->isValid())
 		{
-			$this->submitProblem($request, $formulaire['entity']);
+			$this->submitProblem($request, $formulaire['probleme']);
 			$request->getSession()->getFlashBag()->add('notice', 'Le problème a été soumis au staff. Il est d\'ores et déjà visible dans la section des problèmes non validés.');
 
 			return $this->redirect($this->generateUrl('samu_gestion_vm_index'));
@@ -178,6 +184,8 @@ class ProblemeVMController extends Controller
 		$probleme->setAuthor($this->container->get('security.context')->getToken()->getUser());
 		$em->persist($probleme);
 		$em->flush();
+
+		return $probleme;
 	}
 
 	public function createFormWithType(ProblemeVM $probleme = null, $typePb = null)

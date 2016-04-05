@@ -1,4 +1,5 @@
 $('.add-com').hide();
+<<<<<<< HEAD
 
 $('.open-com-tab').click(function(e)
 {
@@ -11,8 +12,22 @@ $('.open-com-tab').click(function(e)
 	}
 	
 })
+=======
+>>>>>>> 83d9b59b70225b39a6067d2280fcae5c70997e20
 
-$('.submit-com').submit(function(e) {
+$('article').on("click", ".open-com-tab", function(e)
+{
+	if ($(this).parent(".com-tab-container").find(".add-com").is(":hidden"))
+	{
+   		$(this).parent(".com-tab-container").find(".add-com").slideDown("slow");
+	} else 
+	{
+		$(this).parent(".com-tab-container").find(".add-com").slideUp("slow");
+	}
+	
+})
+
+$('article').on("submit", '.submit-com', function(e) {
 	e.preventDefault();
 	var pb      = e.currentTarget.id;
 	var action  = e.currentTarget.action;

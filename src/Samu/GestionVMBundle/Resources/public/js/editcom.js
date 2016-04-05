@@ -1,6 +1,6 @@
 //Script d'apparition de la zone de texte
 
-$(".coms").on("click", "a",function(e)
+$("article").on("click", ".com-links a",function(e)
 {
 	e.preventDefault();
 	var id = $(this).parents(".combox").children(".combody").prop('id');
@@ -78,7 +78,7 @@ $(".coms").on("click", "a",function(e)
 
 //Script AJAX de modification du commentaire
 
-$(".coms").on("submit", "form.modif", function(e) { 
+$("article").on("submit", "form.modif", function(e) { 
 
 	e.preventDefault();
 

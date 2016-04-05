@@ -6,6 +6,7 @@
 	<title>{% block title %}Plateforme d'applications SAMU76B{% endblock %}</title>
 	{% block stylesheets %}
 		{% stylesheets output="css/compiled/main.css" filter='cssrewrite'
+			'bundles/samuuser/css/login.css'
 			'bundles/samugestionvm/css/main.css'
 			'bundles/samugestionvm/css/header.css'
 			'bundles/samugestionvm/css/nav_style.css'
@@ -32,7 +33,8 @@
 			"@SamuGestionVMBundle/Resources/public/js/addcom.js"
 			"@SamuGestionVMBundle/Resources/public/js/delcom.js"
 			"@SamuGestionVMBundle/Resources/public/js/editcom.js"
-			"@SamuGestionVMBundle/Resources/public/js/addentity.js" %}
+			"@SamuGestionVMBundle/Resources/public/js/addentity.js"
+			"@SamuGestionVMBundle/Resources/public/js/addprobleme.js" %}
 			<script type="text/javascript" src="{{ asset_url }}"></script>
 		{% endjavascripts %}
 			<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>

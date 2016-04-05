@@ -35,7 +35,7 @@ bool  : validation
 				{% endfor %}
 
 				{% if isThereProbleme %}
-					<div class="vehicule_name">
+					<div class="vehicule_name" id="groupe-{{ listVehicules[i-1].name }}">
 						<p>{{ listVehicules[i-1].name }}</p>
 					</div>
 				{% endif %}
@@ -52,12 +52,12 @@ bool  : validation
 
 	
 
-	<div>
+	{#<div>
 		<h2>Problèmes Matériels</h2>
 		Nombre de problèmes : {{ listPbMateriel|length }}
 			{% for probleme in listPbMateriel %}
 				{% include 'SamuGestionVMBundle:ProblemeVM:problemeView.html.twig' %}
 			{% endfor %}
-	</div>
+	</div>#}
 
 {% endblock %}

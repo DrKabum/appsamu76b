@@ -50,8 +50,8 @@ class EntitiesVMController extends Controller
 	 */
 	public function addAction($type, Request $request)
 	{
-		if($request->isXmlHttpRequest())
-		{
+		//if($request->isXmlHttpRequest())
+		//{
 			$f = $this->createFormWithType($type);
 
 			if($f['form']->handleRequest($request)->isValid())
@@ -70,7 +70,7 @@ class EntitiesVMController extends Controller
 			return $this->render('SamuGestionVMBundle:EntitiesVM:add.html.twig', array(
 				'form' => $f['form']->createView()
 			));
-		}
+		//}
 	}
 
 	/**

@@ -7,17 +7,11 @@ array : form
 	- form.vehicule
 	- form.Envoyer 
 #}
-
-{% extends "SamuGestionVMBundle::gvmlayout.html.twig" %}
-
-{% block title %}
-	Ajouter un problème Véhicule - {{ parent() }}
-{% endblock %}
-
-{% block gvm_actionbody %}
-
-<div class="well">
-	{{ form(form) }}
+<div id="background-add-pb">
+	<div id="popup-add-pb">
+		<div class="btn_close">
+			<a id="popup-close">Fermer</a>
+		</div>
+			{{ form(form) }}
+	</div>	
 </div>
-
-{% endblock %}
