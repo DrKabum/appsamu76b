@@ -99,8 +99,9 @@ nav {
         width: 210px;
 }
 .nav_validation {
-width: 210px;
-float: left;
+        width: 230px;
+        height: 36px;
+        float: left;
 }
 .btn_validation_message {
         width: 200px;
