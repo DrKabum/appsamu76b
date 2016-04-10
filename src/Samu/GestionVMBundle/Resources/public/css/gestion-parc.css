@@ -1,0 +1,26 @@
+/*----------Style bouton---------*/
+.button
+{
+	background-color: #F3B860;
+	width: 137px;
+	margin: auto;
+	padding: 12px;
+	border-radius: 22px;
+}
+
+.button a:link
+{
+	text-decoration: none;
+}
+
+.button a:hover 
+{
+    color: #FBFBFB;
+}
+
+.button a
+{
+	color: white;
+}
+
+/*----------box ordre de départ----------*/

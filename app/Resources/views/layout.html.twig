@@ -12,8 +12,11 @@
 			'bundles/samugestionvm/css/nav_style.css'
 	  		'bundles/samuuser/css/login.css'
 	  		'bundles/samugestionvm/css/probleme_view.css'
+	  		'bundles/samugestionvm/css/cartouche-vehicule.css'
+	  		'bundles/samugestionvm/css/gestion-parc.css'
 		%}
 	  		<link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+	  		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 		{% endstylesheets %}
 	{% endblock %}
 </head>
@@ -34,11 +37,13 @@
 			"@SamuGestionVMBundle/Resources/public/js/delcom.js"
 			"@SamuGestionVMBundle/Resources/public/js/editcom.js"
 			"@SamuGestionVMBundle/Resources/public/js/addentity.js"
-			"@SamuGestionVMBundle/Resources/public/js/addprobleme.js" %}
+			"@SamuGestionVMBundle/Resources/public/js/addprobleme.js"
+			"@SamuGestionVMBundle/Resources/public/js/sortdepart.js" %}
 			<script type="text/javascript" src="{{ asset_url }}"></script>
 		{% endjavascripts %}
 			<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
-			<script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+			<script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>			
+			<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 	{% endblock %}
 </body>
 </html>
