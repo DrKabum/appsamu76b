@@ -18,21 +18,23 @@
 	</div>
 
 	<div id="block-UMH" class="entities-container">	
-		<h1>UMH</h1>		
-		{% for vehicule in vehicules if vehicule.typeVehicule == 'UMH' %}
-
+		<h1>UMH</h1>
+		<ul class="sortable">		
+		{% for vehicule in vehicules if vehicule.typeVehicule == 'UMH' and vehicule.operationnel %}
 			{% include 'SamuGestionVMBundle:EntitiesVM:cartouche_vehicule.html.twig' %}
-
 		{% endfor %}
+		</ul>
 	</div>
 
 	<div id="block-VML" class="entities-container">
 		<h1>VML</h1>
-		{% for vehicule in vehicules if vehicule.typeVehicule == 'VML' %}
+		<ul class="sortable">
+		{% for vehicule in vehicules if vehicule.typeVehicule == 'VML' and vehicule.operationnel %}
 
 			{% include 'SamuGestionVMBundle:EntitiesVM:cartouche_vehicule.html.twig' %}
 
-		{% endfor %}			
+		{% endfor %}
+		</ul>		
 	</div>
 
 	<div id="add-vehicule" class="button">
@@ -40,17 +42,30 @@
 			Ajouter un véhicule
 		</a>
 	</div>
-</div>
 
-<div id="block-ordre-depart">
-	<div id="depart-UMH">
-		
-	</div>
-	<div id="depart-VML">
-		
-	</div>
-	<div id="desarme">
-		
+
+	<div id="vehicules-desarmes">
+		<h1>Véhicules désarmés</h1>
+		<div id="block-UMH-desarme" class="entities-container">
+			<h1>UMH</h1>
+			<ul>	
+			{% for vehicule in vehicules if vehicule.typeVehicule == 'UMH' and not vehicule.operationnel %}
+
+				{% include 'SamuGestionVMBundle:EntitiesVM:cartouche_vehicule.html.twig' %}
+
+			{% endfor %}
+			</ul>	
+		</div>
+		<div id="block-VML-desarme" class="entities-container">
+			<h1>VML</h1>
+			<ul>
+			{% for vehicule in vehicules if vehicule.typeVehicule == 'VML' and not vehicule.operationnel %}
+
+				{% include 'SamuGestionVMBundle:EntitiesVM:cartouche_vehicule.html.twig' %}
+
+			{% endfor %}
+			</ul>		
+		</div>
 	</div>
 </div>
 

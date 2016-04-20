@@ -58,3 +58,14 @@
 	width: 25px;
 	margin:auto;
 }
+
+.ui-state-highlight
+{
+	height: 3em;
+	margin-bottom: 10px;
+}
+
+.sortable
+{
+	margin-left: -35px;
+}

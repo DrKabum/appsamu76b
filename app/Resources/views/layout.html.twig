@@ -29,8 +29,9 @@
 	{% endblock %}
 
 	{% block javascripts %}
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>		
+			<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 		{% javascripts output="js/compiled/core.js"
-			"js/jquery.min.js"
 			
 			"@SamuGestionVMBundle/Resources/public/js/flashbags.js"
 			"@SamuGestionVMBundle/Resources/public/js/addcom.js"
@@ -42,8 +43,7 @@
 			<script type="text/javascript" src="{{ asset_url }}"></script>
 		{% endjavascripts %}
 			<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
-			<script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>			
-			<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+			<script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
 	{% endblock %}
 </body>
 </html>
