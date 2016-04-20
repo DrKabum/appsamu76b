@@ -120,12 +120,25 @@ samu_gestion_vm_entitiesMatCatViewIndex:
     requirements:
         id:  \d+
 
+samu_gestion_vm_sortOrdreDepart:
+    path:      /edit-ordre
+    defaults:  { _controller: SamuGestionVMBundle:EntitiesVM:sortOrdreDepart }
+    options:
+        expose: true
+
 samu_gestion_vm_historiqueView:
     path:     /historique-{type}/{id}
     defaults: { _controller: SamuGestionVMBundle:EntitiesVM:historiqueView }
     requirements:
         id:   \d+
         type: vehicule|materiel
+samu_gestion_vm_getOrdreDepart:
+    path:     /get-ordre-{id}
+    defaults: { _controller: SamuGestionVMBundle:EntitiesVM:getOrdreDepart }
+    requirements:
+        id: \d+
+    options:
+        expose: true
 
 #--------Commentaires-------#
 samu_gestion_vm_addCom:

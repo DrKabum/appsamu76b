@@ -12,4 +12,16 @@ use Doctrine\ORM\EntityRepository;
  */
 class VehiculeRepository extends EntityRepository
 {
+	public function findAllByDepart()
+	{
+		$qb = $this->createQueryBuilder('v');
+
+		$query = $qb
+			->select('v')
+			->orderBy('v.ordreDepart', 'ASC')
+			->getQuery()
+		;
+
+		return $query->getResult();
+	}
 }
