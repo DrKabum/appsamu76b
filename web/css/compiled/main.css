@@ -133,11 +133,12 @@ li {
 }
 
 footer {
-	position: absolute;
+	position: relative;
     bottom: 0px;
     height: 80px;
     width: 100%;
     max-width: 1024px;
+    margin-top: 5px;
     background: #667F7D;
     color: #D9D7D3;
 }
@@ -145,9 +146,8 @@ footer {
 section {
 	display: block;
 	width: 1012px;
-	margin-top: 20px;
+	margin-top: 5px;
 	margin:0 auto;
-	padding-top: 10px;
 }
 
 /*------------- Flashbags --------------*/
@@ -305,6 +305,11 @@ nav {
         right: 150px;  
         width: 210px;
 }
+.nav_validation {
+        width: 230px;
+        height: 36px;
+        float: left;
+}
 .btn_validation_message {
         width: 200px;
 }
@@ -331,7 +336,7 @@ nav {
 
 
 .vehicule_name {
-	margin-top: 10px;
+	margin-top: 5px;
 	text-align: center;
 	width: 100%;
 	height: 30px;
@@ -505,13 +510,104 @@ nav {
 	margin: 5px;
 	margin-top: 0px;
 	padding-top: 10px;
-<<<<<<< HEAD
-=======
 	box-shadow: 0px 2px 2px grey;
->>>>>>> 83d9b59b70225b39a6067d2280fcae5c70997e20
 }
 
 .open-com-tab p {
 	font-size: 0.9em;
 	color: grey;
 }
+.cartouche-vehicule
+{
+	background-color: rgb(243, 184, 96);
+	border-radius: 10px;
+	margin-bottom: 10px;
+}
+
+.cartouche-vehicule div
+{
+	display:inline-block;
+	vertical-align: top;
+}
+
+
+
+.ordre-depart
+{
+	background-color: red;
+	padding: 5px;
+	float: left;
+	border-top-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.entities-container
+{
+	display: inline-block;
+	vertical-align: top;
+	width: 49.5%;
+}
+
+.entity-buttons-container div
+{
+	display:block;
+}
+
+.nom-vehicule
+{
+	width:18%;
+}
+
+.nom-vehicule p
+{
+	height:20px;
+	margin:auto;
+}
+
+.infos-vehicule
+{
+	width: 70%;
+}
+
+.entity-buttons-container
+{
+	width: 10%;
+}
+
+.entity-buttons-container div
+{
+	width: 25px;
+	margin:auto;
+}
+
+.ui-state-highlight
+{
+	height: 3em;
+	margin-bottom: 10px;
+}
+/*----------Style bouton---------*/
+.button
+{
+	background-color: #F3B860;
+	width: 137px;
+	margin: auto;
+	padding: 12px;
+	border-radius: 22px;
+}
+
+.button a:link
+{
+	text-decoration: none;
+}
+
+.button a:hover 
+{
+    color: #FBFBFB;
+}
+
+.button a
+{
+	color: white;
+}
+
+/*----------box ordre de départ----------*/

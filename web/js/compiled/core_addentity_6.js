@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-$('#add-vehicule').on('click', function(e)
-=======
 /*$('#add-vehicule').on('click', function(e)
->>>>>>> 83d9b59b70225b39a6067d2280fcae5c70997e20
 	{	
 		e.preventDefault();
 
@@ -17,8 +13,4 @@ $('#add-vehicule').on('click', function(e)
 			}
 		})
 	}
-<<<<<<< HEAD
-);
-=======
 );*/
->>>>>>> 83d9b59b70225b39a6067d2280fcae5c70997e20
