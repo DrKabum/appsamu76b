@@ -22,7 +22,7 @@ class EntitiesVMController extends Controller
 	{
 		$em = $this->getDoctrine()->getManager();
 
-		$vehicules = $em->getRepository('SamuGestionVMBundle:Vehicule')->findAll();
+		$vehicules = $em->getRepository('SamuGestionVMBundle:Vehicule')->findAllByDepart();
 
 		return $this->render('SamuGestionVMBundle:EntitiesVM:index.html.twig', array(
 			'vehicules' => $vehicules
@@ -245,5 +245,27 @@ class EntitiesVMController extends Controller
 		return $this->render($template, array(
 			'entity' => $entity
 		));
+	}
+
+	public function sortOrdreDepartAction(Request $request)
+	{
+		$em = $this->getDoctrine()->getManager();
+		$i = 1;
+
+		foreach ($_GET['vehiculeid'] as $id) {
+			$vehicule = $em->getRepository('SamuGestionVMBundle:Vehicule')->findOneById($id);
+			$vehicule->setOrdreDepart($i);
+			$em->flush();
+			$i++;
+		}
+
+		return new Response;
+	}
+
+	public function getOrdreDepartAction(Vehicule $vehicule)
+	{
+		$em = $this->getDoctrine()->getManager();
+
+		return new Response($vehicule->getOrdreDepart());
 	}
 }
