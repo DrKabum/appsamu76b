@@ -10,21 +10,6 @@ $flashbags.on('click', function() {
 	$(this).hide(1000);
 });
 $('.add-com').hide();
-<<<<<<< HEAD
-
-$('.open-com-tab').click(function(e)
-{
-	if ($(this).parent(".com-tab-container").find(".add-com").is(":hidden"))
-	{
-   		$(this).parent(".com-tab-container").find(".add-com").slideDown("slow");
-	} else 
-	{
-		$(this).parent(".com-tab-container").find(".add-com").slideUp("slow");
-	}
-	
-})
-=======
->>>>>>> 83d9b59b70225b39a6067d2280fcae5c70997e20
 
 $('article').on("click", ".open-com-tab", function(e)
 {
@@ -187,8 +172,6 @@ $("article").on("submit", "form.modif", function(e) {
 			$('form.modif').parents('.combody').parents(".combox").children(".com-links").children(".Modifier").html('Modifier');
 			$('form.modif').parents('.combody').html(newContent);
 			$('form.modif').detach();
-<<<<<<< HEAD
-=======
 		}
 	});
 });
@@ -233,37 +216,10 @@ $("#add-pb").on("click", function(e) {
 		success: function(reponse, statut) 
 		{
 			$("#block_page").append(reponse);
->>>>>>> 83d9b59b70225b39a6067d2280fcae5c70997e20
 		}
 	});
 });
 
-<<<<<<< HEAD
-function idficator(id)
-{
-	var re = /com/gi;
-	var str = id;
-	var nouvelleStr = str.replace(re, "");
-
-	return nouvelleStr;
-}
-$('#add-vehicule').on('click', function(e)
-	{	
-		e.preventDefault();
-
-		var url = $(this).attr('href');
-
-		$.ajax({
-			url: url,
-			type: 'POST',
-			success: function(reponse, statut)
-			{
-				$('#block_UMH').append(reponse);
-			}
-		})
-	}
-);
-=======
 //fermeture du popup
 $("#block_page").on("click", "#popup-close", function(e) {
 
@@ -299,4 +255,3 @@ $("#block_page").on("submit", "form", function(e) {
 function closePopup() {
 	$("#background-add-pb").remove();
 }
->>>>>>> 83d9b59b70225b39a6067d2280fcae5c70997e20

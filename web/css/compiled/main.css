@@ -133,11 +133,12 @@ li {
 }
 
 footer {
-	position: absolute;
+	position: relative;
     bottom: 0px;
     height: 80px;
     width: 100%;
     max-width: 1024px;
+    margin-top: 5px;
     background: #667F7D;
     color: #D9D7D3;
 }
@@ -145,9 +146,8 @@ footer {
 section {
 	display: block;
 	width: 1012px;
-	margin-top: 20px;
+	margin-top: 5px;
 	margin:0 auto;
-	padding-top: 10px;
 }
 
 /*------------- Flashbags --------------*/
@@ -305,6 +305,11 @@ nav {
         right: 150px;  
         width: 210px;
 }
+.nav_validation {
+        width: 230px;
+        height: 36px;
+        float: left;
+}
 .btn_validation_message {
         width: 200px;
 }
@@ -331,7 +336,7 @@ nav {
 
 
 .vehicule_name {
-	margin-top: 10px;
+	margin-top: 5px;
 	text-align: center;
 	width: 100%;
 	height: 30px;
@@ -505,10 +510,7 @@ nav {
 	margin: 5px;
 	margin-top: 0px;
 	padding-top: 10px;
-<<<<<<< HEAD
-=======
 	box-shadow: 0px 2px 2px grey;
->>>>>>> 83d9b59b70225b39a6067d2280fcae5c70997e20
 }
 
 .open-com-tab p {

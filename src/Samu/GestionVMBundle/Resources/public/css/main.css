@@ -42,7 +42,7 @@ li {
 }
 
 footer {
-	position: absolute;
+	position: relative;
     bottom: 0px;
     height: 80px;
     width: 100%;
