@@ -27,8 +27,7 @@
 	background-color: rgb(0, 190, 0);
 	padding: 5px;
 	float: left;
-	border-top-left-radius: 5px;
-	border-bottom-right-radius: 5px;
+	border-radius: 5px 0px 0px 5px;
 }
 
 .ordre-depart p {
