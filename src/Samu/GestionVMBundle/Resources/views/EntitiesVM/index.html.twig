@@ -12,27 +12,61 @@
 {% block gvm_actionbody %}
 
 <div id="block-vehicules" class="entity-container">
-	<div id="block-title" class="entity-title">Gestion du parc véhicule</div>
-	<div id="block-UMH" class="entities-container">			
-		{% for vehicule in vehicules if vehicule.typeVehicule == 'UMH' %}
+
+	<div id="block-title" class="entity-title">
+		<h1>Gestion du parc véhicule</h1>
+	</div>
+
+	<div id="block-UMH" class="entities-container">	
+		<h1>UMH</h1>
+		<ul class="sortable">		
+		{% for vehicule in vehicules if vehicule.typeVehicule == 'UMH' and vehicule.operationnel %}
+			{% include 'SamuGestionVMBundle:EntitiesVM:cartouche_vehicule.html.twig' %}
+		{% endfor %}
+		</ul>
+	</div>
+
+	<div id="block-VML" class="entities-container">
+		<h1>VML</h1>
+		<ul class="sortable">
+		{% for vehicule in vehicules if vehicule.typeVehicule == 'VML' and vehicule.operationnel %}
 
 			{% include 'SamuGestionVMBundle:EntitiesVM:cartouche_vehicule.html.twig' %}
 
 		{% endfor %}
+		</ul>		
 	</div>
 
-	<div id="block-VML" class="entities-container">
-		{% for vehicule in vehicules if vehicule.typeVehicule == 'VML' %}
-
-			{% include 'SamuGestionVMBundle:EntitiesVM:cartouche_vehicule.html.twig' %}
-
-		{% endfor %}			
+	<div id="add-vehicule" class="button">
+		<a href="{{ path('samu_gestion_vm_entitiesAdd', {'type' : 'vehicule'}) }}">
+			Ajouter un véhicule
+		</a>
 	</div>
-	<div id="add-vehicule" class="add-button"><a href="{{ path('samu_gestion_vm_entitiesAdd', {'type' : 'vehicule'}) }}">Ajouter un véhicule<a></div>
-</div>
 
-<div id="block-materiel">
-	
+
+	<div id="vehicules-desarmes">
+		<h1>Véhicules désarmés</h1>
+		<div id="block-UMH-desarme" class="entities-container">
+			<h1>UMH</h1>
+			<ul>	
+			{% for vehicule in vehicules if vehicule.typeVehicule == 'UMH' and not vehicule.operationnel %}
+
+				{% include 'SamuGestionVMBundle:EntitiesVM:cartouche_vehicule.html.twig' %}
+
+			{% endfor %}
+			</ul>	
+		</div>
+		<div id="block-VML-desarme" class="entities-container">
+			<h1>VML</h1>
+			<ul>
+			{% for vehicule in vehicules if vehicule.typeVehicule == 'VML' and not vehicule.operationnel %}
+
+				{% include 'SamuGestionVMBundle:EntitiesVM:cartouche_vehicule.html.twig' %}
+
+			{% endfor %}
+			</ul>		
+		</div>
+	</div>
 </div>
 
 {% endblock %}

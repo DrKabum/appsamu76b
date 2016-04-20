@@ -1,21 +1,30 @@
-<div class="ordre-depart"> {{ vehicule.ordreDepart }} </div>
-<div class="nom-vehicule"> {{ vehicule.name }}</div>
-<div class="infos-vehicule">
-	<ul>
-		<li>{{vehicule.modele}}</li>
-		<li>{{vehicule.immatriculation}}</li>
-		<li>{{vehicule.annee|date("d/m/Y")}}</li>
-	</ul>
-</div>
-<div class="entity-buttons-container">
-	<div class="edit-button">
-		{% image '@SamuGestionVMBundle/Resources/public/images/Data-Edit-24.png' %}
-			<img src="{{ asset_url }}" alt="Editer">
-		{% endimage %}
+<li class="liste-vehicule">
+	<div class="cartouche-vehicule">
+		
+		<div class="nom-vehicule">
+			<div class="ordre-depart"> {{ vehicule.ordreDepart }} </div>
+			<p>{{ vehicule.name }}</p> 
+		</div>
+		<div class="infos-vehicule">
+			<p>{{vehicule.modele}}</p>
+			<p>{{vehicule.immatriculation}}</p>
+			<p>{{vehicule.annee|date("d/m/Y")}}</p>
+		</div>
+		<div class="entity-buttons-container">
+			<div class="edit-button">
+				<a href="#">
+					{% image '@SamuGestionVMBundle/Resources/public/images/Data-Edit-24.png' %}
+						<img src="{{ asset_url }}" alt="Editer">
+					{% endimage %}
+				</a>
+			</div>
+			<div class="delete-button">
+				<a href="#">
+					{% image '@SamuGestionVMBundle/Resources/public/images/Delete-24.png' %}
+						<img src="{{ asset_url }}" alt="Supprimer">
+					{% endimage %}
+				</a>
+			</div>
+		</div>
 	</div>
-	<div class="delete-button">
-		{% image '@SamuGestionVMBundle/Resources/public/images/Delete-24.png' %}
-			<img src="{{ asset_url }}" alt="Supprimer">
-		{% endimage %}
-	</div>
-</div>
+</li>
