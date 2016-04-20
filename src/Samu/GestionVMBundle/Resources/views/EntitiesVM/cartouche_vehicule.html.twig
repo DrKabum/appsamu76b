@@ -1,14 +1,15 @@
 <li class="liste-vehicule">
 	<div class="cartouche-vehicule">
-		
+		<div class="ordre-depart">
+			<p class="ordre-depart-vehicule">{{ vehicule.ordreDepart }}</p>
+		</div>
 		<div class="nom-vehicule">
-			<div class="ordre-depart"> {{ vehicule.ordreDepart }} </div>
-			<p>{{ vehicule.name }}</p> 
+			<p class="ordre-depart-vehicule-name" >{{ vehicule.name }}</p> 			
 		</div>
 		<div class="infos-vehicule">
-			<p>{{vehicule.modele}}</p>
-			<p>{{vehicule.immatriculation}}</p>
-			<p>{{vehicule.annee|date("d/m/Y")}}</p>
+				<p>{{vehicule.modele}}</p>
+				<p>{{vehicule.immatriculation}}</p>
+				<p>{{vehicule.annee|date("d/m/Y")}}</p>
 		</div>
 		<div class="entity-buttons-container">
 			<div class="edit-button">
