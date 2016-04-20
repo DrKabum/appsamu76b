@@ -17,6 +17,13 @@
 		<h1>Gestion du parc véhicule</h1>
 	</div>
 
+	<div id="add-vehicule" class="button">
+		<a href="{{ path('samu_gestion_vm_entitiesAdd', {'type' : 'vehicule'}) }}">
+			Ajouter un véhicule
+		</a>
+	</div>
+
+
 	<div id="block-UMH" class="entities-container">	
 		<h1>UMH</h1>
 		<ul class="sortable">		
@@ -37,12 +44,7 @@
 		</ul>		
 	</div>
 
-	<div id="add-vehicule" class="button">
-		<a href="{{ path('samu_gestion_vm_entitiesAdd', {'type' : 'vehicule'}) }}">
-			Ajouter un véhicule
-		</a>
-	</div>
-
+	
 
 	<div id="vehicules-desarmes">
 		<h1>Véhicules désarmés</h1>
