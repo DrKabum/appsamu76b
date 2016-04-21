@@ -10,7 +10,7 @@ bool : validation
 {% endblock %}#}
 
 <div class="probleme_view_block" data-vehicule="{{ probleme.vehicule.name }}">
-	<div class="probleme_view">
+	<div class="probleme_view" id="{{probleme.id}}">
 		<div class="probleme_view_title">
 			<div class='pvt_id'>
 				{{ render(controller('SamuGestionVMBundle:ProblemeVM:isProblemNew', {'id' : probleme.id })) }} 
@@ -42,50 +42,52 @@ bool : validation
 				{% endif %}
 			</div>
 		</div>
-		<div class="pvt_block_content">
-			<p>{{probleme.content}}</p>
-			
-			<div class='pvt_author'>
-				{% if probleme.datedebut %}
-				<p>Ajouté le {{ probleme.dateDebut|date('d/m/Y') }} par {{ probleme.author }}<p>
+		<div class="probleme_hidable">
+			<div class="pvt_block_content">
+				<p>{{probleme.content}}</p>
 				
-					{% elseif probleme.dateDebut != probleme.dateModif %}
-						<p>Modifié le {{ probleme.datemodif|date('d/m/Y') }} par {{ probleme.author }}</p>
-				{% endif %}
+				<div class='pvt_author'>
+					{% if probleme.datedebut %}
+					<p>Ajouté le {{ probleme.dateDebut|date('d/m/Y') }} par {{ probleme.author }}</p>
+					
+						{% elseif probleme.dateDebut != probleme.dateModif %}
+							<p>Modifié le {{ probleme.datemodif|date('d/m/Y') }} par {{ probleme.author }}</p>
+					{% endif %}
 
-				{% if not probleme.active %}
-					<p>Cloturé le {{ probleme.dateFin|date('d/m/Y')}}</p>
-				{% endif %}	
+					{% if not probleme.active %}
+						<p>Cloturé le {{ probleme.dateFin|date('d/m/Y')}}</p>
+					{% endif %}	
+				</div>
+			</div>		 				
+				
+			<div class="coms_title">
+				<p>Commentaires</p>
 			</div>
-		</div>		 				
-			
-		<div class="coms_title">
-			<p>Commentaires</p>
-		</div>
 
-		{# Si JS n'est pas activé, on commente à l'ancienne #}
-		<div class="coms" id="{{ probleme.id }}">
-			{% for com in probleme.commentaires %}
-				{% include 'SamuGestionVMBundle:ProblemeCom:commentaireView.html.twig' %}
-			{% endfor %}
-		</div>
-
-		{# Commentaires AJAX #}
-		<div class="loader" style="display:none">
-			{% image '@SamuGestionVMBundle/Resources/public/images/ajax-loader.gif' %}
-				<img src="{{ asset_url }}" alt="chargement" style="display:none">
-			{% endimage %}
-		</div>
-
-		<div class="com-tab-container">
-			
-			<div class="add-com">
-				<form class="submit-com" action="{{ path('samu_gestion_vm_ajaxAdd', {'id' : probleme.id }) }}" method="post" id="{{ probleme.id }}">
-					<textarea style="width:967px; max-width: 967px;" name="com" id="com-text" size="136" cols="136" rows="5" placeholder="Commenter..."></textarea>
-					<input type="submit" value="Envoyer" id="submit">
-				</form>
+			{# Si JS n'est pas activé, on commente à l'ancienne #}
+			<div class="coms" id="{{ probleme.id }}">
+				{% for com in probleme.commentaires %}
+					{% include 'SamuGestionVMBundle:ProblemeCom:commentaireView.html.twig' %}
+				{% endfor %}
 			</div>
-			<div class="open-com-tab"><a>Cliquez pour ajouter un commentaire</aÒÒ></div>
+
+			{# Commentaires AJAX #}
+			<div class="loader" style="display:none">
+				{% image '@SamuGestionVMBundle/Resources/public/images/ajax-loader.gif' %}
+					<img src="{{ asset_url }}" alt="chargement" style="display:none">
+				{% endimage %}
+			</div>
+
+			<div class="com-tab-container">
+				
+				<div class="add-com">
+					<form class="submit-com" action="{{ path('samu_gestion_vm_ajaxAdd', {'id' : probleme.id }) }}" method="post" id="{{ probleme.id }}">
+						<textarea style="width:967px; max-width: 967px;" name="com" id="com-text" size="136" cols="136" rows="5" placeholder="Commenter..."></textarea>
+						<input type="submit" value="Envoyer" id="submit">
+					</form>
+				</div>
+				<div class="open-com-tab"><a>Cliquez pour ajouter un commentaire</a></div>
+			</div>
 		</div>
 	</div>	
 </div>

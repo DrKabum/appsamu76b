@@ -52,6 +52,14 @@ samu_gestion_vm_indexNonValide:
     path:     /non-valide/
     defaults: { _controller: SamuGestionVMBundle:ProblemeVM:indexNonValide }
 
+samu_gestion_vm_isProblemNew:
+    path:     /check-{id}
+    defaults: { _controller: SamuGestionVMBundle:ProblemeVM:isProblemNew }
+    requirements:
+        id: \d+
+    options:
+        expose: true
+
 #----------Entities---------#
 samu_gestion_vm_entitiesIndex:
     path:     /gerer-parc

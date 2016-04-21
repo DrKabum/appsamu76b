@@ -205,7 +205,7 @@ class ProblemeVMController extends Controller
 			'form'   => $formulaire);
 	}
 
-	public function isProblemNewAction(ProblemeVM $probleme)
+	public function isProblemNewAction(ProblemeVM $probleme, Request $request)
 	{
 		$session    = $this->get('session');
 		$lastLogin  = $this->getUser()->getLastLoginSaved();
@@ -216,6 +216,10 @@ class ProblemeVMController extends Controller
 			$isNew = false;
 		} 
 			else if($sessionLog) 
+		{
+			$isNew = false;
+		}
+			else if($request->isXmlHttpRequest())
 		{
 			$isNew = false;
 		}

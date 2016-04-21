@@ -1,5 +1,7 @@
 var $flashbags = $('.flashbag');
 
 $flashbags.on('click', function() {
-	$(this).hide(1000);
+	$(this).slideUp(1000);
 });
+
+$flashbags.delay(2000).slideUp(1000);
