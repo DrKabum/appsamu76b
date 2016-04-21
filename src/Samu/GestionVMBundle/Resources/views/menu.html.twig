@@ -43,6 +43,9 @@
 	<ul class="nav_parc">
 		<li>
 			<a href="{{ path('samu_gestion_vm_entitiesIndex') }}">Gérer le parc</a>
+			<ul>
+				<li><a href="{{ path('samu_gestion_vm_entitiesAdd', {'type' : 'vehicule'}) }}">Ajouter un véhicule</a></li>
+			</ul>
 		</li>
 	</ul>
 {% endif %}

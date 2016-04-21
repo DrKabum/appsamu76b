@@ -27,12 +27,9 @@
 
 .vehicule_name p {
 	font-size: 1.2em;
-	font-style: bold;
-	vertical-align: middle;
 	line-height: 30px;
-	margin-top: 0px;
-	margin-bottom: 0px;
 }
+
 
 /*--------------------- Titre du problème -----------------*/
 .probleme_view_title {

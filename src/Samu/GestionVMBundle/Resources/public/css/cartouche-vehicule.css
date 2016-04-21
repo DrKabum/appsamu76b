@@ -1,11 +1,39 @@
+#block-vehicules {
+background-color: #ABE3BF;
+}
+
+/*---------- Block véhicules -------*/
+
+#block-UMH, #block-VML {
+	width: 493px;
+	background-color: #D3FFD9;
+
+	margin: 5px;
+}
+
+.entities-container
+{
+	display: inline-block;
+	vertical-align: top;
+	width: 400px;
+}
+
+.entities-container h1 {
+	text-align: center;
+	font-size: 1.2em;
+	line-height: 30px;
+}
 
 .sortable.ui-sortable {
-	padding: 0px;
+	padding: 5px;
 }
-.ui-sortable-handle {
-	left: 5px !important;
+#block-UMH .ui-sortable-handle {
+	left: 16px !important;
 }
 
+#block-VML .ui-sortable-handle {
+	left: 524px !important;
+}
 .cartouche-vehicule
 {
 	height: 60px;
@@ -69,13 +97,6 @@ p.ordre-depart-vehicule-name {
 {
 	width: 180px;
 	float: left;
-}
-
-.entities-container
-{
-	display: inline-block;
-	vertical-align: top;
-	width: 49.5%;
 }
 
 .entity-buttons-container div
