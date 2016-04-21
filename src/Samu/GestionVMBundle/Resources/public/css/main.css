@@ -1,9 +1,5 @@
-html {
-	height: 100%;
-}
 
 html {
-	width: 100%;
 	max-width: 1024px;
 	background-color: #E7FFFD;
 	margin: 0 auto;
