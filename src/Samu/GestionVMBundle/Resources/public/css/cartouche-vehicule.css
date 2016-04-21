@@ -4,7 +4,7 @@ background-color: #ABE3BF;
 
 /*---------- Block véhicules -------*/
 
-#block-UMH, #block-VML {
+#block-UMH-op, #block-VML-op, #block-UMH-hs, #block-VML-hs {
 	width: 493px;
 	background-color: #D3FFD9;
 
@@ -27,11 +27,11 @@ background-color: #ABE3BF;
 .sortable.ui-sortable {
 	padding: 5px;
 }
-#block-UMH .ui-sortable-handle {
+#block-UMH-op .ui-sortable-handle, #block-UMH-hs .ui-sortable-handle {
 	left: 16px !important;
 }
 
-#block-VML .ui-sortable-handle {
+#block-VML-op .ui-sortable-handle, #block-VML-hs .ui-sortable-handle {
 	left: 524px !important;
 }
 .cartouche-vehicule
@@ -79,7 +79,7 @@ p.ordre-depart-vehicule {
 }
 
 .vehicule-op {
-	background: rgb(255, 226, 100);
+	background: rgb(38, 255, 46);
 }
 
 .vehicule-hs {

@@ -25,7 +25,7 @@
 	</div>#}
 
 
-	<div id="block-UMH" class="entities-container">	
+	<div id="block-UMH-op" class="entities-container">	
 		<div class="entities-container-title"><h1>UMH</h1></div>
 		<ul class="sortable" id="block-UMH">		
 
@@ -35,7 +35,7 @@
 		</ul>
 	</div>
 
-	<div id="block-VML" class="entities-container">
+	<div id="block-VML-op" class="entities-container">
 		<div class="entities-container-title"><h1>VML</h1></div>
 		<ul class="sortable" id="block-VML">
 		{% for vehicule in vehicules if vehicule.typeVehicule == 'VML' and vehicule.operationnel %}
@@ -51,7 +51,7 @@
 	<div id="vehicules-desarmes">
 		<h1>Véhicules désarmés</h1>
 
-		<div id="block-UMH-desarme" class="entities-container">
+		<div id="block-UMH-hs" class="entities-container">
 			<div class="entities-container-title"><h1>UMH</h1></div>
 			<ul class="sortable" id="block-UMH-desarme">	
 			{% for vehicule in vehicules if vehicule.typeVehicule == 'UMH' and not vehicule.operationnel %}
@@ -62,7 +62,7 @@
 			</ul>	
 		</div>
 
-		<div id="block-VML-desarme" class="entities-container">
+		<div id="block-VML-hs" class="entities-container">
 			<div class="entities-container-title"><h1>VML</h1></div>
 			<ul class="sortable" id="block-VML-desarme">
 
