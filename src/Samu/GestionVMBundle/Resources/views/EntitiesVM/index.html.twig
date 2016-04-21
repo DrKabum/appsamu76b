@@ -27,7 +27,8 @@
 
 	<div id="block-UMH" class="entities-container">	
 		<div class="entities-container-title"><h1>UMH</h1></div>
-		<ul class="sortable">		
+		<ul class="sortable" id="block-UMH">		
+
 		{% for vehicule in vehicules if vehicule.typeVehicule == 'UMH' and vehicule.operationnel %}
 			{% include 'SamuGestionVMBundle:EntitiesVM:cartouche_vehicule.html.twig' %}
 		{% endfor %}
@@ -36,7 +37,7 @@
 
 	<div id="block-VML" class="entities-container">
 		<div class="entities-container-title"><h1>VML</h1></div>
-		<ul class="sortable">
+		<ul class="sortable" id="block-VML">
 		{% for vehicule in vehicules if vehicule.typeVehicule == 'VML' and vehicule.operationnel %}
 
 			{% include 'SamuGestionVMBundle:EntitiesVM:cartouche_vehicule.html.twig' %}
@@ -49,9 +50,10 @@
 
 	<div id="vehicules-desarmes">
 		<h1>Véhicules désarmés</h1>
+
 		<div id="block-UMH-desarme" class="entities-container">
 			<div class="entities-container-title"><h1>UMH</h1></div>
-			<ul>	
+			<ul class="sortable" id="block-UMH-desarme">	
 			{% for vehicule in vehicules if vehicule.typeVehicule == 'UMH' and not vehicule.operationnel %}
 
 				{% include 'SamuGestionVMBundle:EntitiesVM:cartouche_vehicule.html.twig' %}
@@ -59,9 +61,11 @@
 			{% endfor %}
 			</ul>	
 		</div>
+
 		<div id="block-VML-desarme" class="entities-container">
 			<div class="entities-container-title"><h1>VML</h1></div>
-			<ul>
+			<ul class="sortable" id="block-VML-desarme">
+
 			{% for vehicule in vehicules if vehicule.typeVehicule == 'VML' and not vehicule.operationnel %}
 
 				{% include 'SamuGestionVMBundle:EntitiesVM:cartouche_vehicule.html.twig' %}
