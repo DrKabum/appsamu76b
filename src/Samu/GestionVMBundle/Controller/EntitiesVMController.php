@@ -252,11 +252,25 @@ class EntitiesVMController extends Controller
 		$em = $this->getDoctrine()->getManager();
 		$i = 1;
 
-		foreach ($_GET['vehiculeid'] as $id) {
-			$vehicule = $em->getRepository('SamuGestionVMBundle:Vehicule')->findOneById($id);
-			$vehicule->setOrdreDepart($i);
-			$em->flush();
-			$i++;
+		if (isset($_GET['vehiculeid'])) {
+
+			foreach ($_GET['vehiculeid'] as $id) {
+				$vehicule = $em->getRepository('SamuGestionVMBundle:Vehicule')->findOneById($id);
+				$vehicule->setOrdreDepart($i);
+				$vehicule->setOperationnel(true);
+				$em->flush();
+				$i++;
+			}
+		}
+
+		if(isset($_GET['vehiculedownid']))
+		{
+			foreach ($_GET['vehiculedownid'] as $id) {
+					$vehicule = $em->getRepository('SamuGestionVMBundle:Vehicule')->findOneById($id);
+					$vehicule->setOperationnel(false);
+					$vehicule->setOrdreDepart(0);
+					$em->flush();
+			}
 		}
 
 		return new Response;

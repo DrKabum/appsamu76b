@@ -1,10 +1,10 @@
-<li class="liste-vehicule" id="vehiculeid-{{vehicule.id}}">
+<li class="liste-vehicule" {% if vehicule.operationnel %} id="vehiculeid-{{vehicule.id}}" {% else %} id="vehiculedownid-{{vehicule.id}}" {% endif %}>
 	<div class="cartouche-vehicule">
-	{# ------------  Décommenter pour afficher l'ordre de départ du véhicule  ---------
+	{#------------  Décommenter pour afficher l'ordre de départ du véhicule  ---------
 		<div class="ordre-depart">
 			<p class="ordre-depart-vehicule">{{ vehicule.ordreDepart }}</p>
 		</div> 
-	---------------  #}
+	---------------#}
 		<div class="nom-vehicule {% if vehicule.operationnel %}vehicule-op{% else %}vehicule-hs{% endif %}">
 			<p class="ordre-depart-vehicule-name" >{{ vehicule.name }}</p> 			
 		</div>
