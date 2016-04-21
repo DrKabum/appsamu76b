@@ -17,24 +17,26 @@
 		<h1>Gestion du parc véhicule</h1>
 	</div>
 
+	{# ---------------- Ici on ajoute le bouton Ajouter Véhicule ------------
 	<div id="add-vehicule" class="button">
 		<a href="{{ path('samu_gestion_vm_entitiesAdd', {'type' : 'vehicule'}) }}">
 			Ajouter un véhicule
 		</a>
-	</div>
+	</div>#}
 
 
-	<div class="entities-container">	
-		<h1>UMH</h1>
+	<div id="block-UMH" class="entities-container">	
+		<div class="entities-container-title"><h1>UMH</h1></div>
 		<ul class="sortable" id="block-UMH">		
+
 		{% for vehicule in vehicules if vehicule.typeVehicule == 'UMH' and vehicule.operationnel %}
 			{% include 'SamuGestionVMBundle:EntitiesVM:cartouche_vehicule.html.twig' %}
 		{% endfor %}
 		</ul>
 	</div>
 
-	<div class="entities-container">
-		<h1>VML</h1>
+	<div id="block-VML" class="entities-container">
+		<div class="entities-container-title"><h1>VML</h1></div>
 		<ul class="sortable" id="block-VML">
 		{% for vehicule in vehicules if vehicule.typeVehicule == 'VML' and vehicule.operationnel %}
 
@@ -48,8 +50,9 @@
 
 	<div id="vehicules-desarmes">
 		<h1>Véhicules désarmés</h1>
-		<div class="entities-container">
-			<h1>UMH</h1>
+
+		<div id="block-UMH-desarme" class="entities-container">
+			<div class="entities-container-title"><h1>UMH</h1></div>
 			<ul class="sortable" id="block-UMH-desarme">	
 			{% for vehicule in vehicules if vehicule.typeVehicule == 'UMH' and not vehicule.operationnel %}
 
@@ -58,9 +61,11 @@
 			{% endfor %}
 			</ul>	
 		</div>
-		<div class="entities-container">
-			<h1>VML</h1>
+
+		<div id="block-VML-desarme" class="entities-container">
+			<div class="entities-container-title"><h1>VML</h1></div>
 			<ul class="sortable" id="block-VML-desarme">
+
 			{% for vehicule in vehicules if vehicule.typeVehicule == 'VML' and not vehicule.operationnel %}
 
 				{% include 'SamuGestionVMBundle:EntitiesVM:cartouche_vehicule.html.twig' %}
