@@ -1,49 +1,36 @@
 {% extends "::layout.html.twig" %}
 
-{% block stylesheets %}
-	{{ parent() }}
-	{% stylesheets 'bundles/samugestionvm/css/main.css' filter='cssrewrite' %}
-    	<link rel="stylesheet" href="{{ asset_url }}" />
-	{% endstylesheets %}
-{% endblock %}
-
 {% block title %}
 	Gestion Véhicules{# et Matériel#} - {{ parent() }}
 {% endblock %}
 
 {% block body %}
-	
-			<header>
-				{% include 'SamuGestionVMBundle::header.html.twig' %}
-			</header>
+	<section id="global">
+		<header>
+			{% include 'SamuGestionVMBundle::header.html.twig' %}
+		</header>
 
-			<nav>
-				{% include 'SamuGestionVMBundle::menu.html.twig' %} {# inclusion des menus #}
-			</nav>
-			<div id="block_page">
-				<section>
-					<article>
-						{# Bloc à hériter par les actions des controllers #}
-						{% block gvm_actionbody %}
-						
-							{% block form_row %}
-							{% endblock form_row %}	
-						{% endblock %}	
-					</article>		
-				</section>
-			</div>
+		<nav>
+			{% include 'SamuGestionVMBundle::menu.html.twig' %} {# inclusion des menus #}
+		</nav>
 
-{% endblock %}
+		<div id="block_page">
+			<section>
+				<article>
+					{# Bloc à hériter par les actions des controllers #}
+					{% block gvm_actionbody %}
+					
+						{% block form_row %}
+						{% endblock form_row %}	
+					{% endblock %}	
+				</article>		
+			</section>
+		</div>
+		
+		<footer>
+			{% include 'SamuGestionVMBundle::footer.html.twig' %}
+		</footer>
+	</section>
+		
 
-{% block footer %}
-			<footer>
-        			{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-            			{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-            				<a href="{{ path('fos_user_security_logout') }}">
-                				{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-           					 </a>
-    				{% endif %}
-				<hr>
-				<p>Ici le footer...</p>
-			</footer>
 {% endblock %}
