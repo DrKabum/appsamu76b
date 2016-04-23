@@ -3,12 +3,6 @@ array : listPbVehicules
 array : listPbMateriel
 bool : validation
 #}
-{#{% block stylesheets %}
-	{% stylesheets 'bundles/samugestionvm/css/probleme_view.css' filter='cssrewrite' %}
-    	<link rel="stylesheet" href="{{ asset_url }}" />
-	{% endstylesheets %}
-{% endblock %}#}
-
 <div class="probleme_view_block" data-vehicule="{{ probleme.vehicule.name }}">
 	<div class="probleme_view" id="pb-{{probleme.id}}">
 		<div class="probleme_view_title">
