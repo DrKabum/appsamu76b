@@ -3,13 +3,13 @@
 {% if isNew %}
 
 	{% image '@SamuGestionVMBundle/Resources/public/images/new-topic.png' %}
-		<img src="{{ asset_url }}" alt="Nouveau problème">
+		<img src="{{ asset_url }}" alt="Nouveau problème" class="new-pb">
 	{% endimage %}				
 
 {% else %}
 
 	{% image '@SamuGestionVMBundle/Resources/public/images/old-topic.png' %}
-		<img src="{{ asset_url }}" alt="Problème connu">
+		<img src="{{ asset_url }}" alt="Problème connu" class="old-pb">
 	{% endimage %}
 
 {% endif %}

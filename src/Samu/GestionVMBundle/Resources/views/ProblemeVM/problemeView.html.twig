@@ -10,7 +10,7 @@ bool : validation
 {% endblock %}#}
 
 <div class="probleme_view_block" data-vehicule="{{ probleme.vehicule.name }}">
-	<div class="probleme_view" id="{{probleme.id}}">
+	<div class="probleme_view" id="pb-{{probleme.id}}">
 		<div class="probleme_view_title">
 			<div class='pvt_id'>
 				{{ render(controller('SamuGestionVMBundle:ProblemeVM:isProblemNew', {'id' : probleme.id })) }} 

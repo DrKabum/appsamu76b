@@ -36,12 +36,22 @@ class ProblemeVMController extends Controller
 		;
 
 		$testPb = count($listPbVehicules) + count($listPbMateriel);
+		
+
+		$ids = null;
+
+		foreach ($listPbVehicules as $PbVehicule) {
+			$ids[] = $PbVehicule->getVehicule()->getId();
+		}
+
+		isset($ids) ? $maxId = max($ids) : $maxId = 0;
 
 		return $this->render('SamuGestionVMBundle:ProblemeVM:index.html.twig', array(
-			'listPbVehicules' => $listPbVehicules,
-			'listPbMateriel'  => $listPbMateriel,
-			'listVehicules'   => $listVehicules,
-			'validation'      => 0 //nous ne sommes pas entrain de valider des problèmes (info nécessaire au template)
+			'listPbVehicules'  => $listPbVehicules,
+			'maxId'            => $maxId,
+			//'listPbMateriel' => $listPbMateriel,
+			'listVehicules'    => $listVehicules,
+			'validation'       => 0 //nous ne sommes pas entrain de valider des problèmes (info nécessaire au template)
 		));
 	}
 
@@ -226,6 +236,7 @@ class ProblemeVMController extends Controller
 		}
 			else if($request->isXmlHttpRequest())
 		{
+			$this->get('session')->set($probleme->getId(), 1);
 			$isNew = false;
 		}
 			else
