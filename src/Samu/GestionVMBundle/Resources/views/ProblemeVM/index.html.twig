@@ -35,10 +35,18 @@ bool  : validation
 				{% endfor %}
 
 				{% if isThereProbleme %}
-					<div class="vehicule_name" id="groupe-{{ listVehicules[i-1].name }}">
-						<p>{{ listVehicules[i-1].name }}</p>
+					{% for vehicule in listVehicules if vehicule.id == i %}
+						{% set nom = vehicule.name %}
+					{% endfor %}
+					<div class="vehicule_name" id="groupe-{{ nom }}">
+						<p>{{ nom }}</p>
 					</div>
 				{% endif %}
+
+				l'ID maximum est : {{ maxId }}
+				les ID sont {% for id in ids %}{{ id }} ,{% endfor %}
+
+				les véhicules sont {% for vehicule in listVehicules %}{{ vehicule.id }} ,{% endfor %}
 
 				{% for probleme in listPbVehicules if probleme.vehicule.id == i %}
 					{% include 'SamuGestionVMBundle:ProblemeVM:problemeView.html.twig' %}

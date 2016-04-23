@@ -47,6 +47,7 @@ class ProblemeVMController extends Controller
 		isset($ids) ? $maxId = max($ids) : $maxId = 0;
 
 		return $this->render('SamuGestionVMBundle:ProblemeVM:index.html.twig', array(
+			'ids' => $ids,
 			'listPbVehicules'  => $listPbVehicules,
 			'maxId'            => $maxId,
 			//'listPbMateriel' => $listPbMateriel,
