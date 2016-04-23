@@ -79,7 +79,8 @@ class ProblemeVMController extends Controller
 			}
 	
 			return $this->render('SamuGestionVMBundle:ProblemeVM:add.html.twig', array(
-				'form' => $formulaire['form']->createView()
+				'form'    => $formulaire['form']->createView(),
+				'add' => true
 				));
 		}
 	}
@@ -127,19 +128,23 @@ class ProblemeVMController extends Controller
 	 */
 	public function reportAction($typePb, Request $request)
 	{
-		$formulaire = $this->createFormWithType(null, $typePb);
-
-		if($formulaire['form']->handleRequest($request)->isValid())
+		if($request->isXmlHttpRequest()) 
 		{
-			$this->submitProblem($request, $formulaire['probleme']);
-			$request->getSession()->getFlashBag()->add('notice', 'Le problème a été soumis au staff. Il est d\'ores et déjà visible dans la section des problèmes non validés.');
+			$formulaire = $this->createFormWithType(null, $typePb);
 
-			return $this->redirect($this->generateUrl('samu_gestion_vm_index'));
+			if($formulaire['form']->handleRequest($request)->isValid())
+			{
+				$this->submitProblem($request, $formulaire['probleme']);
+				$request->getSession()->getFlashBag()->add('notice', 'Le problème a été soumis au staff.');
+
+				return $this->redirect($this->generateUrl('samu_gestion_vm_index'));
+			}
+
+			return $this->render('SamuGestionVMBundle:ProblemeVM:add.html.twig', array(
+				'form'    => $formulaire['form']->createView(),
+				'add' => false
+				));
 		}
-
-		return $this->render('SamuGestionVMBundle:ProblemeVM:add.html.twig', array(
-			'form' => $formulaire['form']->createView()
-			));
 	}
 
 	/**
@@ -154,7 +159,7 @@ class ProblemeVMController extends Controller
 
 		$this->get('session')->getFlashBag()->add('notice', 'Ce problème est maintenant pris en compte par le staff');
 
-		return $this->redirect($this->generateUrl('samu_gestion_vm_problemeView', array('id' => $probleme->getId())));
+		return $this->redirect($this->generateUrl('samu_gestion_vm_indexNonValide'));
 
 	}
 

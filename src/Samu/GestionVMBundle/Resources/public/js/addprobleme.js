@@ -25,10 +25,8 @@ $("#block_page").on("click", "#popup-close", function(e) {
 	closePopup();
 })
 
-$("#block_page").on("submit", "form", function(e) {
+$("#block_page").on("submit", ".add-pb form", function(e) {
 	e.preventDefault();
-
-	var nomVehicule = $("")
 
 	$.ajax({
 		url : Routing.generate("samu_gestion_vm_problemeAdd", {"typePb" : "pbvehicule"}),
@@ -36,16 +34,7 @@ $("#block_page").on("submit", "form", function(e) {
 		data: $(this).serialize(),
 		success: function(reponse, statut)
 		{
-			//récupérer le nom du vehicule de la réponse avec data()
-			$("#block_page").append("<div id=reponse>" + reponse + "</div>");
-			var vehiculeReponse = $("#reponse .probleme_view_block").data('vehicule');
-
-			//trouver la div du même véhicule et ajouter le contenu
-			$("#reponse .probleme_view_block").insertAfter("#groupe-" + vehiculeReponse);
-			$("#reponse").remove();
-			$('.add-com').hide();
-
-			closePopup();			
+			window.location.href = Routing.generate('samu_gestion_vm_index');			
 		}
 	});
 });
