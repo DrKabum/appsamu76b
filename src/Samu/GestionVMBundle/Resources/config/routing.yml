@@ -3,6 +3,8 @@ samu_gestion_vm_index: #Home
     defaults: { _controller: SamuGestionVMBundle:ProblemeVM:index, page: 1 }
     requirements:
         page: \d*
+    options:
+        expose: true
 
 samu_gestion_vm_problemeView:
     path:     /view/{id}
@@ -35,6 +37,8 @@ samu_gestion_vm_problemeReport:
     defaults: { _controller: SamuGestionVMBundle:ProblemeVM:report }
     requirements:
         typePb: pbvehicule|pbmateriel
+    options:
+        expose: true
 
 samu_gestion_vm_problemeValidate:
     path:     /validate/{id}
@@ -51,6 +55,8 @@ samu_gestion_vm_problemeClasser:
 samu_gestion_vm_indexNonValide:
     path:     /non-valide/
     defaults: { _controller: SamuGestionVMBundle:ProblemeVM:indexNonValide }
+    options:
+        expose: true
 
 samu_gestion_vm_isProblemNew:
     path:     /check-{id}

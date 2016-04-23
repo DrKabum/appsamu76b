@@ -1,4 +1,5 @@
 {# @variables :
+bool add
 array : form
 	- form.title
 	- form.author
@@ -8,7 +9,7 @@ array : form
 	- form.Envoyer 
 #}
 <div id="background-add-pb">
-	<div id="popup-add-pb">
+	<div id="popup-add-pb" {% if add %} class="add-pb" {% else %} class="report-pb" {% endif %}>
 		<div class="btn_close">
 			<a id="popup-close">Fermer</a>
 		</div>

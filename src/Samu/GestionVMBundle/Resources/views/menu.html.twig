@@ -24,7 +24,7 @@
 
 	<ul class="nav_report" >
 		<li>
-			<a href="#">Signaler un problème</a>
+			<a href="{{ path('samu_gestion_vm_problemeReport', {'typePb': 'pbvehicule'}) }}" id="report-pb">Signaler un problème</a>
 			{#<ul class ="nav_report_jquery">
 				<li><a href="{{ path('samu_gestion_vm_problemeReport', { 'typePb': 'pbvehicule' }) }}">Signaler un problème Véhicule</a></li>
 		    	<li><a href="{{ path('samu_gestion_vm_problemeReport', { 'typePb': 'pbmateriel' }) }}">Signaler un problème Matériel</a></li>
