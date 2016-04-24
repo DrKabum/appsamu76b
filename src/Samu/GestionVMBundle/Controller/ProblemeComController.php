@@ -26,6 +26,7 @@ class ProblemeComController extends Controller
 			$commentaire->setProbleme($probleme);
 			$commentaire->setAuthor($this->container->get('security.context')->getToken()->getUser());
 			$commentaire->setDate(new \Datetime());
+			$probleme->setLastModif(new \Datetime());
 			$em = $this->getDoctrine()->getManager();
 			$em->persist($commentaire);
 			$em->flush();
@@ -52,6 +53,7 @@ class ProblemeComController extends Controller
 			$commentaire->setProbleme($probleme);
 			$commentaire->setAuthor($this->container->get('security.context')->getToken()->getUser());
 			$commentaire->setDate(new \Datetime());
+			$probleme->setLastModif(new \Datetime());
 			$em = $this->getDoctrine()->getManager();
 			$em->persist($commentaire);
 			$em->flush();
@@ -88,6 +90,7 @@ class ProblemeComController extends Controller
 		{
 			$commentaire->setContent($request->request->get('modif'));
 			$commentaire->setDateModif(new \Datetime());
+			$probleme->setLastModif(new \Datetime());
 			$em = $this->getDoctrine()->getManager();
 			$em->flush();
 
@@ -98,6 +101,7 @@ class ProblemeComController extends Controller
 		elseif($formulaire->handleRequest($request)->isValid())
 		{
 			$commentaire->setDateModif(new \Datetime());
+			$probleme->setLastModif(new \Datetime());
 			$em = $this->getDoctrine()->getManager();
 			$em->flush();
 

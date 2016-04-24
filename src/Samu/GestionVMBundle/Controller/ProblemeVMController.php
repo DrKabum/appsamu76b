@@ -99,6 +99,7 @@ class ProblemeVMController extends Controller
 		if($formulaire['form']->handleRequest($request)->isValid())
 		{
 			$probleme->setDateModif(new \Datetime());
+			$probleme->setLastModif(new \Datetime());
 			$em->flush();
 
 			$request->getSession()->getFlashBag()->add('notice', 'Modifications réussie.');
@@ -156,6 +157,7 @@ class ProblemeVMController extends Controller
 	{
 		$em = $this->getDoctrine()->getManager();
 		$probleme->setStaffValidated(1);
+		$probleme->setLastModif(new \Datetime());
 
 		$em->flush();
 
@@ -173,6 +175,7 @@ class ProblemeVMController extends Controller
 		$em = $this->getDoctrine()->getManager();
 
 		$probleme->setActive(0);
+		$probleme->setLastModif(new \Datetime());
 		$em->flush();
 
 		$this->get('session')->getFlashBag()->add("notice", "Le problème n°" . $probleme->getId() . " a été validé.");

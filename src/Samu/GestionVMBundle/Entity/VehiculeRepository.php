@@ -36,7 +36,7 @@ class VehiculeRepository extends EntityRepository
 			->where('p.staffValidated=1')
 			->leftJoin('p.commentaires', 'c')
 			->addSelect('c')
-			->orderBy('p.dateDebut', 'DESC')
+			->orderBy('p.lastModif', 'DESC')
 			->getQuery()
 		;
 
@@ -54,7 +54,7 @@ class VehiculeRepository extends EntityRepository
 			->where('p.active=1')
 			->leftJoin('p.commentaires', 'c')
 			->addSelect('c')
-			->orderBy('p.dateDebut', 'DESC')
+			->orderBy('p.lastModif', 'DESC')
 			->getQuery()
 		;
 
