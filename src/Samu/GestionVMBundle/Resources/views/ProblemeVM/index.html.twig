@@ -22,7 +22,7 @@ bool  : validation
 		<p>Nombre de problèmes :</p>
 	</div>
 
-	{% for vehicule in VehiculeAvecProblemesEnCours %}
+	{% for vehicule in vehiculesAvecProblemesEnCours %}
 
 		<div class="vehicule_name" id="groupe-{{ vehicule.name }}">
 			<p>{{ vehicule.name }}</p>
@@ -35,7 +35,7 @@ bool  : validation
 		{% endfor %}
 
 	{% else %}
-		<p>Aucun problème en cours sur les véhicules.</p>
+		<p>Aucun problème {% if validation %}à valider {% else %}en cours {% endif %}sur les véhicules.</p>
 	{% endfor %}
 
 {% endblock %}

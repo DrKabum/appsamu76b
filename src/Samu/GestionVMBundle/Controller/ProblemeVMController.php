@@ -15,20 +15,35 @@ class ProblemeVMController extends Controller
 	/**
 	 * @Security("has_role('ROLE_USER')")
 	 */
-	public function indexAction()
+	public function indexAction($action)
 	{
-		$VehiculeAvecProblemesEnCours = $this
-			->getDoctrine()
-			->getManager()
-			->getRepository('SamuGestionVMBundle:Vehicule')
-			->findVehiculesWithProblems()
-		;
+		($action == 'index') ? $validation = false : $validation = true;
+
+		$vehiculesAvecProblemesEnCours;
+
+			if ($validation) 
+		{
+			$vehiculesAvecProblemesEnCours = $this
+				->getDoctrine()
+				->getManager()
+				->getRepository('SamuGestionVMBundle:Vehicule')
+				->findVehiculesWithProblemsNonValides()
+			;
+		}
+			else
+		{
+			$vehiculesAvecProblemesEnCours = $this
+				->getDoctrine()
+				->getManager()
+				->getRepository('SamuGestionVMBundle:Vehicule')
+				->findVehiculesWithProblems()
+			;
+		}
 
 		return $this->render('SamuGestionVMBundle:ProblemeVM:index.html.twig', array(
 
-			'VehiculeAvecProblemesEnCours'  => $VehiculeAvecProblemesEnCours,
-
-			'validation'       => 0 //nous ne sommes pas entrain de valider des problèmes (info nécessaire au template)
+			'vehiculesAvecProblemesEnCours'  => $vehiculesAvecProblemesEnCours,
+			'validation'       => $validation//nous ne sommes pas entrain de valider des problèmes (info nécessaire au template)
 		));
 	}
 
@@ -124,7 +139,7 @@ class ProblemeVMController extends Controller
 				$this->submitProblem($request, $formulaire['probleme']);
 				$request->getSession()->getFlashBag()->add('notice', 'Le problème a été soumis au staff.');
 
-				return $this->redirect($this->generateUrl('samu_gestion_vm_index'));
+				return $this->redirect($this->generateUrl('samu_gestion_vm_index', array('action' => 'valider')));
 			}
 
 			return $this->render('SamuGestionVMBundle:ProblemeVM:add.html.twig', array(
@@ -146,7 +161,7 @@ class ProblemeVMController extends Controller
 
 		$this->get('session')->getFlashBag()->add('notice', 'Ce problème est maintenant pris en compte par le staff');
 
-		return $this->redirect($this->generateUrl('samu_gestion_vm_indexNonValide'));
+		return $this->redirect($this->generateUrl('samu_gestion_vm_index', array('action' => 'valider')));
 
 	}
 
@@ -223,46 +238,6 @@ class ProblemeVMController extends Controller
 
 		return $this->render('SamuGestionVMBundle:ProblemeVM:news-indicator.html.twig', array(
 			'isNew' 	=> $isNew));
-	}
-
-	/**
-	 *@Security("has_role('ROLE_USER')")
-	 */
-	public function indexNonValideAction()
-	{
-		$listPbVehicules = $this
-			->getDoctrine()
-			->getManager()
-			->getRepository('SamuGestionVMBundle:ProblemeVM')
-			->getProblemesVNonValide()
-		;
-
-		$listPbMateriel = $this
-			->getDoctrine()
-			->getManager()
-			->getRepository('SamuGestionVMBundle:ProblemeVM')
-			->getProblemesMNonValide()
-		;
-
-			$listVehicules = $this->getDoctrine()
-			->getManager()
-			->getRepository('SamuGestionVMBundle:Vehicule')
-			->findAll()
-		;
-
-		$testPb = count($listPbVehicules) + count($listPbMateriel);
-
-		if(!$testPb)
-		{
-			$this->get('session')->getFlashBag()->add('notice', 'Il n\'y a pas de problème à valider actuellement.');
-		}
-
-		return $this->render('SamuGestionVMBundle:ProblemeVM:index.html.twig', array(
-			'listPbVehicules' => $listPbVehicules,
-			'listPbMateriel'  => $listPbMateriel,
-			'listVehicules'   => $listVehicules,
-			'validation'      => 1
-		));
 	}
 
 	public function countNonValideAction()
