@@ -17,40 +17,15 @@ class ProblemeVMController extends Controller
 	 */
 	public function indexAction()
 	{
-		$listPbVehicules = $this->getDoctrine()
-		  ->getManager()
-		  ->getRepository('SamuGestionVMBundle:ProblemeVM')
-		  ->getProblemesVParVehicule()
-		;
-
-		$listPbMateriel = $this->getDoctrine()
-		  ->getManager()
-		  ->getRepository('SamuGestionVMBundle:ProblemeVM')
-		  ->getProblemesMEnCours()
-		;
-
-		$listVehicules = $this->getDoctrine()
+		$VehiculeAvecProblemesEnCours = $this
+			->getDoctrine()
 			->getManager()
 			->getRepository('SamuGestionVMBundle:Vehicule')
-			->findAll()
+			->findVehiculesWithProblems()
 		;
 
-		$testPb = count($listPbVehicules) + count($listPbMateriel);
-		
-
-		$ids = null;
-
-		foreach ($listPbVehicules as $PbVehicule) {
-			$ids[] = $PbVehicule->getVehicule()->getId();
-		}
-
-		isset($ids) ? $maxId = max($ids) : $maxId = 0;
-
 		return $this->render('SamuGestionVMBundle:ProblemeVM:index.html.twig', array(
-			'listPbVehicules'  => $listPbVehicules,
-			'maxId'            => $maxId,
-			//'listPbMateriel' => $listPbMateriel,
-			'listVehicules'    => $listVehicules,
+			'VehiculeAvecProblemesEnCours'  => $VehiculeAvecProblemesEnCours,
 			'validation'       => 0 //nous ne sommes pas entrain de valider des problèmes (info nécessaire au template)
 		));
 	}

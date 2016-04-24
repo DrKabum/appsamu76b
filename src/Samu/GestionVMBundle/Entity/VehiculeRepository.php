@@ -24,4 +24,21 @@ class VehiculeRepository extends EntityRepository
 
 		return $query->getResult();
 	}
+
+	public function findVehiculesWithProblems()
+	{
+		$qb = $this->createQueryBuilder('v');
+
+		$query = $qb
+			->select('v')
+			->join('v.problemes', 'p', 'WITH', 'p.active=1')
+			->addSelect('p')
+			->leftJoin('p.commentaires', 'c')
+			->addSelect('c')
+			->orderBy('p.dateDebut', 'DESC')
+			->getQuery()
+		;
+
+		return $query->getResult();
+	}
 }

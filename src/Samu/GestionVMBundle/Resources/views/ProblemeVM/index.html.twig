@@ -17,47 +17,25 @@ bool  : validation
 			<p>{{ flashMessage }}</p>
 		</div>	
 	{% endfor %}
-	<h1>Tableau de bord</h1>
 
 	<div>
-		<h2>Problèmes véhicules</h2>
-		<p>Nombre de problèmes : {{ listPbVehicules|length }}</p>
-
+		<p>Nombre de problèmes :</p>
 	</div>
-	{% if listPbVehicules %}
-		
-		{% for i in 1..maxId %}
-			{% set vehicule = true %}
-			
-				{% set isThereProbleme = false %}
-				{% for probleme in listPbVehicules if probleme.vehicule.id == i %}
-					{% set isThereProbleme = true %}
-				{% endfor %}
 
-				{% if isThereProbleme %}
-					<div class="vehicule_name" id="groupe-{{ listVehicules[i-1].name }}">
-						<p>{{ listVehicules[i-1].name }}</p>
-					</div>
-				{% endif %}
+	{% for vehicule in VehiculeAvecProblemesEnCours %}
 
-				{% for probleme in listPbVehicules if probleme.vehicule.id == i %}
-					{% include 'SamuGestionVMBundle:ProblemeVM:problemeView.html.twig' %}
-				{% endfor %}
-		
+		<div class="vehicule_name" id="groupe-{{ vehicule.name }}">
+			<p>{{ vehicule.name }}</p>
+		</div>
+
+		{% for probleme in vehicule.problemes %}
+
+			{% include 'SamuGestionVMBundle:ProblemeVM:problemeView.html.twig' %}
+
 		{% endfor %}
 
 	{% else %}
 		<p>Aucun problème en cours sur les véhicules.</p>
-	{% endif %}
-
-	
-
-	{#<div>
-		<h2>Problèmes Matériels</h2>
-		Nombre de problèmes : {{ listPbMateriel|length }}
-			{% for probleme in listPbMateriel %}
-				{% include 'SamuGestionVMBundle:ProblemeVM:problemeView.html.twig' %}
-			{% endfor %}
-	</div>#}
+	{% endfor %}
 
 {% endblock %}

@@ -24,8 +24,10 @@ class ProblemeVMRepository extends EntityRepository
 			->andWhere($qb->expr()->isNotNull('p.vehicule'))
 			->leftJoin('p.commentaires', 'c')
 			->addSelect('c')
-			->orderBy('p.vehicule', 'ASC')
+			->leftJoin('p.vehicule', 'v')
+			->addSelect('v')
 			->orderBy('p.dateDebut', 'DESC')
+			->orderBy('p.vehicule')
 			->getQuery()
 		;
 
