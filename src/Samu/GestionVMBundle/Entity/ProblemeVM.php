@@ -63,6 +63,13 @@ class ProblemeVM
     private $dateModif;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="lastModif", type="datetime", nullable=true)
+     */
+    private $lastModif;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(name="staffValidated", type="boolean")
@@ -386,5 +393,33 @@ class ProblemeVM
     public function isPbMateriel()
     {
         return $this->getMateriel() ? true : false;
+    }
+
+    /**
+     * Set lastModif
+     *
+     * @param \DateTime $lastModif
+     * @return ProblemeVM
+     */
+    public function setLastModif($lastModif)
+    {
+        $this->lastModif = $lastModif;
+
+        return $this;
+    }
+
+    /**
+     * Get lastModif
+     *
+     * @return \DateTime 
+     */
+    public function getLastModif()
+    {
+        if(!isset($this->lastModif))
+        {
+            $this->lastModif = $this->getDateDebut();
+        }
+        
+        return $this->lastModif;
     }
 }

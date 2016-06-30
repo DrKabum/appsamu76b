@@ -27,7 +27,7 @@ $("#block_page").on("submit", ".report-pb form", function(e) {
 		data: $(this).serialize(),
 		success: function(reponse, statut)
 		{
-			window.location.href = Routing.generate('samu_gestion_vm_indexNonValide');
+			window.location.href = Routing.generate('samu_gestion_vm_index', {'action': 'valider'});
 		}
 	});
 });

@@ -15,44 +15,35 @@ class ProblemeVMController extends Controller
 	/**
 	 * @Security("has_role('ROLE_USER')")
 	 */
-	public function indexAction()
+	public function indexAction($action)
 	{
-		$listPbVehicules = $this->getDoctrine()
-		  ->getManager()
-		  ->getRepository('SamuGestionVMBundle:ProblemeVM')
-		  ->getProblemesVParVehicule()
-		;
+		($action == 'index') ? $validation = false : $validation = true;
 
-		$listPbMateriel = $this->getDoctrine()
-		  ->getManager()
-		  ->getRepository('SamuGestionVMBundle:ProblemeVM')
-		  ->getProblemesMEnCours()
-		;
+		$vehiculesAvecProblemesEnCours;
 
-		$listVehicules = $this->getDoctrine()
-			->getManager()
-			->getRepository('SamuGestionVMBundle:Vehicule')
-			->findAll()
-		;
-
-		$testPb = count($listPbVehicules) + count($listPbMateriel);
-		
-
-		$ids = null;
-
-		foreach ($listPbVehicules as $PbVehicule) {
-			$ids[] = $PbVehicule->getVehicule()->getId();
+			if ($validation) 
+		{
+			$vehiculesAvecProblemesEnCours = $this
+				->getDoctrine()
+				->getManager()
+				->getRepository('SamuGestionVMBundle:Vehicule')
+				->findVehiculesWithProblemsNonValides()
+			;
+		}
+			else
+		{
+			$vehiculesAvecProblemesEnCours = $this
+				->getDoctrine()
+				->getManager()
+				->getRepository('SamuGestionVMBundle:Vehicule')
+				->findVehiculesWithProblems()
+			;
 		}
 
-		isset($ids) ? $maxId = max($ids) : $maxId = 0;
-
 		return $this->render('SamuGestionVMBundle:ProblemeVM:index.html.twig', array(
-			'ids' => $ids,
-			'listPbVehicules'  => $listPbVehicules,
-			'maxId'            => $maxId,
-			//'listPbMateriel' => $listPbMateriel,
-			'listVehicules'    => $listVehicules,
-			'validation'       => 0 //nous ne sommes pas entrain de valider des problèmes (info nécessaire au template)
+
+			'vehiculesAvecProblemesEnCours'  => $vehiculesAvecProblemesEnCours,
+			'validation'       => $validation//nous ne sommes pas entrain de valider des problèmes (info nécessaire au template)
 		));
 	}
 
@@ -108,6 +99,7 @@ class ProblemeVMController extends Controller
 		if($formulaire['form']->handleRequest($request)->isValid())
 		{
 			$probleme->setDateModif(new \Datetime());
+			$probleme->setLastModif(new \Datetime());
 			$em->flush();
 
 			$request->getSession()->getFlashBag()->add('notice', 'Modifications réussie.');
@@ -148,7 +140,7 @@ class ProblemeVMController extends Controller
 				$this->submitProblem($request, $formulaire['probleme']);
 				$request->getSession()->getFlashBag()->add('notice', 'Le problème a été soumis au staff.');
 
-				return $this->redirect($this->generateUrl('samu_gestion_vm_index'));
+				return $this->redirect($this->generateUrl('samu_gestion_vm_index', array('action' => 'valider')));
 			}
 
 			return $this->render('SamuGestionVMBundle:ProblemeVM:add.html.twig', array(
@@ -165,12 +157,13 @@ class ProblemeVMController extends Controller
 	{
 		$em = $this->getDoctrine()->getManager();
 		$probleme->setStaffValidated(1);
+		$probleme->setLastModif(new \Datetime());
 
 		$em->flush();
 
 		$this->get('session')->getFlashBag()->add('notice', 'Ce problème est maintenant pris en compte par le staff');
 
-		return $this->redirect($this->generateUrl('samu_gestion_vm_indexNonValide'));
+		return $this->redirect($this->generateUrl('samu_gestion_vm_index', array('action' => 'valider')));
 
 	}
 
@@ -182,6 +175,7 @@ class ProblemeVMController extends Controller
 		$em = $this->getDoctrine()->getManager();
 
 		$probleme->setActive(0);
+		$probleme->setLastModif(new \Datetime());
 		$em->flush();
 
 		$this->get('session')->getFlashBag()->add("notice", "Le problème n°" . $probleme->getId() . " a été validé.");
@@ -247,46 +241,6 @@ class ProblemeVMController extends Controller
 
 		return $this->render('SamuGestionVMBundle:ProblemeVM:news-indicator.html.twig', array(
 			'isNew' 	=> $isNew));
-	}
-
-	/**
-	 *@Security("has_role('ROLE_USER')")
-	 */
-	public function indexNonValideAction()
-	{
-		$listPbVehicules = $this
-			->getDoctrine()
-			->getManager()
-			->getRepository('SamuGestionVMBundle:ProblemeVM')
-			->getProblemesVNonValide()
-		;
-
-		$listPbMateriel = $this
-			->getDoctrine()
-			->getManager()
-			->getRepository('SamuGestionVMBundle:ProblemeVM')
-			->getProblemesMNonValide()
-		;
-
-			$listVehicules = $this->getDoctrine()
-			->getManager()
-			->getRepository('SamuGestionVMBundle:Vehicule')
-			->findAll()
-		;
-
-		$testPb = count($listPbVehicules) + count($listPbMateriel);
-
-		if(!$testPb)
-		{
-			$this->get('session')->getFlashBag()->add('notice', 'Il n\'y a pas de problème à valider actuellement.');
-		}
-
-		return $this->render('SamuGestionVMBundle:ProblemeVM:index.html.twig', array(
-			'listPbVehicules' => $listPbVehicules,
-			'listPbMateriel'  => $listPbMateriel,
-			'listVehicules'   => $listVehicules,
-			'validation'      => 1
-		));
 	}
 
 	public function countNonValideAction()
