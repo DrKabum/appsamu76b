@@ -1,19 +1,16 @@
-html {
-	height: 100%;
-}
 
 html {
-	width: 100%;
-	max-width: 1024px;
+
 	background-color: #E7FFFD;
 	margin: 0 auto;
 }
 
 body{
-	background: #D9D9D9;
-	position: relative;
 	display: block;
-	min-height: 100%;
+	background: #D9D9D9;
+	max-width: 1024px;
+	margin: 0 auto;
+	min-height: 100vh;
 	color: black;
 	font-family: "Arial", Verdana, sans-serif;
 	font-size: 1em;
@@ -36,24 +33,31 @@ li {
 	list-style: none;
 }
 
+#global {
+	min-height: 940px;
+	width: 100%;
+	position: relative;
+}
+
 #block_page {
+	display: block;
 	max-width: 1024px;
+	padding-bottom: 5px;
 	background: #D9D9D9;
 }
 
 footer {
+	display: block;
 	position: relative;
     bottom: 0px;
-    height: 80px;
+    height: 85px;
     width: 100%;
     max-width: 1024px;
-    margin-top: 5px;
     background: #667F7D;
     color: #D9D7D3;
 }
 
 section {
-	display: block;
 	width: 1012px;
 	margin-top: 5px;
 	margin:0 auto;

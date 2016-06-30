@@ -89,22 +89,19 @@ body {
 
 
 
-html {
-	height: 100%;
-}
 
 html {
-	width: 100%;
-	max-width: 1024px;
+
 	background-color: #E7FFFD;
 	margin: 0 auto;
 }
 
 body{
-	background: #D9D9D9;
-	position: relative;
 	display: block;
-	min-height: 100%;
+	background: #D9D9D9;
+	max-width: 1024px;
+	margin: 0 auto;
+	min-height: 100vh;
 	color: black;
 	font-family: "Arial", Verdana, sans-serif;
 	font-size: 1em;
@@ -127,24 +124,31 @@ li {
 	list-style: none;
 }
 
+#global {
+	min-height: 940px;
+	width: 100%;
+	position: relative;
+}
+
 #block_page {
+	display: block;
 	max-width: 1024px;
+	padding-bottom: 5px;
 	background: #D9D9D9;
 }
 
 footer {
+	display: block;
 	position: relative;
     bottom: 0px;
-    height: 80px;
+    height: 85px;
     width: 100%;
     max-width: 1024px;
-    margin-top: 5px;
     background: #667F7D;
     color: #D9D7D3;
 }
 
 section {
-	display: block;
 	width: 1012px;
 	margin-top: 5px;
 	margin:0 auto;
@@ -348,12 +352,9 @@ nav {
 
 .vehicule_name p {
 	font-size: 1.2em;
-	font-style: bold;
-	vertical-align: middle;
 	line-height: 30px;
-	margin-top: 0px;
-	margin-bottom: 0px;
 }
+
 
 /*--------------------- Titre du problème -----------------*/
 .probleme_view_title {
@@ -517,11 +518,48 @@ nav {
 	font-size: 0.9em;
 	color: grey;
 }
+#block-vehicules {
+background-color: #ABE3BF;
+}
+
+/*---------- Block véhicules -------*/
+
+#block-UMH-op, #block-VML-op, #block-UMH-hs, #block-VML-hs {
+	width: 493px;
+	background-color: #D3FFD9;
+
+	margin: 5px;
+}
+
+.entities-container
+{
+	display: inline-block;
+	vertical-align: top;
+	width: 400px;
+}
+
+.entities-container h1 {
+	text-align: center;
+	font-size: 1.2em;
+	line-height: 30px;
+}
+
+.sortable.ui-sortable {
+	padding: 5px;
+}
+#block-UMH-op .ui-sortable-handle, #block-UMH-hs .ui-sortable-handle {
+	left: 16px !important;
+}
+
+#block-VML-op .ui-sortable-handle, #block-VML-hs .ui-sortable-handle {
+	left: 524px !important;
+}
 .cartouche-vehicule
 {
+	height: 60px;
 	background-color: rgb(243, 184, 96);
 	border-radius: 10px;
-	margin-bottom: 10px;
+	margin-bottom: 5px;
 }
 
 .cartouche-vehicule div
@@ -530,48 +568,68 @@ nav {
 	vertical-align: top;
 }
 
-
-
 .ordre-depart
 {
-	background-color: red;
+	width: 50px;
+	height: 50px;
+	background-color: rgb(0, 190, 0);
 	padding: 5px;
 	float: left;
-	border-top-left-radius: 5px;
-	border-bottom-right-radius: 5px;
+	border-radius: 5px 0px 0px 5px;
 }
 
-.entities-container
-{
-	display: inline-block;
-	vertical-align: top;
-	width: 49.5%;
+.ordre-depart p {
+	font-size: 1.8em;
+
 }
 
-.entity-buttons-container div
-{
-	display:block;
+p.ordre-depart-vehicule {
+	text-align: center;
+	margin-top: 25% !important;
+	margin-bottom: 25% !important; 
 }
 
-.nom-vehicule
-{
-	width:18%;
+.nom-vehicule {
+	width: 80px;
+	height: 60px;
+	border-radius: 5px;
+	float: left;
+	text-align: center;
+	margin-right: 5px;
 }
 
-.nom-vehicule p
-{
+.vehicule-op {
+	background: rgb(38, 255, 46);
+}
+
+.vehicule-hs {
+	background: red;
+}
+
+p.ordre-depart-vehicule-name {
 	height:20px;
-	margin:auto;
+	margin-top: 25% !important;
+	margin-bottom: 25% !important; 
+	font-size: 1em;
 }
 
 .infos-vehicule
 {
-	width: 70%;
+	width: 180px;
+	float: left;
 }
+
+.entity-buttons-container div
+
+{
+	display:block;
+}
+
 
 .entity-buttons-container
 {
 	width: 10%;
+	float: right;
 }
 
 .entity-buttons-container div
@@ -585,6 +643,9 @@ nav {
 	height: 3em;
 	margin-bottom: 10px;
 }
+
+
+
 /*----------Style bouton---------*/
 .button
 {
@@ -611,3 +672,4 @@ nav {
 }
 
 /*----------box ordre de départ----------*/
+

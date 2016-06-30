@@ -33,10 +33,11 @@
 
 /*--------------------- Titre du problème -----------------*/
 .probleme_view_title {
+	display: table;
 	padding-bottom: 10px;	
 	padding-top: 10px;
 	background-color: #D3FFD9;
-	height: 30px;
+	min-height: 30px;
 	width: 100%;
 }
 

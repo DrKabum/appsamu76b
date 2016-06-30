@@ -1001,24 +1001,17 @@
         },
         {
             "name": "knplabs/knp-time-bundle",
-
+            "version": "1.6.1",
             "target-dir": "Knp/Bundle/TimeBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpTimeBundle.git",
-
                 "reference": "ace276f037b3fc5e165bc2e4ae4f4f191ada0506"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/KnpLabs/KnpTimeBundle/zipball/ace276f037b3fc5e165bc2e4ae4f4f191ada0506",
                 "reference": "ace276f037b3fc5e165bc2e4ae4f4f191ada0506",
-      "reference": "d04f7da090fbbacf9da601bed724c4d58f24fa2d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpTimeBundle/zipball/d04f7da090fbbacf9da601bed724c4d58f24fa2d",
-                "reference": "d04f7da090fbbacf9da601bed724c4d58f24fa2d",
                 "shasum": ""
             },
             "require": {
@@ -1069,9 +1062,7 @@
                 "knplabs",
                 "time"
             ],
-
-            "time": "2016-04-22 00:16:38"
-
+            "time": "2016-05-10 16:53:32"
         },
         {
             "name": "kriswallsmith/assetic",

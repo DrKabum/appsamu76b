@@ -1,8 +1,10 @@
 var $flashbags = $('.flashbag');
 
 $flashbags.on('click', function() {
-	$(this).hide(1000);
+	$(this).slideUp(1000);
 });
+
+$flashbags.delay(2000).slideUp(1000);
 $('.add-com').hide();
 
 $('article').on("click", ".open-com-tab", function(e)
@@ -221,10 +223,8 @@ $("#block_page").on("click", "#popup-close", function(e) {
 	closePopup();
 })
 
-$("#block_page").on("submit", "form", function(e) {
+$("#block_page").on("submit", ".add-pb form", function(e) {
 	e.preventDefault();
-
-	var nomVehicule = $("")
 
 	$.ajax({
 		url : Routing.generate("samu_gestion_vm_problemeAdd", {"typePb" : "pbvehicule"}),
@@ -232,16 +232,7 @@ $("#block_page").on("submit", "form", function(e) {
 		data: $(this).serialize(),
 		success: function(reponse, statut)
 		{
-			//récupérer le nom du vehicule de la réponse avec data()
-			$("#block_page").append("<div id=reponse>" + reponse + "</div>");
-			var vehiculeReponse = $("#reponse .probleme_view_block").data('vehicule');
-
-			//trouver la div du même véhicule et ajouter le contenu
-			$("#reponse .probleme_view_block").insertAfter("#groupe-" + vehiculeReponse);
-			$("#reponse").remove();
-			$('.add-com').hide();
-
-			closePopup();			
+			window.location.href = Routing.generate('samu_gestion_vm_index');			
 		}
 	});
 });
@@ -249,8 +240,120 @@ $("#block_page").on("submit", "form", function(e) {
 function closePopup() {
 	$("#background-add-pb").remove();
 }
-$(".sortable").sortable({
-	cursor: "move",
-	containment: "#block-UMH",
-	placeholder: "ui-state-highlight"}
-);
+//listes UMH connectées
+$('#block-UMH').sortable({
+	connectWith: "#block-UMH-desarme",
+	placeholder: "ui-state-highlight"
+});
+
+$('#block-UMH-desarme').sortable({
+	connectWith: "#block-UMH",
+	placeholder: "ui-state-highlight"
+});
+
+//listes VML connectées
+$('#block-VML').sortable({
+	connectWith: "#block-VML-desarme",
+	placeholder: "ui-state-highlight"
+});
+
+$('#block-VML-desarme').sortable({
+	connectWith: "#block-VML",
+	placeholder: "ui-state-highlight"
+});
+
+//Evenement entrainant la mise à jour ajax de la BDD
+$("#block-UMH, #block-VML, #block-UMH-desarme, #block-VML-desarme").on("sortupdate", function(){
+	$.ajax({
+		url: Routing.generate("samu_gestion_vm_sortOrdreDepart"),
+		data: $(this).sortable('serialize')
+	});
+});
+
+//Changer les class et id quand on a changé de liste entre opé et pas opé
+$("#block-UMH, #block-VML").on('sortremove', function(event, ui) {
+	var id = ui.item.attr('id');
+	var newId = id.replace(/vehiculeid-/, 'vehiculedownid-');
+
+	ui.item.attr('id', newId);
+	ui.item.find('.nom-vehicule').removeClass('vehicule-op').addClass('vehicule-hs');
+});
+
+$('#block-UMH-desarme, #block-VML-desarme').on('sortremove', function(event,ui) {
+	var id = ui.item.attr('id');
+	var newId = id.replace(/vehiculedownid-/, 'vehiculeid-');
+
+	ui.item.attr('id', newId);
+	ui.item.find('.nom-vehicule').removeClass('vehicule-hs').addClass('vehicule-op');
+});
+$('#block_page').on('click', '.pvt_title a', function(e) {
+	e.preventDefault();
+
+	if ($(this).parents('.probleme_view_title').children('.pvt_id').children('img').hasClass('new-pb'))
+	{	
+		var divId = $(this).parents('.probleme_view').attr('id');
+		var problemId = divId.replace(/pb-/, '');
+
+		console.log(problemId);
+
+		$.ajax({
+			url: Routing.generate('samu_gestion_vm_isProblemNew', {'id' : problemId}),
+			success: function(reponse, status)
+			{
+				$('#pb-' + problemId).find('.pvt_id').empty().append(reponse);
+			}
+		});
+	}
+});
+$('.probleme_hidable').hide();
+
+$('article').on("click", ".probleme_view_title .pvt_title a", function(e)
+{
+	e.preventDefault();
+
+	if ($(e.target).parent('.pvt_title').parent('.probleme_view_title').parent(".probleme_view").find(".probleme_hidable").is(":hidden"))
+	{
+   		$(e.target).parent('.pvt_title').parent('.probleme_view_title').parent(".probleme_view").find(".probleme_hidable").slideDown("slow");
+	} 
+		else 
+	{
+		$(e.target).parent('.pvt_title').parent('.probleme_view_title').parent(".probleme_view").find(".probleme_hidable").slideUp("slow");
+	}
+});
+$("#report-pb").on("click", function(e) {
+	e.preventDefault();
+
+	$.ajax({
+		url: Routing.generate('samu_gestion_vm_problemeReport', {'typePb': 'pbvehicule'}),
+		type: 'GET',
+		success: function(reponse, status)
+		{
+			$('#block_page').append(reponse);
+		}
+	});
+});
+
+//fermeture du popup
+$("#block_page").on("click", "#popup-close", function(e) {
+
+	e.preventDefault();
+	closePopup();
+})
+
+$("#block_page").on("submit", ".report-pb form", function(e) {
+	e.preventDefault();
+
+	$.ajax({
+		url : Routing.generate("samu_gestion_vm_problemeReport", {"typePb" : "pbvehicule"}),
+		type: 'POST',
+		data: $(this).serialize(),
+		success: function(reponse, statut)
+		{
+			window.location.href = Routing.generate('samu_gestion_vm_index', {'action': 'valider'});
+		}
+	});
+});
+
+function closePopup() {
+	$("#background-add-pb").remove();
+}
