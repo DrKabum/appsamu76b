@@ -1,3 +1,6 @@
+Projet historique, gardé pour l'émotion qu'il procure :') Il s'agit de mon tout premier projet en programmation un peu sérieux !
+
+
 samu76b
 =======
 
